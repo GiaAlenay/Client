@@ -7,6 +7,7 @@ export const Landing =()=>{
         <div className='ala'>
         
        <Link to="/home">Landing </Link>     
+       
         </div>
     )
 }
