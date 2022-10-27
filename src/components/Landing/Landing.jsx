@@ -5,8 +5,7 @@ import {Link} from 'react-router-dom'
 export const Landing =()=>{
     
     return(
-        <div >
-            <div >
+
                 <from> 
                     <p>Completa los datos para crear tu cuenta</p>
                     <label>Nombre</label>
@@ -30,15 +29,9 @@ export const Landing =()=>{
                     <br/>
 
                     <br/>
-
-                   <button><Link to="/home">User create </Link></button>
-
-
-
+                   <button><Link to="/home">Landing </Link></button>
                 </from>
-            </div>
-        
-        </div>
+
     )
 }
 
