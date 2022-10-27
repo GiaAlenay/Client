@@ -12,6 +12,7 @@
     "Tittle Tittle"
     "Photo Register"
     "Footer Footer";
+    background-color: #5e59bc;
 }
 
 .Register { 
@@ -24,15 +25,19 @@
 
 .Photo {
      grid-area: Photo; 
+     background-color: bisque;
+     height: 500px;
 }
 
 .Tittle {
+    background-color: bisque;
     justify-self: stretch;
     align-self: stretch;
     grid-area: Tittle;
 }
 
 .Footer {
+    background-color: bisque;
     justify-self: stretch;
     align-self: stretch;
     grid-area: Footer;
