@@ -30,7 +30,11 @@ export const Landing =()=>{
                     <br/>
 
                     <br/>
-                   <button><Link to="/home">Ingresar </Link></button>
+
+                   <button><Link to="/home">User create </Link></button>
+
+
+
                 </from>
             </div>
             <div className={s.Photo}></div>
