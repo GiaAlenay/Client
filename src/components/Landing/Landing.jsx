@@ -5,7 +5,11 @@ import s from "./Landing.module.css"
 export const Landing =()=>{
     
     return(
+        <div className={s.todo}>
         <div className={s.container}>
+            <div className={s.Photo}></div>
+            <div className={s.Tittle}></div>
+            <div className={s.Footer}></div>
             <div className={s.Register}>
                 <from> 
                     <p>Completa los datos para crear tu cuenta</p>
@@ -33,9 +37,8 @@ export const Landing =()=>{
                    <button><Link to="/home">Landing </Link></button>
                 </from>
             </div>
-            <div className={s.Photo}></div>
-            <div className={s.Tittle}></div>
-            <div className={s.Footer}></div>
+            
+        </div>
         </div>
     )
 }

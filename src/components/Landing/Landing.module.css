@@ -9,7 +9,13 @@ body{
     justify-content: center;
     align-content: center;
     justify-items: center;
-    align-items: center;  
+    align-items: center;
+    grid-template-areas:
+    "Tittle Tittle"
+    "Photo Register"
+    "Footer Footer";
+    background-color: #5e59bc;
+
 }
 
 .Register { 
@@ -26,15 +32,19 @@ body{
 
 .Photo {
      grid-area: Photo; 
+     background-color: bisque;
+     height: 500px;
 }
 
 .Tittle {
+    background-color: bisque;
     justify-self: stretch;
     align-self: stretch;
     grid-area: Tittle;
 }
 
 .Footer {
+    background-color: bisque;
     justify-self: stretch;
     align-self: stretch;
     grid-area: Footer;
