@@ -6,8 +6,8 @@ export const Feed =()=>{
        <Box flex={4} p={{xs:0, md:2}}>
             <Post/>
             <Post/>
-       </Box>
-  
-   
+            <Post/>
+            <Post/>
+       </Box> 
     );
 }

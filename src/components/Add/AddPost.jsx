@@ -1,7 +1,8 @@
 
-import { Add as AddIcon, EmojiEmotions} from "@mui/icons-material"
-import { Fab, Modal, Tooltip,Box, styled, Typography, Avatar, TextField, Stack } from "@mui/material"
+import { Add as AddIcon, EmojiEmotions, Image, VideoCameraBack} from "@mui/icons-material"
+import { Fab, Modal, Tooltip,Box, styled, Typography, Avatar, TextField, Stack, Button } from "@mui/material"
 import React, { useState } from "react"
+import SendIcon from '@mui/icons-material/Send';
 
 const StyledModal = styled(Modal)({
     display:"flex",
@@ -55,8 +56,16 @@ export const AddPost =() =>{
 
                     <Stack direction="row" gap={1} mt={2} mb={3}>
                         <EmojiEmotions color="primary"/>
-
+                        <Image color="secondary"/>
+                        <VideoCameraBack color="success"/>
                     </Stack>
+
+                    <Button
+                    fullWidth
+                    variant="contained"
+                    endIcon={<SendIcon/>}>
+                        Publicar
+                    </Button>
                 </Box>
                 
             </StyledModal>
