@@ -1,11 +1,11 @@
- import { Nav } from "../Nav/Nav"
+ import { Nav } from "../../components/Nav/Nav"
  import './Perfil.css'
  import Button from '@mui/material/Button';
  import Stack from '@mui/material/Stack';
  import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChangeForm } from "../ChangeForm/ChangeForm";
+import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
  const user={
     id:1,
     name:'Henry',

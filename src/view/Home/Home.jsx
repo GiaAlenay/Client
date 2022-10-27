@@ -1,4 +1,4 @@
-import {Nav} from '../Nav/Nav'
+import {Nav} from '../../components/Nav/Nav'
 export const Home =()=>{
     return(
         <div>
