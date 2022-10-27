@@ -1,9 +1,9 @@
 // import {Button,Stack} from '@mui/material'
 import{Routes,Route} from 'react-router-dom'
-import {Landing} from './components/Landing/Landing';
-import {Home} from './components/Home/Home'
-import {Perfil} from './components/Perfil/Perfil'
-import{GoPremium} from './components/GoPremium/GoPremium'
+import {Landing} from './view/LandingPage/Landing';
+import {Home} from './view/Home/Home'
+import {Perfil} from './view/Perfil/Perfil'
+import{GoPremium} from './view/GoPremium/GoPremium'
 function App() {
   return (
     <div className="App">

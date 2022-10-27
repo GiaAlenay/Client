@@ -1,9 +1,9 @@
 import { Stack } from '@mui/material'
-import { Feed } from '../Feed/Feed'
-import { Filters } from '../Filters/Filters'
-import {Nav} from '../Nav/Nav'
-import { AddPost } from '../Add/AddPost'
-import { Prueba } from '../Filters/Prueba'
+import { Feed } from '../../components/Feed/Feed'
+import { Filters } from '../../components/Filters/Filters'
+import {Nav} from '../../components/Nav/Nav'
+import { AddPost } from '../../components/Add/AddPost'
+import { Prueba } from '../../components/Filters/Prueba'
 export const Home =()=>{
     return(
         <div>
