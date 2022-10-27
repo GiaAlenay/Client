@@ -1,0 +1,141 @@
+.perfil{
+    width: 100%;
+    height: 100vh;
+    background-color: azure;
+    
+}
+.firstCont{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid rgb(224, 221, 221);
+}
+.profile{
+   
+    display: flex;
+   align-items: center;
+   justify-content: center;
+    width: 100%;
+}
+.allInfoContainer{    
+    border-radius: 10px 10px 0px 0px;   
+    margin-top: 2%;
+    width: 70%;
+}
+.mainPicture{
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+    height: 300px;    
+    object-fit: cover;
+    background-color: rgb(93, 93, 99);
+    margin-bottom: none;
+    
+}
+.secondPicture{
+    margin-left: 2%;
+    margin-top: 220px;
+    width: 12%;
+    border-radius: 50%;
+    position: absolute;
+}
+.infoContainer{
+    margin-top: none;
+    padding-top: none;
+    background-color: rgb(255, 255, 255);
+    width: 100% ;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    
+}
+
+.userNameCont{
+  
+    margin-left: 200px;
+    width: 60%;
+   
+    
+}
+
+.userName{
+    font-size: 36px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.modifyIcon{
+    width: 20px;
+}
+.buttonContainer{
+    margin-top:12% ;
+    
+}
+.detalle{
+    
+    margin-top: 2%;
+    width: 100%;
+    /* background-color: blue; */
+}
+.tipoDetalle{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid rgb(224, 221, 221);
+    width: 100%;
+    display: grid;
+    grid-template-columns:  20% 20% 20% 20% 20%;
+    background-color: rgb(255, 255, 255);
+    height: 52px;    
+}
+.btn{
+    all:unset;
+    display: flex;
+    align-content: center;
+   align-items: center;
+   justify-content: center;
+    height: 50px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: rgb(229, 237, 245);
+}
+.detalleInfo{
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 10%;
+    margin-top: 2%;
+    width: 100%;
+    height: 40vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid rgb(224, 221, 221);
+}
+
+.detInf{
+    margin: 1%;
+    width: 98%;
+    height: 94%;
+    
+}
+.selectedDetalle{
+    border-bottom:  3px solid rgb(36, 35, 35);
+    
+    
+    
+}
+.configurarCuenta{
+    
+    display: block;
+    width: 100%;
+    height: 100%;    
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;   
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgba(80, 77, 77, 0.6);
+    overflow-x: hidden;  
+   
+}
+
+.noConfigurar{
+    width: 0%;
+    display: none;
+}
