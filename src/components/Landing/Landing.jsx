@@ -1,41 +1,39 @@
 
 import {Link} from 'react-router-dom'
-import s from "./Landing.module.css"
+// import s from "./Landing.module.css"
 
 export const Landing =()=>{
     
     return(
-        <div className={s.container}>
-            <div className={s.Register}>
+        <div >
+            <div >
                 <from> 
                     <p>Completa los datos para crear tu cuenta</p>
                     <label>Nombre</label>
                     <br/>
-                    <input placeholder="" type="text" class={s.input}required=""/>
+                    <input placeholder="" type="text" />
                     <br/>
 
                     <label>Apellido</label>
                     <br/>
-                    <input placeholder="" type="text" class={s.input}required=""/>
+                    <input placeholder="" type="text" />
 
                     <br/>
                     <label>Gmail </label>
                     <br/>
-                    <input placeholder="" type="text" class={s.input}required=""/>
+                    <input placeholder="" type="text" />
 
                     <br/>
                     <label>Contraseña</label>
                     <br/>
-                    <input placeholder="" type="text" class={s.input}required=""/>
+                    <input placeholder="" type="text" />
                     <br/>
 
                     <br/>
                    <button><Link to="/home">Ingresar </Link></button>
                 </from>
             </div>
-            <div className={s.Photo}></div>
-            <div className={s.Tittle}></div>
-            <div className={s.Footer}></div>
+        
         </div>
     )
 }
