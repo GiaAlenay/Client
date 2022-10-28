@@ -1,42 +1,41 @@
-
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'
 const dataGeneral= [
     'alan or','python','react','Lady Gaga', 'avigail','aveces'
     ]
 
 export const SearchBar =()=>{
+    const history=useNavigate()
     const[suggestions , setSuggestions]=useState([])
     const [text,setText]=useState('')
-    const [indice, setIndice]=useState(0)
-    const handleKeyDown = (event) => {    
+    const handleKeyDown = (event) => {  
+        const im=suggestions.indexOf(text)
         if (event.key === 'Enter') {          
           onSuggestHandler(text)
           event.preventDefault(); 
          }
 
          if (event.key === "ArrowUp"){
-            if(indice>=0){
-                console.log('arriba')
-                setIndice(indice-1)
-                setText(suggestions[indice])
-            console.log(indice+' '+suggestions[indice])
+             
+            if(im>=0){
+                setText(suggestions[im-1])
+            }
+            else{                
+                setText(suggestions[suggestions.length-1])
+                }
             }
             
-         }
+         
          if (event.key === "ArrowDown"){
-            if(indice<suggestions.length){
-                console.log('abajo')
-                setIndice(indice+1)
-                setText(suggestions[indice])
-            console.log(indice+' '+suggestions[indice])
+            
+             if(im<suggestions.length){
+                setText(suggestions[im+1])               
             }
-            if(indice===suggestions.length){
-                setIndice(0)
-                setText(suggestions[indice])
-            }
-           
+            if(im===suggestions.length){
+                
+                setText(suggestions[im])
+            }           
          }
        };
     const onChangeInput=(text)=>{
@@ -55,9 +54,12 @@ export const SearchBar =()=>{
        
     }
     const onSuggestHandler=(text)=>{       
+       if(text.length>0){
         setText(text)
         console.log('va')
-        setSuggestions([])        
+        setSuggestions([])
+        history('/search') 
+       }       
     }
 
     const onSubmitHandler=(e)=>{
@@ -65,7 +67,6 @@ export const SearchBar =()=>{
         
         onSuggestHandler(text)
     }
-
    
     return (
         <>
@@ -89,7 +90,7 @@ export const SearchBar =()=>{
                                 id={suggestions.length===i+1 ?'su':'else'}
                                 className={`suggestion ${text===sugName&& 'sugestiononKey'}`}
                                 onClick={()=>onSuggestHandler(sugName)}
-                                onKeyDown={(e)=>{handleKeyDown(e)}}
+                               
                             >{sugName}
                         </div> ))}
                     </div>
