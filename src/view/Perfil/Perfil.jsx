@@ -14,7 +14,8 @@ import { getUser } from "../../redux/actions/users";
     apellido:'Luna',
     profilePicture:'https://img.freepik.com/fotos-premium/fondo-programacion-software_372999-217.jpg',
     profilePicture2:'https://hips.hearstapps.com/hmg-prod/images/street-portrait-of-a-young-man-using-mobile-phone-royalty-free-image-1018047498-1564431457.jpg?crop=0.668xw:1.00xh;0.226xw,0&resize=640:*'
-    ,premium:false
+    ,
+    premium:false
 }
  export const Perfil =()=>{
     
