@@ -1,9 +1,11 @@
-// import {Button,Stack} from '@mui/material'
+
 import{Routes,Route} from 'react-router-dom'
 import {Landing} from './view/LandingPage/Landing';
 import {Home} from './view/Home/Home'
 import {Perfil} from './view/Perfil/Perfil'
 import{GoPremium} from './view/GoPremium/GoPremium'
+import{TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
+import { SearchPag } from './view/SearchPag/SearchPag'
 function App() {
   return (
     <div className="App">
@@ -12,6 +14,8 @@ function App() {
       <Route path='/home' element={<Home/>}/>
       <Route path='profile/:id' element={<Perfil/>}/>
       <Route path='/premium' element={<GoPremium/>}/>
+      <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
+      <Route path ='/search' element={<SearchPag/>}/>
       </Routes>
     </div>
   );
