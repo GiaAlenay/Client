@@ -18,6 +18,14 @@ const initialState = {
           ...state,
           Posts:action.payload
         };
+      case "CREATE_POST":
+        return{
+      ...state,
+      Posts:action.payload
+        }
+    
+        
+        
   
       default:
         return {

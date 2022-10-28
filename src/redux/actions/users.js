@@ -19,4 +19,11 @@ export function getPost(payload){
   }
 };
 
+export function createPost(payload){
+  return async function (dispacth){
+    const response = await axios.post("/posts", payload);
+    console.log(response)
+    return response;
+  }
+}
 

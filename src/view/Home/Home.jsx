@@ -28,7 +28,6 @@ export const Home =()=>{
             <Stack direction="row" spacing={2} justifyContent="space-between">
                 <Filters/>
                 <Feed/>
-                <Prueba/>
             </Stack>
             <AddPost/>
             
