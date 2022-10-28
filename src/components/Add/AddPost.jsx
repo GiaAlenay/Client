@@ -52,6 +52,7 @@ export const AddPost =() =>{
                     rows={3}
                     placeholder="Escribe tu publicacion"
                     variant="standard"
+                    type={"text"}
                     />
 
                     <Stack direction="row" gap={1} mt={2} mb={3}>

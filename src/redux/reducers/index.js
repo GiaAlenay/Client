@@ -13,6 +13,11 @@ const initialState = {
           ...state,
           Users: action.payload,
         };
+      case "ADD_POST":
+        return {
+          ...state,
+          Posts:action.payload
+        };
   
       default:
         return {
