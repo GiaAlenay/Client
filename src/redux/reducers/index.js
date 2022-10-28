@@ -1,8 +1,7 @@
 const initialState = {
     Users: [],
     Posts: [],
-    newPost:[],
-   
+    User:{}   
   };
   
   const rootReducer = (state = initialState, action) => {
@@ -40,6 +39,12 @@ const initialState = {
             ...state,
             Posts:action.payload
           };
+
+      case 'GET_BY_ID':
+        return{
+          ...state,
+          User:action.payload
+        }
 
       default:
         return {

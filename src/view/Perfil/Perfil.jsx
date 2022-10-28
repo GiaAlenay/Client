@@ -3,9 +3,11 @@
  import Button from '@mui/material/Button';
  import Stack from '@mui/material/Stack';
  import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../redux/actions/users";
  const user={
     id:1,
     name:'Henry',
@@ -16,9 +18,24 @@ import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
     premium:false
 }
  export const Perfil =()=>{
+    
     const history=useNavigate();
     const [current,setCurrent]=useState(0)
     const [configurar,setConfigurar]=useState(false)
+    const dispatch=useDispatch()
+    const { id } = useParams();
+    const User=useSelector(state=>state.User)
+    useEffect(()=>{
+        
+            dispatch(getUser(id))
+            
+        
+        return(()=>{
+            // dispatch(clearAction('VideogameDetail',{}))
+        })
+    },[])
+
+
     const changeCurrent=(e)=>{        
         setCurrent(parseInt(e.target.value,10))
     }
@@ -31,6 +48,7 @@ import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
     const onClose=(close)=>{
         setConfigurar(close)
     }
+    console.log(User)
     return(
         <div className="perfil">
             <Nav/>
@@ -47,16 +65,20 @@ import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
                                 <img className="mainPicture" src={user.profilePicture} alt={'profile'}/>
                                 <div className="infoContainer">
                                     <div className="userNameCont">
-                                        <span className="userName">{user.name} {user.apellido}</span >
+                                        <span className="userName">{User.user&&(<div>{User.user.name+' '+User.user.apellido}</div>)}</span >
                                         
                                     </div>
                                     <div className="buttonContainer">
                                     <Stack spacing={2} direction="row">
-                                            <Button 
+
+                                            <Button className="ou"
                                                 sx={{backgroundColor:'rgb(22, 17, 41)',
+                                
                                                     display:`${user.premium===true?'none':'block' }`}} 
                                                 size="medium"
                                                 onClick={(e)=>{handlePrimium()}}
+    
+
                                                 variant="contained">
                                             Go Premium</Button>
                                             <Button  onClick={hamdleConfigAccountForm} sx={{backgroundColor:'rgb(22, 17, 41)' }} size="medium" variant="contained">
@@ -81,11 +103,12 @@ import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
                                 <div className="detalleInfo">
                                     {current===0 &&(
                                         <div className={`detInf detInf0`}>
-                                            Publiicaciones
+                                            Publicaciones
                                         </div>)}
                                     {current===1 &&(
                                         <div className={`detInf detInf1`}>
-                                            Informacion
+                                            Informacion:{User.user&&(<div>{User.user.descripcion}</div>)}
+                                            
                                         </div>)}
                                     {current===2 &&(
                                         <div className={`detInf detInf2`}>

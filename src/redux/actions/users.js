@@ -20,6 +20,16 @@ export function getPost(){
 };
 
 
+export const getUser=(id)=>dispatch=>{
+    return axios.get(`/users/${id}`)
+    .then((data)=>{
+        console.log('by id'+JSON.stringify(data))
+        dispatch({type:'GET_BY_ID', payload: data.data})
+    }).catch((error)=>{
+        console.log(error)
+    })
+}
+
 
 
 
