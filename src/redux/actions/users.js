@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 
+
   export const getUsers=()=>dispatch=>{
     return axios.get(`/users`)
     .then((data)=>{
@@ -20,3 +21,4 @@ export const getUser=(id)=>dispatch=>{
         console.log(error)
     })
 }
+

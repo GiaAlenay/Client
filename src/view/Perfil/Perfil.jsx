@@ -69,6 +69,7 @@ import { getUser } from "../../redux/actions/users";
                                     </div>
                                     <div className="buttonContainer">
                                     <Stack spacing={2} direction="row">
+
                                             <Button className="ou"
                                                 sx={{backgroundColor:'rgb(22, 17, 41)',
                                 
@@ -76,6 +77,7 @@ import { getUser } from "../../redux/actions/users";
                                                 size="medium"
                                                 onClick={(e)=>{handlePrimium()}}
     
+
                                                 variant="contained">
                                             Go Premium</Button>
                                             <Button  onClick={hamdleConfigAccountForm} sx={{backgroundColor:'rgb(22, 17, 41)' }} size="medium" variant="contained">

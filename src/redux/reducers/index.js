@@ -14,11 +14,13 @@ const initialState = {
           ...state,
           Users: action.payload,
         };
+
       case 'GET_BY_ID':
         return{
           ...state,
           User:action.payload
         }
+
       default:
         return {
           ...state

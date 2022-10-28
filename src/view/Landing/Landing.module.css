@@ -1,0 +1,67 @@
+.container {  
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr;
+    grid-template-rows: 0.2fr 2.5fr 0.2fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+    "Tittle Tittle"
+    "Photo Register"
+    "Footer Footer";
+}
+
+.Register { 
+    border-radius: 20px;
+    grid-area: Register; 
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(252, 233, 209);
+}
+
+.Photo {
+     grid-area: Photo; 
+}
+
+.Tittle {
+    justify-self: stretch;
+    align-self: stretch;
+    grid-area: Tittle;
+}
+
+.Footer {
+    justify-self: stretch;
+    align-self: stretch;
+    grid-area: Footer;
+}
+
+
+.input {
+      line-height: 28px;
+      border: 2px solid transparent;
+      border-bottom-color: #777;
+      padding: .2rem 0;
+      outline: none;
+      background-color: transparent;
+      color: #0d0c22;
+      transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    
+    .input:focus, input:hover {
+     outline: none;
+     padding: .2rem 1rem;
+     border-radius: 1rem;
+     border-color: #313030;
+    }
+    
+    .input::placeholder {
+     color: #777;
+    }
+    
+    .input:focus::placeholder {
+     opacity: 0;
+     transition: opacity .3s;
+}
