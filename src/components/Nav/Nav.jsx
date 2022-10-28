@@ -14,10 +14,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import './Nav.css'
-import { Link , useNavigate} from "react-router-dom"
+import { Link , useNavigate, useParams} from "react-router-dom"
 import { useEffect } from 'react';
 import { Notificaciones } from '../Notificaciones/Notificaciones';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 const user={
   id:1,
   name:'Henry',
@@ -51,12 +52,15 @@ const notificaciones=[
   visto:false}
 ]
 
-export const Nav =()=>{
+export const Nav =(props)=>{
+  const User=useSelector(state=>state.User)
   const history=useNavigate();
   const [notCount, SetNotCount]=React.useState(0)
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const[open,setOpen]=useState(false)
+  const { id } = useParams();
+
   useEffect(()=>{
     notificaciones.map((n)=>{
       if(n.visto===false){
@@ -107,7 +111,7 @@ export const Nav =()=>{
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to={`/profile/${user.id}`}>
+      <Link to={`/profile/${id}`}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
@@ -177,7 +181,7 @@ export const Nav =()=>{
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <button className='SYN' onClick={(e)=>{history('/home');}} >SYT</button>
+            <button className='SYN' onClick={(e)=>{history(`/home/${id}`);}} >SYT</button>
 
           </Typography>
             <SearchBar/>
