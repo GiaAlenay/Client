@@ -181,7 +181,7 @@ export const Nav =(props)=>{
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <button className='SYN' onClick={(e)=>{history(`/home/${user.id}`);}} >SYT</button>
+            <button className='SYN' onClick={(e)=>{history(`/home/${id}`);}} >SYT</button>
 
           </Typography>
             <SearchBar/>
