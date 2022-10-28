@@ -1,5 +1,6 @@
 import {SearchBar} from '../SearchBar/SearchBar'
 import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,20 +15,57 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import './Nav.css'
 import { Link , useNavigate} from "react-router-dom"
-
+import { useEffect } from 'react';
+import { Notificaciones } from '../Notificaciones/Notificaciones';
+import { useState } from 'react';
 const user={
   id:1,
   name:'Henry',
-  apellido:'Luna'
-  
+  apellido:'Luna',
+  profilePicture:'https://img.freepik.com/fotos-premium/fondo-programacion-software_372999-217.jpg',
+  profilePicture2:'https://hips.hearstapps.com/hmg-prod/images/street-portrait-of-a-young-man-using-mobile-phone-royalty-free-image-1018047498-1564431457.jpg?crop=0.668xw:1.00xh;0.226xw,0&resize=640:*'
+  ,premium:false
 }
 
+const notificaciones=[
+  {id:1,
+    authorPicture:'',
+  authorName:'',
+  description:'',
+  visto:true}
+  ,
+  {id:2,
+    visto:true,
+    authorPicture:'',
+  authorName:'',
+  description:''},
+  {id:3,
+    authorPicture:'',
+  authorName:'',
+  description:'',
+  visto:false},
+  {id:4,
+    authorPicture:'',
+  authorName:'',
+  description:'',
+  visto:false}
+]
 
 export const Nav =()=>{
   const history=useNavigate();
+  const [notCount, SetNotCount]=React.useState(0)
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  
+  const[open,setOpen]=useState(false)
+  useEffect(()=>{
+    notificaciones.map((n)=>{
+      if(n.visto===false){
+        SetNotCount(notCount+1)
+      }
+    })
+  },[])
+
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -48,6 +86,10 @@ export const Nav =()=>{
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleNotification=()=>{
+    setOpen(true)
+    SetNotCount(0)
+  }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -100,10 +142,10 @@ export const Nav =()=>{
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label="show 16 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={18} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -145,11 +187,13 @@ export const Nav =()=>{
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             
             <IconButton
+              onClick={handleNotification}
+              onBlur={()=>{setTimeout(()=>{setOpen(false)},100)}}
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={notCount} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -162,7 +206,12 @@ export const Nav =()=>{
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              {user.profilePicture2.length===0?(
+                <AccountCircle />
+              ):(
+                <Avatar alt={`${user.name}`} src={user.profilePicture2} />
+              )}
+              
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -181,8 +230,11 @@ export const Nav =()=>{
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+
+      <Notificaciones open={open}/>
     </Box>
+
+
   );
     
 }
-

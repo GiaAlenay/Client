@@ -31,6 +31,7 @@
     
 }
 .secondPicture{
+    border: 3px solid white;
     margin-left: 2%;
     margin-top: 220px;
     width: 12%;
@@ -137,5 +138,10 @@
 
 .noConfigurar{
     width: 0%;
+    display: none;
+
+
+
+.ou{
     display: none;
 }
