@@ -1,11 +1,11 @@
- import { Nav } from "../Nav/Nav"
+ import { Nav } from "../../components/Nav/Nav"
  import './Perfil.css'
  import Button from '@mui/material/Button';
  import Stack from '@mui/material/Stack';
  import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChangeForm } from "../ChangeForm/ChangeForm";
+import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
  const user={
     id:1,
     name:'Henry',
@@ -51,11 +51,13 @@ import { ChangeForm } from "../ChangeForm/ChangeForm";
                                     </div>
                                     <div className="buttonContainer">
                                     <Stack spacing={2} direction="row">
-                                            <Button 
+                                            <Button className="ou"
                                                 sx={{backgroundColor:'rgb(22, 17, 41)',
+                                
                                                     display:`${user.premium===true?'none':'block' }`}} 
                                                 size="medium"
                                                 onClick={(e)=>{handlePrimium()}}
+    
                                                 variant="contained">
                                             Go Premium</Button>
                                             <Button  onClick={hamdleConfigAccountForm} sx={{backgroundColor:'rgb(22, 17, 41)' }} size="medium" variant="contained">
