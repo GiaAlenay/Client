@@ -1,76 +1,74 @@
+import React from "react"
+import  { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import {creatPost} from "../../redux/actions/users"
 
-import { Add as AddIcon, EmojiEmotions, Image, VideoCameraBack} from "@mui/icons-material"
-import { Fab, Modal, Tooltip,Box, styled, Typography, Avatar, TextField, Stack, Button } from "@mui/material"
-import React, { useState } from "react"
-import SendIcon from '@mui/icons-material/Send';
 
-const StyledModal = styled(Modal)({
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"center"
-})
 
-const UserBox = styled(Box)({
-    display:"flex",
-    alignItems:"center",
-    gap:"10px",
-    marginBottom:"20px"
-})
-export const AddPost =() =>{
-    const [open, setOpen] = useState(false)
+
+export const AddPost =() => {
+
+    const dispatch = useDispatch();
+    const [input, setInput] = useState({
+    titulo: "",
+    texto: "",
+    media: "",
+    })
+
+    
+    const handleChange = (e) => {
+    e.preventDefault();
+    setInput({
+        ...input,
+        [e.target.name]: e.target.value
+    })
+    }
+
+    const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(creatPost(input))
+    alert("Actividad Creada")
+    setInput({
+        titulo:"",
+        texto:"",
+        media:"",
+    })
+    }
+    
     return (
-        <>
-            <Tooltip onClick={e=>setOpen(true)}
-            title="New Post" sx={{position:"fixed", bottom:20}}>
-                <Fab color = "primary" aria-label="add">
-                    <AddIcon/>
-                </Fab>
-            </Tooltip>
-            <StyledModal 
-            open= {open}
-            onClose={e=> setOpen(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-            >
-                <Box width={400} height={280} bgcolor="white" p={3} borderRadius = {5} >
-                    <Typography variant="h6" color="gray" textAlign="center">
-                        Create a Post
-                    </Typography>
-                    <UserBox>
-                        <Avatar
-                        sx={{width:50, height:50}}
-                        />
-                        <Typography fontWeight={800} variant="span">
-                            Usuario 1
-                        </Typography>
 
-                    </UserBox>
-                    
-                    <TextField
-                    sx={{width:"100%"}}
-                    id="standard-multiline-static"
-                    multiline
-                    rows={3}
-                    placeholder="Escribe tu publicacion"
-                    variant="standard"
-                    type={"text"}
-                    />
-                    
-                    <Stack direction="row" gap={1} mt={2} mb={3}>
-                        <EmojiEmotions color="primary"/>
-                        <Image color="secondary"/>
-                        <VideoCameraBack color="success"/>
-                    </Stack>
-
-                    <Button
-                    fullWidth
-                    variant="contained"
-                    endIcon={<SendIcon/>}>
-                        Publicar
-                    </Button>
-                </Box>
-                
-            </StyledModal>
-        </>
+        <div>
+            <form>
+                <input onChange={(e) => handleChange(e)}
+                type="text" 
+                id='7' 
+                className='nameCreate1'
+                value={input.titulo}
+                name="titulo" 
+                placeholder='Titulo'
+                />
+                <br/>
+                <input onChange={(e) => handleChange(e)}
+                type="text" 
+                id='7' 
+                className='nameCreate1'
+                value={input.texto}
+                name="texto" 
+                placeholder='texto'
+                />
+                <br/>
+                <input onChange={(e) => handleChange(e)}
+                type="text" 
+                id='7' 
+                className='nameCreate1'
+                value={input.media}
+                name="media" 
+                placeholder='Archivos'
+                />
+                <br/>
+                <button id='submit' className='crear' type='submit' onClick={(e) => handleSubmit(e)}/>
+            </form>
+        </div>
     )
 }

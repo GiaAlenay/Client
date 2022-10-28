@@ -1,6 +1,7 @@
 const initialState = {
     Users: [],
     Posts: [],
+    newPost:[],
    
   };
   
@@ -13,12 +14,33 @@ const initialState = {
           ...state,
           Users: action.payload,
         };
-      case "ADD_POST":
+      case "GET_POST":
         return {
           ...state,
           Posts:action.payload
         };
-  
+        case "ADD_POST_POST":
+          return {
+            ...state,
+            Posts:[ action.payload, ...state.Posts]
+          };
+
+          case "GET_USERS_ID":
+            return {
+              ...state,
+              Users:action.payload
+            };
+            case "GET_USERS_POST":
+              return {
+                ...state,
+                Users:action.payload
+              };
+        case "ADD_POST_ID":
+          return {
+            ...state,
+            Posts:action.payload
+          };
+
       default:
         return {
           ...state
