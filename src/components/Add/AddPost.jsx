@@ -45,6 +45,7 @@ export const AddPost =() =>{
                         </Typography>
 
                     </UserBox>
+                    
                     <TextField
                     sx={{width:"100%"}}
                     id="standard-multiline-static"
@@ -54,7 +55,7 @@ export const AddPost =() =>{
                     variant="standard"
                     type={"text"}
                     />
-
+                    
                     <Stack direction="row" gap={1} mt={2} mb={3}>
                         <EmojiEmotions color="primary"/>
                         <Image color="secondary"/>
