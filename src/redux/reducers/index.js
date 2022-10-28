@@ -1,6 +1,7 @@
 const initialState = {
     Users: [],
     Posts: [],
+    User:{}
    
   };
   
@@ -13,12 +14,13 @@ const initialState = {
           ...state,
           Users: action.payload,
         };
-      case "ADD_POST":
-        return {
+
+      case 'GET_BY_ID':
+        return{
           ...state,
-          Posts:action.payload
-        };
-  
+          User:action.payload
+        }
+
       default:
         return {
           ...state

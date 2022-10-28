@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Routes>
       <Route  path='/' element={<Landing/>}/>
-      <Route path='/home' element={<Home/>}/>
+      <Route path='/home/:id' element={<Home/>}/>
       <Route path='profile/:id' element={<Perfil/>}/>
       <Route path='/premium' element={<GoPremium/>}/>
       <Route path ='/notificaciones' element={<TodasNotificacion/>}/>

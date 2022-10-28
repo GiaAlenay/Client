@@ -1,22 +1,24 @@
 import axios from 'axios';
 
-export  function getUsers() {
-        return async (dispatch) => {
-      const result = await axios.get(`/users`)
-      
-return dispatch({ type: 'GET_USERS', payload: result.data })      
-    }
-} 
 
 
-export function getPost(payload){
-  return async function(dispacth){
-      var json = await axios.get("/posts",payload);
-      return dispacth({
-          type: "ADD_POST",
-          payload: json.data
-      })
-  }
-};
+  export const getUsers=()=>dispatch=>{
+    return axios.get(`/users`)
+    .then((data)=>{
+        
+        dispatch({type:'GET_USERS', payload:data.data})
+    }).catch((error)=>{
+        console.log(error)
+    })
+}
 
+export const getUser=(id)=>dispatch=>{
+    return axios.get(`/users/${id}`)
+    .then((data)=>{
+        console.log('by id'+JSON.stringify(data))
+        dispatch({type:'GET_BY_ID', payload: data.data})
+    }).catch((error)=>{
+        console.log(error)
+    })
+}
 
