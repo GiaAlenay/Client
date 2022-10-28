@@ -6,6 +6,7 @@ import {Perfil} from './view/Perfil/Perfil'
 import{GoPremium} from './view/GoPremium/GoPremium'
 import{TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
+
 function App() {
   return (
     <div className="App">

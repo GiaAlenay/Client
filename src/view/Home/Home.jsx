@@ -1,3 +1,5 @@
+
+
 import { Stack } from '@mui/material'
 import { Feed } from '../../components/Feed/Feed'
 import { Filters } from '../../components/Filters/Filters'
@@ -21,10 +23,13 @@ export const Home =()=>{
     const allUsers = useSelector((state)=> state.Users)
     console.log(allUsers)
 
+
     return(
         <div>
            
             <Nav/>
+
+
             <Stack direction="row" spacing={2} justifyContent="space-between">
                 <Filters/>
                 <Feed/>
@@ -32,6 +37,7 @@ export const Home =()=>{
             </Stack>
             <AddPost/>
             
+
            
         </div>
     )
