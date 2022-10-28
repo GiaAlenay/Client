@@ -1,0 +1,91 @@
+body{
+    margin: 0;
+}
+
+.laCont{
+    background-color: rgb(238, 232, 232,0.1);
+    border-radius: 45px;
+    height: 94vh;
+    margin-left:5% ;
+    width: 90%;
+}
+.landing{
+    padding-top:4%;
+   color: white; 
+    width: 100%;
+    height: 110vh;
+    background-image: url('./img/b1.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+}
+.lan1Cont{
+    width: 100%;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.lan1Left{
+    
+}
+
+.lan2rigth{
+    
+}
+.logo{
+    margin-top: 1%;
+    margin-left: 3%;
+    width: 73px;
+    height: 70px;
+    background-color: rgb(24, 54, 110); 
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+   align-items: center;
+   justify-content: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 100%;
+    border: 1px solid white;
+}
+.btnCreCu{
+    all:unset;
+    background-color: rgb(24, 54, 110);
+    color: white;
+    width: 75%;
+    margin: 20px;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+    border-radius: 25px;
+    font-size: 19px;
+    cursor: pointer;
+    border:1px solid rgb(184, 205, 245);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.landArribaCont{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.sytTitle{
+    text-shadow: 2px 2px #3b3939;
+    font-size: 45px;
+}
+
+.titleLandCont{
+    width: 80%;
+    
+    text-align: center;
+}
+.landDesc{
+    margin-left: 18%;
+    width: 45%;
+}
+.laRiImg{
+
+filter: drop-shadow(0 0 0.75rem rgb(223, 214, 216));
+
+    
+}

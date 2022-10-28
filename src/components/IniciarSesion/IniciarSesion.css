@@ -1,0 +1,43 @@
+.iniciarSeForm{
+    width: 60%;
+    padding-left: 12%;
+    display: flex;
+    align-content: center;
+   align-items: center;
+   justify-content: center;
+    vertical-align: middle;
+}
+
+.danger{
+    font-size: 15px;
+    color: white;
+}
+
+.inptCont{
+    width: 80%;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.btnIniSe{
+    all:unset;
+    background-color: rgb(24, 54, 110);
+    color: white;
+    width: 70%;
+    height: 100%;
+    margin: 20px;
+    text-align: center;
+    padding: 4% 0px 4% 0px;
+    border-radius: 25px;
+    font-size: 19px;
+    cursor: pointer;
+    border:1px solid rgb(184, 205, 245);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btnIniSe:hover{
+    background-color: rgb(47, 92, 158) ;
+    margin-left: 7%;
+    width: 69%;
+    height: 98%;
+}
