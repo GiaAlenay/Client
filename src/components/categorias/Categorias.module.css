@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    /* background-color: black; */
+    display: flex;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.elementos{
+    margin-top: 20px;
+}

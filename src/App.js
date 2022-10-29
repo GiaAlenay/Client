@@ -6,6 +6,7 @@ import {Perfil} from './view/Perfil/Perfil'
 import{GoPremium} from './view/GoPremium/GoPremium'
 import{TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
+import Categoria from './components/categorias/Categoria';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
       <Route path='/premium' element={<GoPremium/>}/>
       <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
       <Route path ='/search' element={<SearchPag/>}/>
+      <Route path ='/categories' element={<Categoria/>}/>
       </Routes>
     </div>
   );

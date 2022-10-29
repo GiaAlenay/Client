@@ -1,5 +1,7 @@
 import { ModeNight, Settings } from "@mui/icons-material";
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from "@mui/material";
+import Categoria from "../categorias/Categoria";
+
 
 export const Filters=()=>{
     return(
@@ -27,7 +29,7 @@ export const Filters=()=>{
             </ListItemButton>
           </ListItem>
          </List>
-
+         <Categoria/>
 
          </Box>
      </Box>

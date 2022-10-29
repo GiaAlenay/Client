@@ -4,6 +4,7 @@ import { Filters } from '../../components/Filters/Filters'
 import {Nav} from '../../components/Nav/Nav'
 import { AddPost } from '../../components/Add/AddPost'
 import { Prueba } from '../../components/Filters/Prueba'
+import Categoria from '../../components/categorias/Categoria'
 export const Home =()=>{
     return(
         <div>
@@ -11,6 +12,9 @@ export const Home =()=>{
             <Nav/>
             <Stack direction="row" spacing={2} justifyContent="space-between">
                 <Filters/>
+
+                
+
                 <Feed/>
                 <Prueba/>
                 
