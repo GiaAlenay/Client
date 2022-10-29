@@ -11,23 +11,24 @@ export const Home =()=>{
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-        dispatch(getPost())
-        dispatch(getUsers())
-    },[dispatch]);
+    // useEffect(()=>{
+    //     dispatch(getPost())
+    //     dispatch(getUsers())
+    // },[dispatch]);
 
-    const allPost = useSelector((state) => state.Posts)
-    console.log(allPost)
-    const allUsers = useSelector((state)=> state.Users)
-    console.log(allUsers)
+    // const allPost = useSelector((state) => state.Posts)
+    // console.log(allPost)
+    // const allUsers = useSelector((state)=> state.Users)
+    // console.log(allUsers)
 
     return(
         <div>
            
             <Nav/>
-            <Stack direction="row" spacing={2} justifyContent="space-between">
+            <Stack direction="row" spacing={3} justifyContent="space-between">
                 <Filters/>
                 <Feed/>
+               
             </Stack>
             <AddPost/>
             

@@ -3,9 +3,16 @@ import { Fab, Modal, Tooltip,Box, styled, Typography, Avatar, TextField, Stack, 
 import React, { useState } from "react"
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getPost, createPost} from "../../redux/actions/users";
 
 
+const user={
+    id:1,
+    name:'Henry',
+    apellido:'Luna',
+    image:'https://hips.hearstapps.com/hmg-prod/images/street-portrait-of-a-young-man-using-mobile-phone-royalty-free-image-1018047498-1564431457.jpg?crop=0.668xw:1.00xh;0.226xw,0&resize=640:*'
+  }
 
 const StyledModal = styled(Modal)({
     display:"flex",
@@ -22,9 +29,10 @@ const UserBox = styled(Box)({
 export const AddPost =() =>{
     const [open, setOpen] = useState(false)
     const dispatch = useDispatch()
+    const history = useNavigate()
 
     const [input, setInput] = useState({
-        title: "",
+        titulo: "",
         texto:"",
         media:"",
         userId:"",
@@ -47,11 +55,13 @@ export const AddPost =() =>{
         dispatch(createPost(input))
         alert('Nueva publicacion Creada')
         setInput({
-            title: "",
+            titulo: "",
             texto:"",
             media:"",
             userId:"",
         })
+
+        history('/home')
 
         
     }
@@ -70,14 +80,18 @@ export const AddPost =() =>{
             aria-describedby="modal-modal-description"
             >
                 <form onSubmit={(e)=>handleSubmit(e)}>
-                <Box width={400} height={280} bgcolor="white" p={3} borderRadius = {5} >
+                <Box width={400} height={380} bgcolor="white" p={3} borderRadius = {5} >
                     <Typography variant="h6" color="gray" textAlign="center">
                         Create a Post
                     </Typography>
                     <UserBox>
+
                         <Avatar
-                        sx={{width:50, height:50}}
-                        />
+                        sx={{width:50, height:50}}>
+                            <img src={user.image} alt="image not found" height={50}/>
+                        </Avatar>
+                        
+                        
                         <TextField
                         sx={{width:"100%"}}
                         id="standard-multiline-static"
@@ -89,14 +103,19 @@ export const AddPost =() =>{
                         variant="standard"
                         onChange={(e)=> handleChange(e)}                     
                         />
+
+                        {/* <Typography variant="h6" color="gray" textAlign="center">
+                        {`${user.name} ${user.apellido}`}
+                        </Typography> */}
+
                     </UserBox>
 
                     <TextField
                     sx={{width:"100%"}}
                     id="standard-multiline-static"
                     type="text"
-                    name="title"
-                    value={input.title}
+                    name="titulo"
+                    value={input.titulo}
                     multiline
                     rows={1}
                     placeholder="Titulo de la publicacion"
@@ -116,6 +135,21 @@ export const AddPost =() =>{
                     value={input.texto}
                     onChange={(e)=> handleChange(e)}
                     />
+
+                    <TextField
+                    sx={{width:"100%"}}
+                    id="standard-multiline-static"
+                    multiline
+                    rows={2}
+                    placeholder="Inserta un link"
+                    variant="standard"
+                    type={"text"}
+                    name="media"
+                    value={input.media}
+                    onChange={(e)=> handleChange(e)}
+                    />
+
+
 
                     <Stack direction="row" gap={1} mt={2} mb={3}>
                         <EmojiEmotions color="primary"/>

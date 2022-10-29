@@ -6,6 +6,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
+import { Feed } from "../../components/Feed/Feed";
+import { Box } from "@mui/material";
+
  const user={
     id:1,
     name:'Henry',
@@ -83,6 +86,12 @@ import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
                                     {current===0 &&(
                                         <div className={`detInf detInf0`}>
                                             Publiicaciones
+                                            <Box flex={4} p={{xs:0, md:2}}>
+                                            <Feed/>
+                                                
+                                            </Box>
+                                            
+
                                         </div>)}
                                     {current===1 &&(
                                         <div className={`detInf detInf1`}>
