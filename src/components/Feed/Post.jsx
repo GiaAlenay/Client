@@ -10,7 +10,7 @@ const user={
 
 export const Post=({titulo,texto,media,userId})=>{
     return(
-        <Card sx= {{margin: 5, marginRight:35}}>
+        <Card sx= {{xs:10, margin: 2, marginRight:35}}>
            
             <CardHeader
 
@@ -36,8 +36,14 @@ export const Post=({titulo,texto,media,userId})=>{
             />
 
             <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                {titulo}
+                </Typography>
+            </CardContent>
+
+            <CardContent>
             <CardMedia
-            height="50%"
+            height="20%"
             // image="https://upload.wikimedia.org/wikipedia/commons/9/91/JavaScript_screenshot.png"
             // alt="image not found"
             >
@@ -47,11 +53,7 @@ export const Post=({titulo,texto,media,userId})=>{
 
             </CardContent>
            
-             <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                {titulo}
-                </Typography>
-            </CardContent>
+            
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                     {texto}

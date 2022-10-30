@@ -25,7 +25,7 @@ export const Feed =()=>{
     {title:"react", texto:"mfldmglmdg", media:"https://upload.wikimedia.org/wikipedia/commons/9/91/JavaScript_screenshot.png"}]
 
     return(
-       <Box flex={4} p={{xs:0, md:2}}>
+       <Box flex={4} p={{xs:10, md:2}}>
 
             {
                 allPost.map((e)=>{
