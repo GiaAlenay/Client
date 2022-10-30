@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {creatPost} from "../../redux/actions/users"
 
-
-
-
 export const AddPost =() => {
 
     const dispatch = useDispatch();

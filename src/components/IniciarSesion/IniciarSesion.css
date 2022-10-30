@@ -1,6 +1,6 @@
 .iniciarSeForm{
     width: 60%;
-    padding-left: 12%;
+    padding-left: 10%;
     display: flex;
     align-content: center;
    align-items: center;
@@ -9,10 +9,20 @@
 }
 
 .danger{
-    font-size: 15px;
-    color: white;
+    margin-left: 12%;
+    text-shadow: 0.px 0.5px #2c2c2c;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(110, 105, 105);
 }
-
+.dangerI{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(240, 229, 229);
+}
+.warning{
+    width: 15px;
+}
 .inptCont{
     width: 80%;
     height: 100%;

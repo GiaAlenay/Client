@@ -54,25 +54,14 @@ const options=[
   ]
  export const Notificaciones=(props)=>{
     const history=useNavigate()
-    const [notiArray, setNotiArray]=useState([])
-    // useEffect(()=>{
-        
-    //     for (let i = 2;i<options.length;i++) {
-    //         setNotiArray(old=>old.concat(i))   
-    //         // if(notiArray.length<7){
-    //         //     console.log(options[i])
-    //         //     setNotiArray(oldNumbers=>[...oldNumbers,i])
-    //              console.log(notiArray)
-    //         // }
-            
-    //     }
-    // },[])
+
+  
     
     
     return (
       <div className={`${props.open?'notificacionesCont':'noNoti'}`}>
         {options.map((o,i)=>(
-           i>1  &&(
+           i>3  &&(
             <div className={`noti ${o.visto===false&&'notiSinVer'}`}>
             <img className={`notiPic`} src={o.authorPicture} alt={'pic'}/>
             <div className='notiText'>

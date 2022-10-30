@@ -1,15 +1,15 @@
+import './Home.css'
 import { Stack } from '@mui/material'
 import { Feed } from '../../components/Feed/Feed'
 import { Filters } from '../../components/Filters/Filters'
 import {Nav} from '../../components/Nav/Nav'
 import { AddPost } from '../../components/Add/AddPost'
+import { useParams } from 'react-router-dom'
 import { Prueba } from '../../components/Filters/Prueba'
 import { useDispatch , useSelector} from "react-redux";
-import {useState , useEffect} from 'react';
-import {getPost, getUsers} from "../../redux/actions/users"
+import { useState , useEffect } from 'react';
+import { getPost, getUsers, getUser } from "../../redux/actions/users"
 import Cards from "../../components/Cards/Cards"
-
-
 
 export const Home =()=>{
 
@@ -25,7 +25,8 @@ export const Home =()=>{
 
     const [filter, setFilter] = useState(false)
     
-    useEffect(()=>{
+    useEffect(()=>{    
+            dispatch(getUser(id))
         dispatch(getPost())
         dispatch(getUsers())
     },[dispatch]);
@@ -35,15 +36,12 @@ export const Home =()=>{
       }
 
     return(
-        <div>
-           
-            <Nav/>
-            {/* <Stack direction="row" spacing={2} justifyContent="space-between">
+        <div className='home'>
+            <Nav />
+            <Stack direction="row" spacing={2} justifyContent="space-between">
                 <Filters/>
                 <Feed/>
-                <Prueba/>
-            </Stack>
-            <AddPost/> */}
+                
             {<button onClick={()=>showFilter()}>Filter</button>}
             {filter && <div>
             <AddPost />

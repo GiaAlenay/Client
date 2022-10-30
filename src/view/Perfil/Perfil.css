@@ -35,6 +35,7 @@
     margin-left: 2%;
     margin-top: 220px;
     width: 12%;
+    height: 150px;
     border-radius: 50%;
     position: absolute;
 }
@@ -144,4 +145,65 @@
 
 .ou{
     display: none;
+}
+
+.detInfdetInf4{
+    width: 90%;
+    padding: 20px;
+   
+}
+.nameApellido{
+    color: rgb(92, 91, 91);
+}
+.optPerf{
+    all:unset;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    
+    text-align: center;
+    margin-left: 20%;
+    margin-top: 14px;
+    width: 60%;
+    height: 80px;
+    font-size: 18px;
+    cursor: pointer;   
+     border: 0.5px solid rgb(124, 122, 122,0.4);
+    border-radius: 8px; 
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -3px 5px 0px inset, rgba(0, 0, 0, 0.15) 0px -2px 1.5px 0px inset;
+}
+.optPerf:hover{
+    color: aliceblue;
+    background-color: rgb(4, 4, 34);
+    width: 56%;
+    margin-left: 22%;
+    height: 70px;
+    margin-top: 24px;
+}
+
+.configOpCont1{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+.configOpCont2{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+
+.confContRigth{
+    height: 160px ;
+    width: 90%;
+
+    border-bottom: 0.5px solid rgb(124, 122, 122 ,0.4);
+    border-top: 0.5px solid rgb(114, 112, 112,0.4);
+    border-right: 0.5px solid rgb(124, 122, 122,0.4);
+    border-radius: 8px;
+}
+
+.confOn{
+    border: none;
+    border-bottom:0.5px solid rgb(124, 122, 122,0.4); 
+    border-top: 0.5px solid rgb(114, 112, 112,0.4);
+    border-left:0.5px solid rgb(114, 112, 112,0.4);
 }
