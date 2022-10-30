@@ -7,12 +7,13 @@ import{GoPremium} from './view/GoPremium/GoPremium'
 import{TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
 import Categoria from './components/categorias/Categoria';
+
 function App() {
   return (
     <div className="App">
       <Routes>
       <Route  path='/' element={<Landing/>}/>
-      <Route path='/home' element={<Home/>}/>
+      <Route path='/home/:id' element={<Home/>}/>
       <Route path='profile/:id' element={<Perfil/>}/>
       <Route path='/premium' element={<GoPremium/>}/>
       <Route path ='/notificaciones' element={<TodasNotificacion/>}/>

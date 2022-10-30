@@ -1,11 +1,9 @@
-body{
-    background-image: url("./pf_cliente.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.container {
-    display: flex;
+.container {  
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr;
+    grid-template-rows: 0.2fr 2.5fr 0.2fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
     justify-content: center;
     align-content: center;
     justify-items: center;
@@ -14,37 +12,27 @@ body{
     "Tittle Tittle"
     "Photo Register"
     "Footer Footer";
-    background-color: #5e59bc;
-
 }
 
 .Register { 
-    background-color: aquamarine;
     border-radius: 20px;
-    margin-top: 500px;
-    width: 20rem;
-    font-size: 1.5rem;
-   
+    grid-area: Register; 
     justify-content: center;
     align-content: center;
+    background-color: rgb(252, 233, 209);
 }
-
 
 .Photo {
      grid-area: Photo; 
-     background-color: bisque;
-     height: 500px;
 }
 
 .Tittle {
-    background-color: bisque;
     justify-self: stretch;
     align-self: stretch;
     grid-area: Tittle;
 }
 
 .Footer {
-    background-color: bisque;
     justify-self: stretch;
     align-self: stretch;
     grid-area: Footer;
