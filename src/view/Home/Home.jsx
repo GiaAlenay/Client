@@ -1,9 +1,9 @@
+import './Home.css'
 import { Stack } from '@mui/material'
 import { Feed } from '../../components/Feed/Feed'
 import { Filters } from '../../components/Filters/Filters'
 import {Nav} from '../../components/Nav/Nav'
 import { AddPost } from '../../components/Add/AddPost'
-import { Prueba } from '../../components/Filters/Prueba'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from "../../redux/actions/users";
@@ -15,20 +15,20 @@ export const Home =()=>{
     useEffect(()=>{
         
             dispatch(getUser(id))
-            
+            console.log(User)
         
         return(()=>{
-            // dispatch(clearAction('VideogameDetail',{}))
+           
         })
     },[])
     return(
-        <div>
+        <div className='home'>
            
-            <Nav User={User}/>
+            <Nav />
             <Stack direction="row" spacing={2} justifyContent="space-between">
                 <Filters/>
                 <Feed/>
-                <Prueba/>
+                
                 
             </Stack>
             <AddPost/>

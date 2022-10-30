@@ -16,13 +16,7 @@ export const Post=()=>{
                 </IconButton>
             }
 
-            title= "Usuario 1"
-            />
-            <CardMedia
-            component="img"
-            height="20%"
-            image="https://upload.wikimedia.org/wikipedia/commons/9/91/JavaScript_screenshot.png"
-            alt="Paella dish"
+            title= "Usuhsdhshbds"
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
@@ -31,6 +25,13 @@ export const Post=()=>{
                 mussels, if you like.
                 </Typography>
             </CardContent>
+            <CardMedia
+            component="img"
+            height="20%"
+            image="https://www.lighthouselabs.ca/uploads/post/open_graph_image/459/Coding-vs-programming.jpg"
+            alt="Paella dish"
+            />
+            
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                 <Checkbox

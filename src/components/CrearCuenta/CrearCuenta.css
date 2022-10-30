@@ -1,15 +1,14 @@
 .createAccount{
     
     color:rgb(122, 118, 118);
-    width:50%;
+    width:100%;
     height: 70%;
     background-color: rgb(225, 225, 238);
     border-radius: 12px;
 }
 
 .btnCreCuenta{
-    all:unset;
-    
+    all:unset;    
     background-color: rgb(24, 54, 110);
     color: white;
     width: 50%;

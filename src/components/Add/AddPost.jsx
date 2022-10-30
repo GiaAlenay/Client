@@ -40,7 +40,7 @@ export const AddPost =() =>{
                         sx={{width:50, height:50}}
                         />
                         <Typography fontWeight={800} variant="span">
-                            Usuario 1
+                            Usuario 5gfgfg
                         </Typography>
 
                     </UserBox>

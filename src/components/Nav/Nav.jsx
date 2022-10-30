@@ -19,14 +19,6 @@ import { useEffect } from 'react';
 import { Notificaciones } from '../Notificaciones/Notificaciones';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-const user={
-  id:1,
-  name:'Henry',
-  apellido:'Luna',
-  profilePicture:'https://img.freepik.com/fotos-premium/fondo-programacion-software_372999-217.jpg',
-  profilePicture2:'https://hips.hearstapps.com/hmg-prod/images/street-portrait-of-a-young-man-using-mobile-phone-royalty-free-image-1018047498-1564431457.jpg?crop=0.668xw:1.00xh;0.226xw,0&resize=640:*'
-  ,premium:false
-}
 
 const notificaciones=[
   {id:1,
@@ -91,7 +83,7 @@ export const Nav =(props)=>{
   };
 
   const handleNotification=()=>{
-    setOpen(true)
+    setOpen(!open)
     SetNotCount(0)
   }
   const menuId = 'primary-search-account-menu';
@@ -114,7 +106,9 @@ export const Nav =(props)=>{
       <Link to={`/profile/${id}`}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to={`/`}>
+      <MenuItem onClick={handleMenuClose}>Cerrar Sesion</MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -174,14 +168,14 @@ export const Nav =(props)=>{
     <Box sx={{ flexGrow: 1  }}>
       <AppBar sx={{backgroundColor:'rgb(22, 17, 41)' }}  position="static">
         <Toolbar>
-          
+        {/* Object.entries(User).length === 0 && `${User.user}` */}
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <button className='SYN' onClick={(e)=>{history(`/home/${id}`);}} >SYT</button>
+            <button className='SYN' onClick={(e)=>{history(`/home/${User.user.id}`);}} >SYT</button>
 
           </Typography>
             <SearchBar/>
@@ -210,10 +204,10 @@ export const Nav =(props)=>{
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              {user.profilePicture2.length===0?(
-                <AccountCircle />
+              {Object.entries(User).length === 0?(
+                <Avatar alt={'...'}src={'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'}/>
               ):(
-                <Avatar alt={`${user.name}`} src={user.profilePicture2} />
+                <Avatar alt={`${User.user.usuario}`} src={User.user.foto_principal} />
               )}
               
             </IconButton>

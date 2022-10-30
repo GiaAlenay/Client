@@ -1,0 +1,33 @@
+.descripCont{
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+
+.descContLeft{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+}
+.descContRigth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+}
+.desRi{
+    width: 100%;
+    
+}
+.desc{
+    margin-top: 1%;
+    padding-left: 4%;
+    border-radius: 5px;
+    border:0.5px solid rgb(177, 169, 169,0.5);
+    height: 40px;
+    width:70%
+}

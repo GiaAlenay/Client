@@ -3,13 +3,19 @@ body{
 }
 
 .laCont{
-    background-color: rgb(238, 232, 232,0.1);
-    border-radius: 45px;
-    height: 94vh;
-    margin-left:5% ;
-    width: 90%;
+    /* background-color: rgb(238, 232, 232,0.1); */
+     background-image: url('./img/b1.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    backdrop-filter: blur(8px);
+    box-shadow: rgba(0, 0, 0, 0.65) 0px 54px 55px, rgba(0, 0, 0, 0.42) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    height: 90vh;
+    margin-left:7% ;
+    width: 86%;
 }
 .landing{
+    overflow:auto;
     padding-top:4%;
    color: white; 
     width: 100%;
@@ -37,32 +43,28 @@ body{
     margin-left: 3%;
     width: 73px;
     height: 70px;
-    background-color: rgb(24, 54, 110); 
-    border-radius: 50%;
-    display: flex;
-    align-content: center;
-   align-items: center;
-   justify-content: center;
-    vertical-align: middle;
+    font-size: 30px;
+    
     color: white;
-    font-size: 100%;
-    border: 1px solid white;
+    
 }
 .btnCreCu{
     all:unset;
-    background-color: rgb(24, 54, 110);
+    background-image: linear-gradient(to right, rgb(19, 13, 102), rgb(58, 75, 167),rgb(13, 8, 77));
     color: white;
     width: 75%;
     margin: 20px;
     text-align: center;
     padding: 15px 0px 15px 0px;
-    border-radius: 25px;
+    border-radius: 5px;
     font-size: 19px;
     cursor: pointer;
     border:1px solid rgb(184, 205, 245);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+.btnCreCu:hover{
+    background-image: linear-gradient(to right, rgb(33, 25, 155), rgb(83, 102, 211),rgb(34, 26, 138));
+}
 .landArribaCont{
     width: 100%;
     display: grid;
@@ -70,21 +72,24 @@ body{
 }
 
 .sytTitle{
-    text-shadow: 2px 2px #3b3939;
-    font-size: 45px;
+    filter: drop-shadow(5px 5px 4px #080808);
+    width: 80%;
 }
 
 .titleLandCont{
-    width: 80%;
-    
-    text-align: center;
+    width: 80%;    
+    text-align: center;   
 }
 .landDesc{
-    margin-left: 18%;
-    width: 45%;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: 15%;
+    width: 55%;
 }
 .laRiImg{
 
+height: 80%;
+width: 100%;
+filter: drop-shadow(10px 5px 4px #1b1b1b);
 filter: drop-shadow(0 0 0.75rem rgb(223, 214, 216));
 
     

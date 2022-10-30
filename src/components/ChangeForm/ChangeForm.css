@@ -1,17 +1,8 @@
-.ChangeProfileFormCont{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-content: center;
-   align-items: center;
-   justify-content: center;
-    vertical-align: middle;
-}
 
 .ChangeProfileForm{
     color:rgb(122, 118, 118);
     width:40%;
-    height: 30%;
+    height: 70%;
     background-color: rgb(225, 225, 238);
     border-radius: 12px;
 }
@@ -29,4 +20,36 @@
 .EditarPerf{
     font-weight: bold;
     margin-left: 30%;
+}
+
+.btnFormEdit{
+    all:unset;
+    width:20px;
+    height: 20px;
+    background-image: url('./img/editarIcon.png');
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.btnFormEditListo{
+    all:unset;
+    width:80%;
+    background-position: center;
+    background-image: url('./img/checkIcon.png');
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.btnFormEditListo:hover{
+    width: 77%;
+    background-size: 74% 74%;
+}
+.changeInptCont{
+    
+    display: grid;
+    grid-template-columns: 80% 14%;
+}
+.descChang{
+    
+    margin-left: 10%;
 }
