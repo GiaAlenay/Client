@@ -29,7 +29,8 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
     apellido:'Luna',
     profilePicture:'https://img.freepik.com/fotos-premium/fondo-programacion-software_372999-217.jpg',
     profilePicture2:'https://hips.hearstapps.com/hmg-prod/images/street-portrait-of-a-young-man-using-mobile-phone-royalty-free-image-1018047498-1564431457.jpg?crop=0.668xw:1.00xh;0.226xw,0&resize=640:*'
-    ,premium:false
+    ,
+    premium:false
 }
  export const Perfil =()=>{
     const [aceptar, setAceptar]=useState(false)
@@ -131,6 +132,7 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                     </div>
                                     <div className="buttonContainer">
                                     <Stack spacing={2} direction="row">
+
                                             <Button className="ou"
                                                     sx={{backgroundColor:'rgb(22, 17, 41)',                                
                                                         display:`${user.premium===true?'none':'block' }`}} 
@@ -146,6 +148,20 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                                         variant="contained">                                                
                                                         <BorderColorTwoToneIcon/>
                                                          Editar Perfil
+
+                                                sx={{backgroundColor:'rgb(22, 17, 41)',
+                                
+                                                    display:`${user.premium===true?'none':'block' }`}} 
+                                                size="medium"
+                                                onClick={(e)=>{handlePrimium()}}
+    
+
+                                                variant="contained">
+                                            Go Premium</Button>
+                                            <Button  onClick={hamdleConfigAccountForm} sx={{backgroundColor:'rgb(22, 17, 41)' }} size="medium" variant="contained">
+                                                
+                                                <BorderColorTwoToneIcon/>
+                                                Editar Perfil
                                             </Button>
                                     </Stack>
                                             
