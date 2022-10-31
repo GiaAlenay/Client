@@ -1,19 +1,21 @@
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { CrearCuenta } from "../../components/CrearCuenta/CrearCuenta";
 import { CuadroSobrepuesto } from "../../components/CuadroSobrepuesto/CuadroSobrepuesto";
-import './Landing.css'
 import { IniciarSesion } from '../../components/IniciarSesion/InciarSecion'
-import { useEffect, useState } from 'react'
 import { getUsers } from "../../redux/actions/users";
+import './Landing.css'
 
 export const Landing =()=>{
     const dispatch=useDispatch()
+    
     const users=useSelector(state=>state.Users)
     useEffect(()=>{
        dispatch(getUsers())        
-    },[])
-    // users.length>0?console.log(users):console.log('no')
+    },[dispatch])
+
     const [configurar,setConfigurar]=useState(false)
+
     const onClose=(close)=>{
         setConfigurar(close)
     }
@@ -23,7 +25,6 @@ export const Landing =()=>{
     return(
         <div className='landing'>
             <div className={`${configurar?"configurarCuenta":'noConfigurar'}`}>
-            
             <CuadroSobrepuesto onClose={onClose} child={<CrearCuenta/>} reason={'Crear Cuenta'}/>
             </div>
             <div className='laCont'>
@@ -39,7 +40,6 @@ export const Landing =()=>{
                     <div className='landDesc'>
                     <h3>Unete a la Comunidad más grande de desarrolladores de software </h3>
                     </div>
-
                     <IniciarSesion/>
                 </div>
                 <div className='lan2rigth'>
@@ -48,8 +48,6 @@ export const Landing =()=>{
             </div>
             </div>
         </div>
-
-            
     )
 }
 

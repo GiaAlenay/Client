@@ -3,7 +3,6 @@ body{
 }
 
 .laCont{
-    /* background-color: rgb(238, 232, 232,0.1); */
      background-image: url('./img/b1.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
@@ -29,14 +28,6 @@ body{
     height: 90vh;
     display: grid;
     grid-template-columns: 50% 50%;
-}
-
-.lan1Left{
-    
-}
-
-.lan2rigth{
-    
 }
 .logo{
     margin-top: 1%;

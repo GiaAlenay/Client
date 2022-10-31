@@ -15,7 +15,6 @@ export const Post=()=>{
                     <MoreVert/>
                 </IconButton>
             }
-
             title= "Usuhsdhshbds"
             />
             <CardContent>
@@ -30,15 +29,13 @@ export const Post=()=>{
             height="20%"
             image="https://www.lighthouselabs.ca/uploads/post/open_graph_image/459/Coding-vs-programming.jpg"
             alt="Paella dish"
-            />
-            
+            />           
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                 <Checkbox
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />
                 </IconButton>
-
             </CardActions>
         </Card>
     );

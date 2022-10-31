@@ -1,20 +1,14 @@
-import './Notificaciones.css'
-// import { Notificacion } from '../Notificacion/Notificacion'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import * as React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import './Notificaciones.css'
 
 const options=[
     {id:1,
       authorPicture:'https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc',
     authorName:'Juan JR',
     description:'Le gusta tu publicacion',
-    visto:true}
-    ,
+    visto:true},
     {id:2,
       visto:true,
       authorPicture:'https://st.depositphotos.com/2101611/4338/v/600/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg',
@@ -34,8 +28,7 @@ const options=[
         authorPicture:'https://i.pinimg.com/474x/ee/60/0b/ee600b5178e4f1648fd1e8623f049611.jpg',
       authorName:'Alecia Jai',
       description:'Le gusta tu publicacion',
-      visto:true}
-      ,
+      visto:true},
       {id:6,
         visto:true,
         authorPicture:'https://t3.ftcdn.net/jpg/03/91/19/22/360_F_391192211_2w5pQpFV1aozYQhcIw3FqA35vuTxJKrB.jpg',
@@ -54,10 +47,6 @@ const options=[
   ]
  export const Notificaciones=(props)=>{
     const history=useNavigate()
-
-  
-    
-    
     return (
       <div className={`${props.open?'notificacionesCont':'noNoti'}`}>
         {options.map((o,i)=>(
@@ -73,13 +62,9 @@ const options=[
                     {o.description}
                 </span>
             </div>
-            
         </div>
            )
-            
             ))}
-
-            
         <div onClick={(e)=>{history('/notificaciones');}} 
             className='noti showMore'>
             <KeyboardArrowDownIcon/>

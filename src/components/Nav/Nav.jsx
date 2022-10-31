@@ -1,5 +1,8 @@
-import {SearchBar} from '../SearchBar/SearchBar'
 import * as React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Avatar from '@mui/material/Avatar';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,76 +16,73 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import './Nav.css'
-import { Link , useNavigate, useParams} from "react-router-dom"
-import { useEffect } from 'react';
+import { SearchBar } from '../SearchBar/SearchBar'
 import { Notificaciones } from '../Notificaciones/Notificaciones';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import './Nav.css'
 
-const notificaciones=[
-  {id:1,
-    authorPicture:'',
-  authorName:'',
-  description:'',
-  visto:true}
-  ,
-  {id:2,
-    visto:true,
-    authorPicture:'',
-  authorName:'',
-  description:''},
-  {id:3,
-    authorPicture:'',
-  authorName:'',
-  description:'',
-  visto:false},
-  {id:4,
-    authorPicture:'',
-  authorName:'',
-  description:'',
-  visto:false}
+const notificaciones = [
+  {
+    id: 1,
+    authorPicture: '',
+    authorName: '',
+    description: '',
+    visto: true
+  },
+  {
+    id: 2,
+    visto: true,
+    authorPicture: '',
+    authorName: '',
+    description: ''
+  },
+  {
+    id: 3,
+    authorPicture: '',
+    authorName: '',
+    description: '',
+    visto: false
+  },
+  {
+    id: 4,
+    authorPicture: '',
+    authorName: '',
+    description: '',
+    visto: false
+  }
 ]
 
-export const Nav =(props)=>{
-  const User=useSelector(state=>state.User)
-  const history=useNavigate();
-  const [notCount, SetNotCount]=React.useState(0)
-    const [anchorEl, setAnchorEl] = React.useState(null);
+export const Nav = (props) => {
+  const User = useSelector(state => state.User)
+  const history = useNavigate();
+  const [notCount, SetNotCount] = React.useState(0)
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const[open,setOpen]=useState(false)
+  const [open, setOpen] = useState(false)
   const { id } = useParams();
 
-  useEffect(()=>{
-    notificaciones.map((n)=>{
-      if(n.visto===false){
-        SetNotCount(notCount+1)
+  useEffect(() => {
+    notificaciones.map((n) => {
+      if (n.visto === false) {
+        SetNotCount(notCount + 1)
       }
     })
-  },[])
-
-
+  }, [])
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
-
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  const handleNotification=()=>{
+  const handleNotification = () => {
     setOpen(!open)
     SetNotCount(0)
   }
@@ -101,17 +101,15 @@ export const Nav =(props)=>{
         horizontal: 'right',
       }}
       open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
+      onClose={handleMenuClose}>
       <Link to={`/profile/${id}`}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
       <Link to={`/`}>
-      <MenuItem onClick={handleMenuClose}>Cerrar Sesion</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Cerrar Sesion</MenuItem>
       </Link>
     </Menu>
   );
-
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -127,8 +125,7 @@ export const Nav =(props)=>{
         horizontal: 'right',
       }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
+      onClose={handleMobileMenuClose}>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
@@ -141,8 +138,7 @@ export const Nav =(props)=>{
         <IconButton
           size="large"
           aria-label="show 16 new notifications"
-          color="inherit"
-        >
+          color="inherit">
           <Badge badgeContent={18} color="error">
             <NotificationsIcon />
           </Badge>
@@ -155,42 +151,33 @@ export const Nav =(props)=>{
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit"
-        >
+          color="inherit">
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
-
   return (
-    <Box sx={{ flexGrow: 1  }}>
-      <AppBar sx={{backgroundColor:'rgb(22, 17, 41)' }}  position="static">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar sx={{ backgroundColor: 'rgb(22, 17, 41)' }} position="static">
         <Toolbar>
-        {/* Object.entries(User).length === 0 && `${User.user}` */}
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            <button className='SYN' onClick={(e)=>{history(`/home/${User.user.id}`);}} >SYT</button>
-
+            sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <button className='SYN' onClick={(e) => { history(`/home/${User.user.id}`); }} >SYT</button>
           </Typography>
-            <SearchBar/>
-          
-
+          <SearchBar />
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            
             <IconButton
               onClick={handleNotification}
-              onBlur={()=>{setTimeout(()=>{setOpen(false)},100)}}
+              onBlur={() => { setTimeout(() => { setOpen(false) }, 100) }}
               size="large"
               aria-label="show 17 new notifications"
-              color="inherit"
-            >
+              color="inherit">
               <Badge badgeContent={notCount} color="error">
                 <NotificationsIcon />
               </Badge>
@@ -202,14 +189,12 @@ export const Nav =(props)=>{
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              {Object.entries(User).length === 0?(
-                <Avatar alt={'...'}src={'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'}/>
-              ):(
+              color="inherit">
+              {Object.entries(User).length === 0 ? (
+                <Avatar alt={'...'} src={'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'} />
+              ) : (
                 <Avatar alt={`${User.user.usuario}`} src={User.user.foto_principal} />
               )}
-              
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -219,8 +204,7 @@ export const Nav =(props)=>{
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
+              color="inherit">
               <MoreIcon />
             </IconButton>
           </Box>
@@ -228,11 +212,7 @@ export const Nav =(props)=>{
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-
-      <Notificaciones open={open}/>
+      <Notificaciones open={open} />
     </Box>
-
-
   );
-    
 }

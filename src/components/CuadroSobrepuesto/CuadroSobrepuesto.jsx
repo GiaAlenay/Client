@@ -1,13 +1,12 @@
 import './Cuadro.css'
-export const CuadroSobrepuesto=(props)=>{
-    const onClose=()=>{
+export const CuadroSobrepuesto = (props) => {
+    const onClose = () => {
         props.onClose(false)
     }
-    return(
+    return (
         <div className='CuadroSobrepuesto'>
-            
-            <form  className='ChangeProfileForm'>
-            <button type='button' className=' closeBtn' onClick={onClose}>x</button>
+            <form className='ChangeProfileForm'>
+                <button type='button' className=' closeBtn' onClick={onClose}>x</button>
                 <span className='EditarPerf'>{props.reason}</span>
                 <hr></hr>
                 {props.child}

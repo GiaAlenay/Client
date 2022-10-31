@@ -17,7 +17,6 @@ export const Filters=()=>{
                      <ListItemText primary="Configuracion"/>
                  </ListItemButton>
             </ListItem>
-
             <ListItem disablePadding>
             <ListItemButton component="a" href="#simple-list">
               <ListItemIcon>
@@ -27,8 +26,6 @@ export const Filters=()=>{
             </ListItemButton>
           </ListItem>
          </List>
-
-
          </Box>
      </Box>
     );
