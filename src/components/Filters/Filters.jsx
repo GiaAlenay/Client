@@ -10,21 +10,21 @@ export const Filters=()=>{
          <Box position="fixed">
          <List>
              <ListItem disablePadding>
-                 <ListItemButton component="a" href="configuracion">
+                 {/* <ListItemButton component="a" href="configuracion">
                      <ListItemIcon>
                         <Settings/>
                      </ListItemIcon>
                      <ListItemText primary="Configuracion"/>
-                 </ListItemButton>
+                 </ListItemButton> */}
             </ListItem>
 
             <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
+            {/* <ListItemButton component="a" href="#simple-list">
               <ListItemIcon>
                 <ModeNight />
               </ListItemIcon>
               <Switch/>
-            </ListItemButton>
+            </ListItemButton> */}
           </ListItem>
          </List>
 

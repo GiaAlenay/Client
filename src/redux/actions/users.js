@@ -35,7 +35,7 @@ export const createUser=(user)=>dispatch=>{
     return axios.post('/users',user)
     .then(d=> {     
         console.log(d.data.msg) 
-        dispatch({type:'DELETE_USER', payload: d.data.msg})   })
+        dispatch({type:'CREAR_USER', payload: d.data.msg})   })
     .catch(e=> 
         { console.log(e)
              })
@@ -50,3 +50,28 @@ export const getUserLoged=(usuario)=>dispatch=>{
         { console.log(e)
              })
 }
+
+
+export function createPost(payload){
+    return async function (dispatch){
+      const response = await axios.post("/posts",payload,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      console.log(response)
+      return dispatch({
+        type:"CREAT_POST",
+        payload: response.data
+      })
+    }
+  }
+  export function getPost(payload){
+    return async function(dispacth){
+        var json = await axios.get("/posts",payload);
+        return dispacth({
+            type: "GET_POST",
+            payload: json.data
+        })
+    }
+  };

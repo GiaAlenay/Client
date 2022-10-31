@@ -6,19 +6,18 @@ import {Nav} from '../../components/Nav/Nav'
 import { AddPost } from '../../components/Add/AddPost'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from "../../redux/actions/users";
+import { getUser ,getPost} from "../../redux/actions/users";
 import { useParams } from 'react-router-dom'
 export const Home =()=>{
     const dispatch=useDispatch()
+
     const { id } = useParams();
+    const allPost = useSelector((state)=>state.Posts)
     const User=useSelector(state=>state.User)
     useEffect(()=>{
-        
-            dispatch(getUser(id))
-            console.log(User)
-        
+        dispatch(getPost())
+        dispatch(getUser(id))
         return(()=>{
-           
         })
     },[])
     return(
@@ -26,12 +25,12 @@ export const Home =()=>{
            
             <Nav />
             <Stack direction="row" spacing={2} justifyContent="space-between">
-                <Filters/>
-                <Feed/>
-                
-                
+                 <Filters/> 
+                <Feed 
+                allPost={allPost}
+                />
             </Stack>
-            <AddPost/>
+            <AddPost />
             
            
         </div>

@@ -130,7 +130,7 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                         
                                     </div>
                                     <div className="buttonContainer">
-                                    <Stack spacing={2} direction="row">
+                                    {/* <Stack spacing={2} direction="row">
                                             <Button className="ou"
                                                     sx={{backgroundColor:'rgb(22, 17, 41)',                                
                                                         display:`${user.premium===true?'none':'block' }`}} 
@@ -147,7 +147,7 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                                         <BorderColorTwoToneIcon/>
                                                          Editar Perfil
                                             </Button>
-                                    </Stack>
+                                    </Stack> */}
                                             
                                         </div>
                                 </div>

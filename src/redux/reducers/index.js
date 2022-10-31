@@ -34,6 +34,15 @@ const initialState = {
             ...state,
             UserLoged:action.payload
           }
+        case "GET_POST":
+          return{
+            ...state,
+            Posts:action.payload
+          }
+        case "CREAT_POST":
+          return{
+            ...state,
+          }
       default:
         return {
           ...state
