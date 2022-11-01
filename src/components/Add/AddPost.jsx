@@ -57,7 +57,7 @@ export const AddPost =() =>{
             title="New Post"
             >
                 <Fab color = "primary" aria-label="add">
-                    <AddIcon />
+                    <AddIcon  />
                 </Fab>
             </Tooltip>
             <StyledModal 
@@ -70,7 +70,7 @@ export const AddPost =() =>{
                     <Box width={400} height={330} bgcolor="white" p={3} borderRadius = {5} >
 
                         <Typography variant="h6" color="gray" textAlign="center">
-                            Create a Post
+                            Create a Posts
                         </Typography>
 
                         <TextField
