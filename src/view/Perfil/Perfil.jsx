@@ -6,7 +6,7 @@ import { Nav } from "../../components/Nav/Nav"
 import { Reglas } from "../../components/Reglas/Reglas";
 import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
 import { CuadroSobrepuesto } from "../../components/CuadroSobrepuesto/CuadroSobrepuesto";
-import { getUser,deleteUser } from "../../redux/actions/users";
+import { getUser,deleteUser, getPost } from "../../redux/actions/users";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -20,6 +20,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsuario';
+import { Feed } from '../../components/Feed/Feed'
 // import Backdrop from '@mui/material/Backdrop';
 // import CircularProgress from '@mui/material/CircularProgress';
 
@@ -43,9 +44,11 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
     const User=useSelector(state=>state.User)
     const mensajeResultado=useSelector(state=>state.mensajeResultado)
     const [open, setOpen] = useState(false);
+    const allPost = useSelector((state)=>state.Posts)
     
     useEffect(()=>{       
-            dispatch(getUser(id))       
+            dispatch(getUser(id))
+            dispatch(getPost())       
         return(()=>{           
         })
     },[])
@@ -130,7 +133,7 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                         
                                     </div>
                                     <div className="buttonContainer">
-                                    {/* <Stack spacing={2} direction="row">
+                                    <Stack spacing={2} direction="row">
                                             <Button className="ou"
                                                     sx={{backgroundColor:'rgb(22, 17, 41)',                                
                                                         display:`${user.premium===true?'none':'block' }`}} 
@@ -147,7 +150,7 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                                         <BorderColorTwoToneIcon/>
                                                          Editar Perfil
                                             </Button>
-                                    </Stack> */}
+                                    </Stack>
                                             
                                         </div>
                                 </div>
@@ -183,7 +186,9 @@ import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsua
                                 <div className="detalleInfo">
                                     {current===0 &&(
                                         <div className={`detInf detInf0`}>
-                                            Publicaciones
+                                            <Feed 
+                                              allPost={allPost}
+                                            />
                                         </div>)}
                                     {current===1 &&(
                                         <div className={`detInf detInf1`}>

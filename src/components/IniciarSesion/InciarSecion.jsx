@@ -73,7 +73,7 @@ export const IniciarSesion=()=>{
                 name="usuario" 
                 value={input.usuario}                
                 onChange={handleInputChange}
-                sx={{width:'100%',marginTop: '10px',backgroundColor:'white'}} id="outlined-basic" label="Nombre" variant="outlined" />
+                sx={{width:'100%',marginTop: '10px',backgroundColor:'white'}} id="outlined-basic" label="Usuario" variant="outlined" />
            
                 {errors.usuario && (<div className="dangerI">
                     <img src={'warningWhite.png'} alt='!' className='warning'/>

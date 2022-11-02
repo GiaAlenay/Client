@@ -48,6 +48,7 @@ export const AddPost =() =>{
             file:{},
             userId :1,
         })
+        window.location.reload()
     }
     return (
         <>
