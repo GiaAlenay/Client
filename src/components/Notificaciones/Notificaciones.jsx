@@ -62,7 +62,7 @@ const options=[
       <div className={`${props.open?'notificacionesCont':'noNoti'}`}>
         {options.map((o,i)=>(
            i>3  &&(
-            <div className={`noti ${o.visto===false&&'notiSinVer'}`}>
+            <div className={`noti ${o.visto===false&&'notiSinVer'}`} >
             <img className={`notiPic`} src={o.authorPicture} alt={'pic'}/>
             <div className='notiText'>
                 <span className='autNoti'>

@@ -1,83 +1,69 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField'
-import { useDispatch, useSelector } from "react-redux";
-import { getUsers,getUser } from "../../redux/actions/users";
+import { useDispatch } from "react-redux";
+import { getUserLoged } from "../../redux/actions/users";
 import './IniciarSesion.css'
 import { useNavigate } from 'react-router-dom';
+
 function Validate(input,users){
-    const foundusuario=users.find(f=>f.usuario===input.usuario)        
-        const foundemail=users.find(f=>f.contraseña===input.contraseña)
-        const match=users.find(u=>u.usuario===input.usuario && u.contraseña===input.contraseña)
+    const foundusuario=users.find(f=>f.usuario===input.input)        
+    const foundemail=users.find(f=>f.contraseña===input.contraseña)
+    const match=users.find(u=>u.usuario===input.input && u.contraseña===input.contraseña)
     let errors={};   
-        
-        if(!input.usuario){errors.usuario='Usuario es requerido'}        
-        if(!foundusuario){errors.usuario='No existe un usario con ese nombre'}   
-        if(!input.contraseña){errors.contraseña='La contraseña es requerida'} 
-        if(!foundemail){errors.contraseña='Contraseña incorrecta.'}
-       if(!match){errors.equivocado='Contraseña o  Usuario incorrecto'}
-        return errors
-    
+    if(!input.input){errors.input='Usuario o email requerido'}        
+    if(!foundusuario){errors.input='No existe un usario con ese nombre'}   
+    if(!input.contraseña){errors.contraseña='La contraseña es requerida'} 
+    if(!foundemail){errors.contraseña='Contraseña incorrecta.'}
+    if(!match){errors.equivocado='Contraseña o  Usuario incorrecto'}
+    return errors
 }
-export const IniciarSesion=()=>{
+
+export const IniciarSesion=( {users} )=>{
     const dispatch=useDispatch()
     const history=useNavigate()
     const[errors, setErrors]=useState({})
-    const users=useSelector(state=>state.Users)
-    const[input,setinput]=useState({        usuario:'',
-                                            contraseña:''})
+    const[input, setinput]=useState({ input:'', contraseña:''})
 
-    useEffect(()=>{
-       dispatch(getUsers())
-       setErrors({incompleto:'Formulario incompleto'})     
-    },[])
+    // useEffect(()=>{
+    //    setErrors({incompleto:'Formulario incompleto'})     
+    // },[])
    
-    useEffect(()=>{
+    // useEffect(()=>{
         
-     },[errors])
+    //  },[errors])
     
 
-        const handleInputChange=(e)=>{
+    const handleInputChange=(e)=>{
         setinput({...input,
             [e.target.name]:e.target.value })
         setErrors(Validate({...input,
             [e.target.name]:e.target.value},users))
     } 
     
-    const onsubmitHandler=(e)=>{
+    const onsubmitHandler= (e)=>{
         e.preventDefault()
-        console.log('us')
-        if(input.usuario.length===0 || input.contraseña.length===0 ){
+        if(input.input.length===0 || input.contraseña.length===0 || errors.equivocado ){
             alert('Formulario incompleto')
         }
-        if(errors.equivocado){
-            alert(errors.equivocado)
-        }
-        else{
-            console.log('ña')
-            const id=users.map((u)=>{if(u.usuario===input.usuario && u.contraseña===input.contraseña){ 
-                dispatch(getUser(u.id))
-            console.log(u.id)
-            history(`/home/${u.id}`)
-                }})
-            
-
-     }
-        
-        
+        else{  
+            dispatch(getUserLoged(input))
+            .then(()=> history(`/home`))
+            .catch(e=>console.log(e))
+        }   
     }
     return(
         <form onSubmit={onsubmitHandler} className='iniciarSeForm'>
             <div className='inptCont'>
             <TextField 
                 type="text" 
-                name="usuario" 
-                value={input.usuario}                
+                name="input" 
+                value={input.input}                
                 onChange={handleInputChange}
-                sx={{width:'100%',marginTop: '10px',backgroundColor:'white'}} id="outlined-basic" label="Usuario" variant="outlined" />
+                sx={{width:'100%',marginTop: '10px',backgroundColor:'white'}} id="outlined-basic" label="Usuario o email" variant="outlined" />
            
-                {errors.usuario && (<div className="dangerI">
+                {errors.input && (<div className="dangerI">
                     <img src={'warningWhite.png'} alt='!' className='warning'/>
-                    {errors.usuario}</div>)}
+                    {errors.input}</div>)}
            
             <TextField 
                 type="password" 

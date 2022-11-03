@@ -4,7 +4,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react"
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch } from "react-redux";
-import { createPost } from "../../redux/actions/users";
+import { createPost } from "../../redux/actions/posts";
 import MenuItem from '@mui/material/MenuItem';
 
 
@@ -14,14 +14,15 @@ const StyledModal = styled(Modal)({
     justifyContent:"center"
 })
 
-export const AddPost =() =>{
+export const AddPost =({id}) =>{
+    
     const [open, setOpen] = useState(false)
     const dispatch = useDispatch()
     const [input, setInput] = useState({
         titulo: "",
         texto:"",
         file:{},
-        userId :1,
+        userId : id,
         categories :"JAVASCRIPT"
     })
     function handleChange(e){
@@ -46,9 +47,8 @@ export const AddPost =() =>{
             titulo: "",
             texto:"",
             file:{},
-            userId :1,
+            userId : id
         })
-        window.location.reload()
     }
     return (
         <>

@@ -1,7 +1,7 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
 
-export const Post=({titulo,user,texto,media,foto,nombre,apellido, usuario})=>{
+export const Post=({titulo,user,texto,media,foto})=>{
     return(
         <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
             <CardHeader
@@ -16,8 +16,7 @@ export const Post=({titulo,user,texto,media,foto,nombre,apellido, usuario})=>{
                 </IconButton>
             }
 
-            title= {nombre && apellido ? nombre + " " + apellido: "usuario"}
-            // title={usuario}
+            title= {user}
             />
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
