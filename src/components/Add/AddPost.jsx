@@ -23,7 +23,6 @@ export const AddPost =() =>{
         titulo: "",
         texto:"",
         file:{},
-        userId : userLoged.id,
         categories :"JAVASCRIPT"
     })
     function handleChange(e){
@@ -43,14 +42,17 @@ export const AddPost =() =>{
     }
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(createPost(input))
+        dispatch(createPost({
+            ...input,
+            userId : userLoged.id
+        }))
         alert('Nueva publicacion Creada')
         setOpen(false)
         setInput({
             titulo: "",
             texto:"",
             file:{},
-            userId : userLoged.id
+            categories :"JAVASCRIPT"
         })
     }
     return (

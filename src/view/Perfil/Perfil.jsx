@@ -45,13 +45,13 @@ import { useAuth0 } from "@auth0/auth0-react";
     
     return(
         <div>
-            Profile
         {isAuthenticated && (
             <div>
+                <Nav></Nav>
                 <img src={user.picture} alt={"tu foto "}/>
                 <h2>{user.nickname}</h2>
                 <p>Email:{user.email} </p>
-                <h1>Holas</h1> 
+                
 
             </div>
         )}
@@ -125,7 +125,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 //     setreglas(close)
 // }
 // <div className="perfil">
-//     <Nav/>
+     
 
 
         //     {Object.entries(user).length=== 0?(
