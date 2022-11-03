@@ -1,19 +1,7 @@
 import { Box } from "@mui/material";
 import { Post } from "./Post";
-import { useSelector, useDispatch } from "react-redux";
-import {getUserById} from "../../redux/actions/users";
-import { getPost } from "../../redux/actions/posts"; 
-import {useState , useEffect} from 'react';
-import { useParams } from "react-router-dom";
-
-
-
 
 export const Feed =({allPosts})=>{
-
-
-   
-
 
     return(
        <Box flex={4} p={{xs:0, md:2}}>
