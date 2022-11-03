@@ -3,7 +3,7 @@ import { Fab, Modal, Tooltip,Box, styled, Typography, TextField, Stack, Button, 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react"
 import SendIcon from '@mui/icons-material/Send';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../redux/actions/posts";
 import MenuItem from '@mui/material/MenuItem';
 
@@ -14,18 +14,21 @@ const StyledModal = styled(Modal)({
     justifyContent:"center"
 })
 
-export const AddPost =({id}) =>{
+export const AddPost =() =>{
     
     const [open, setOpen] = useState(false)
+    const userLoged = useSelector(state=>state.UserLoged)
     const dispatch = useDispatch()
     const [input, setInput] = useState({
         titulo: "",
         texto:"",
         file:{},
-        userId : id,
+        userId : userLoged.id,
         categories :"JAVASCRIPT"
     })
     function handleChange(e){
+        
+        e.preventDefault()
         setInput({
             ...input,
             [e.target.name]:e.target.value
@@ -47,7 +50,7 @@ export const AddPost =({id}) =>{
             titulo: "",
             texto:"",
             file:{},
-            userId : id
+            userId : userLoged.id
         })
     }
     return (

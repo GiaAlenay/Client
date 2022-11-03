@@ -14,7 +14,6 @@ export const Home = () => {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
     const allPosts = useSelector(state => state.Posts)
-    const asdf = useSelector(state => state.UserLoged)
     const dispatch = useDispatch()
 
 
@@ -37,7 +36,7 @@ export const Home = () => {
                 <Filters/>
                 <Feed allPosts={allPosts}/>
             </Stack>
-            <AddPost id = {asdf.id}/>
+            <AddPost/>
         </div>
     )
 }
