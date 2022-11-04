@@ -1,0 +1,22 @@
+.img404{
+    
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url(https://i.pinimg.com/736x/ed/8d/a3/ed8da3ffb18f4e9cfcaa17357d73b981--nintendo-games-funny-humor.jpg);
+ 
+    object-fit: cover;
+}
+
+.home404{
+ 
+    color:white;
+    background-color: #05131d;
+    font-size:3rem;
+    font-weight:90;
+    margin-top: 44%;
+
+}
+.home404:hover{
+    color:#626566;
+    
+}

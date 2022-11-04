@@ -3,8 +3,8 @@ import { Fab, Modal, Tooltip,Box, styled, Typography, TextField, Stack, Button, 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react"
 import SendIcon from '@mui/icons-material/Send';
-import { useDispatch } from "react-redux";
-import { createPost } from "../../redux/actions/users";
+import { useDispatch, useSelector } from "react-redux";
+import { createPost } from "../../redux/actions/posts";
 import MenuItem from '@mui/material/MenuItem';
 
 
@@ -15,16 +15,18 @@ const StyledModal = styled(Modal)({
 })
 
 export const AddPost =() =>{
+    
     const [open, setOpen] = useState(false)
+    const userLoged = useSelector(state=>state.UserLoged)
     const dispatch = useDispatch()
     const [input, setInput] = useState({
         titulo: "",
         texto:"",
         file:{},
-        userId :1,
-        categories :"JAVASCRIPT"
+        categories :"JAVASCRIPT",
     })
     function handleChange(e){
+        e.preventDefault()
         setInput({
             ...input,
             [e.target.name]:e.target.value
@@ -39,16 +41,18 @@ export const AddPost =() =>{
     }
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(createPost(input))
+        dispatch(createPost({
+            ...input,
+            userId: userLoged.id
+        }))
         alert('Nueva publicacion Creada')
         setOpen(false)
         setInput({
             titulo: "",
             texto:"",
             file:{},
-            userId :1,
+            categories :"JAVASCRIPT"
         })
-        window.location.reload()
     }
     return (
         <>

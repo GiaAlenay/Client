@@ -62,9 +62,9 @@ const options=[
       <div className={`${props.open?'notificacionesCont':'noNoti'}`}>
         {options.map((o,i)=>(
            i>3  &&(
-            <div className={`noti ${o.visto===false&&'notiSinVer'}`}>
-            <img className={`notiPic`} src={o.authorPicture} alt={'pic'}/>
-            <div className='notiText'>
+            <div className={`noti ${o.visto===false&&'notiSinVer'}`} key ={i}>
+              <img className={`notiPic`} src={o.authorPicture} alt={'pic'}/>
+              <div className='notiText'>
                 <span className='autNoti'>
                     {o.authorName}
                 </span>
@@ -72,9 +72,9 @@ const options=[
                 <span  className='descNoti'>
                     {o.description}
                 </span>
-            </div>
+              </div>
             
-        </div>
+            </div>
            )
             
             ))}
