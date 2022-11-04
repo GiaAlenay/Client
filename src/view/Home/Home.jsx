@@ -30,14 +30,16 @@ export const Home = () => {
     }
 
     return (
+        <div>
+        {isAuthenticated &&(
         <div className='home'>
             <Nav />
             <Stack direction="row" spacing={2} justifyContent="space-between">
                 <Filters/>
                 <Feed allPosts={allPosts}/>
             </Stack>
-
             <AddPost/>
+        </div>)}
         </div>
     )
 }

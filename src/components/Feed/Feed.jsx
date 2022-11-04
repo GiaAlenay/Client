@@ -21,12 +21,21 @@ export const Feed =({allPosts})=>{
             return(
                 <div >
                 <Post
-                user={e.user.usuario}
+                userpost={e.user.usuario}
                 foto={e.user.foto_principal}
                 titulo={e.titulo}
                 texto={e.texto}
                 media={e.media}
-                id={e.id}               
+                id={e.id}
+                video={<div>
+                    <iframe width="560" 
+                height="315" 
+                src="https://youtu.be/fba3wi8ipLU"
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe></div>}              
                 />
                 </div>
             )

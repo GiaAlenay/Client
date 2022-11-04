@@ -51,9 +51,16 @@ import { useAuth0 } from "@auth0/auth0-react";
                 <img src={user.picture} alt={"tu foto "}/>
                 <h2>{user.nickname}</h2>
                 <p>Email:{user.email} </p>
-                
-
-            </div>
+                <iframe width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/fba3wi8ipLU" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>            
+                </div>
+            
         )}
         </div>
     )
