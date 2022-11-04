@@ -3,7 +3,8 @@ const initialState = {
   Posts: [],
   User:{},
   mensajeResultado:'',
-  UserLoged:{}
+  UserLoged:{},
+  loading: false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,52 +14,67 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         Users: action.payload,
+        loading: false
       };
 
     case 'GET_USER_BY_ID':
       return{
         ...state,
         mensajeResultado:action.payload.msg,
-        User:action.payload.user
+        User:action.payload.user,
+        loading: false
       };
 
     case 'DELETE_USER':
       return{
         ...state,
-        mensajeResultado:action.payload.msg
+        mensajeResultado:action.payload.msg,
+        loading: false
       };
 
     case 'CREATE_USER':
       return{
         ...state,
         mensajeResultado:action.payload.msg,
-        UserLoged: action.payload.user
+        UserLoged: action.payload.user,
+        loading: false
       };
 
     case 'GET_USER_LOGED':
       return{
         ...state,
         mensajeResultado:action.payload.msg,
-        UserLoged:action.payload.user
+        UserLoged:action.payload.user,
+        loading: false
       };
 
     case 'EDIT_USER':
       return{
         ...state,
         mensajeResultado:action.payload.msg,
-        UserLoged:action.payload.user
+        UserLoged:action.payload.user,
+        loading: false
       };
     
     //Actions POSTS
     case "GET_POSTS":
       return{
         ...state,
-        Posts:action.payload
+        Posts:action.payload,
+        loading: false
       };
 
     case "CREATE_POST":
       return{
         ...state,
+        loading: false
+      };
+
+    //EXTRA
+    case "LOADING":
+      return{
+        ...state,
+        loading: true
       };
     
     //DEFAULT

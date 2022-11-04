@@ -1,10 +1,12 @@
 import axios from "axios"
+import { loading } from "./index.js";
 
 export function getPosts(){
   try {
-    return async function(dispacth){
+    return async function(dispatch){
+      dispatch(loading())
       var response = await axios.get("/posts");
-      return dispacth({ type: "GET_POSTS", payload: response.data })      
+      return dispatch({ type: "GET_POSTS", payload: response.data })      
     }
   } catch (e) {
     console.log(e)      
@@ -14,6 +16,7 @@ export function getPosts(){
 export function createPost(payload){
   try {
     return async function (dispatch){
+      dispatch(loading())
       const response = await axios.post("/posts",payload,{
         headers: {
           "Content-Type": "multipart/form-data",

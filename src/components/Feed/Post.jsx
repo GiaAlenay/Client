@@ -26,6 +26,14 @@ export const Post=({titulo,user,texto,media,foto})=>{
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                 {texto}
+                {/* <iframe width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/fba3wi8ipLU" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe> */}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                 <a href={media}>arhivo subido</a>
