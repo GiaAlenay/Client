@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getPosts } from '../../redux/actions/posts'
 import { createUser } from '../../redux/actions/users'
 import { useAuth0 } from "@auth0/auth0-react";
+import Filtros from "../Filtros/Filtros.jsx"
 
 export const Home = () => {
 
@@ -31,7 +32,7 @@ export const Home = () => {
         <div className='home'>
             <Nav />
             <Stack direction="row" spacing={2} justifyContent="space-between">
-                <Filters/>
+                <Filtros/>
                 <Feed allPosts={allPosts}/>
             </Stack>
             <AddPost/>

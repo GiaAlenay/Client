@@ -1,72 +1,93 @@
 const initialState = {
   Users: [],
   Posts: [],
-  User:{},
-  mensajeResultado:'',
-  UserLoged:{}
+  Categories: [],
+  User: {},
+  mensajeResultado: "",
+  UserLoged: {},
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     //Actions USERS
-    case 'GET_USERS':
+    case "GET_USERS":
       return {
         ...state,
         Users: action.payload,
       };
 
-    case 'GET_USER_BY_ID':
-      return{
+    case "GET_USER_BY_ID":
+      return {
         ...state,
-        mensajeResultado:action.payload.msg,
-        User:action.payload.user
+        mensajeResultado: action.payload.msg,
+        User: action.payload.user,
       };
 
-    case 'DELETE_USER':
-      return{
+    case "DELETE_USER":
+      return {
         ...state,
-        mensajeResultado:action.payload.msg
+        mensajeResultado: action.payload.msg,
       };
 
-    case 'CREATE_USER':
-      return{
+    case "CREATE_USER":
+      return {
         ...state,
-        mensajeResultado:action.payload.msg,
-        UserLoged: action.payload.user
+        mensajeResultado: action.payload.msg,
+        UserLoged: action.payload.user,
       };
 
-    case 'GET_USER_LOGED':
-      return{
+    case "GET_USER_LOGED":
+      return {
         ...state,
-        mensajeResultado:action.payload.msg,
-        UserLoged:action.payload.user
+        mensajeResultado: action.payload.msg,
+        UserLoged: action.payload.user,
       };
 
-    case 'EDIT_USER':
-      return{
+    case "EDIT_USER":
+      return {
         ...state,
-        mensajeResultado:action.payload.msg,
-        UserLoged:action.payload.user
+        mensajeResultado: action.payload.msg,
+        UserLoged: action.payload.user,
       };
-    
+
     //Actions POSTS
     case "GET_POSTS":
-      return{
+      return {
         ...state,
-        Posts:action.payload
+        Posts: action.payload,
       };
 
     case "CREATE_POST":
-      return{
+      return {
         ...state,
       };
-    
+    //Actions CATEGORIES
+    case "GET_CATEGORIES":
+      return {
+        ...state,
+        Categories: action.payload,
+      };
+
+    case "FILTER_CATEGORIES":
+      const traerposts = state.Posts;
+      const categoriesFilter = traerposts.filter((c) => {
+        for (let i = 0; i < c.categories.length; i++) {
+          if (c.categories[i].name === action.payload) {
+            return c;
+          }
+        }
+      });
+      return {
+        ...state,
+        Posts: [...categoriesFilter],
+      };
+
     //DEFAULT
     default:
       return {
-        ...state
+        ...state,
       };
   }
-}
-  
+};
+
 export default rootReducer;

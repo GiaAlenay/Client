@@ -14,11 +14,11 @@ export function getPosts(){
 export function createPost(payload){
   try {
     return async function (dispatch){
-      const response = await axios.post("/posts",payload,{
+      const response = await axios.post("/posts",payload/*,{
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": 'application/json',
         },
-      })
+      }*/)
       return dispatch({ type:"CREATE_POST", payload: response.data.post })    
     }
   } catch (e) {
