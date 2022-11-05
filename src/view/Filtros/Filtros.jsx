@@ -17,7 +17,7 @@ export default function Filtros() {
   return (
     <div >
       <p className="parrafo">
-        Aqui pudes filtrar las publicaciones para encontrar mas rapido lo que
+        Aqui puedes filtrar las publicaciones para encontrar mas rapido lo que
         buscas
       </p>
       {allcategories &&
