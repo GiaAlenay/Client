@@ -2,7 +2,34 @@ import './Reglas.css'
 export const Reglas=()=>{
     return(
         <div className="reglasCont">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+            <div className='reglasLista'>
+
+            1.- No promober suicidio y/o autoleciones.
+            <br></br>
+            <br></br>
+            2.-No compartir información engañosa y/o span.
+            <br></br>
+            <br></br>
+            3.-No publicar contenido multimedia que sea exceisvamente morvoso ni compartir contenido R18
+            <br></br>
+            <br></br>
+            4.-No puedes hacer amenazas violentas contra una persona o un grupo de personas
+            <br></br>
+            <br></br>
+            5.-No fomentar mensajes de odio contra una persona o un grupo de personas.
+            <br></br>
+            <br></br>
+            6.- Si el usuario inflinge alguna de las reglas anteriormnete expuestas recibira una advertencia.
+            <br></br>
+            <br></br>
+            7.-Si el usuario recibe mas de 3 advertencias sera baneado de SYT con un tiempo minimo de 1 semana hasta un mes.
+            <br></br>
+            <br></br>
+            8.- Si el usario sigue compartiendo este tipo de informacion luego de haber sido baneado y de recuperar su cuenta sera eliminado completa y definitivamente de SYT
+            <br></br>
+            <br></br>
+            
+            </div>
         </div>
     )
 }

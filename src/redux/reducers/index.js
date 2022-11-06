@@ -4,7 +4,13 @@ const initialState = {
   User:{},
   mensajeResultado:'',
   UserLoged:{},
-  loading: false
+  loading: false,
+  coments:[],
+  comentsOnComent:[],
+  abrirHilo:false,
+  mainComentHilo:{},
+  reaccionesOnComents:[],
+  searchResponse:{},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -76,7 +82,68 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
-    
+    case "GET_COMENT_ON_pOST":
+      return{
+        ...state,
+        loading: false,
+        coments:action.payload
+      }
+    case "GET_REACCION_ON_pOST":
+      return{
+        ...state,
+        reaccionesOnPost:action.payload
+      }
+    case "CREATE_REACCION_ON_POST":
+      return{
+        ...state
+      }
+    case "CREATE_REACCION_ON_COMENT":
+      return{
+        ...state
+      }
+    case "DELETE_REACCION":
+      return{
+        ...state
+      }
+    case "EDIT_REACCION_ON_POST":
+      return{
+        ...state
+      }
+    case "ABRIR_HILO":
+      return{
+        ...state,
+        abrirHilo:action.payload
+      }
+    case "GET_HILO_AUTH":
+      return{
+        ...state,
+        mainComentHilo:action.payload
+      }
+    case "GET_COMENT_ON_COMENTS":
+      return{
+        ...state,
+        loading: false,
+        comentsOnComent:action.payload
+
+      }
+    case "DELETE_COMENT":
+      return{
+        ...state,
+        loading:false,
+
+      }
+      case "EDIT_COMENT":
+        return{
+          ...state,
+          loading:false,
+          
+        }
+      case "SEARCH_GLOBAL":
+        return{
+          ...state,
+          loading:false,
+          searchResponse:action.payload
+        }
     //DEFAULT
     default:
       return {

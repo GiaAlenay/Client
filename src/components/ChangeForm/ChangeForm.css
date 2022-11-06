@@ -53,3 +53,18 @@
     
     margin-left: 10%;
 }
+
+.btnGuarCamb{
+    all:unset;    
+    background-color: rgb(24, 54, 110);
+    color: white;
+    width: 50%;
+    margin: 20px 0px 20px 25%;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+    border-radius: 25px;
+    font-size: 19px;
+    cursor: pointer;
+    border:1px solid rgb(184, 205, 245);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

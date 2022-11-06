@@ -1,0 +1,88 @@
+.comentarioBDCont{
+    margin-top: 34px;
+    margin-left: 2%;    
+    display: grid;
+    grid-template-columns: 10% 75% 5% 6%;
+    height: 100%;
+}
+
+.comentContCont{
+    
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    padding-left: 2%;
+    width: 92%;
+    color: rgb(87, 86, 86);
+}
+
+.comentInfo{
+    height: 100%;
+    background-color: rgb(238, 237, 237);
+    border-radius: 15px;
+    padding-left: 3%;
+    
+}
+.usuarioComentAu{
+    font-weight: bolder;
+}
+
+.btnOnComent{
+    all: unset;
+    cursor: pointer;
+}
+.btnOnComent:hover{
+    text-decoration: underline;
+}
+.comentBotones{
+    padding-left: 3%;
+    display: grid;
+    grid-template-columns: 30% 30%;
+}
+
+.reaconComentDesc{
+    color:rgb(250, 163, 1);
+    font-size: bolder;
+}
+
+.reacImgonComCont{
+    margin-top: 80%;
+    height: 50%;
+    width: 100%;
+    
+}
+
+.reacImgonCom{
+
+    width: 80%;
+    
+}
+
+.comentsopciones{
+    position: absolute;
+    margin-left: 40%;
+    background-color: rgb(228, 228, 231);
+    width: 100px;
+    border: 0.5px solid rgb(151, 145, 145,0.5);
+    padding: 10px;
+    border-radius: 2px;
+
+}
+
+.closeComOp{
+    display: none;
+}
+
+.opComentBtn{
+    all: unset;
+    height: 20px;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(228, 228, 231);
+    text-align: center;
+}
+
+.opComentBtn:hover{
+    background-color: beige;
+}

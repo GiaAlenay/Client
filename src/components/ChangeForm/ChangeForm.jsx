@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 const axios = require('axios')
 
 export const ChangeForm=(props)=>{
-    const { id } = useParams();
+    const userLoged = useSelector(state => state.UserLoged)
     const User=useSelector(state=>state.User)
     const[input,setinput]=useState({})
     const[change,setChange]=useState({usuario:false,
@@ -29,7 +29,7 @@ export const ChangeForm=(props)=>{
         e.preventDefault()
         console.log(input)
         console.log('cam')
-        const re= await  axios.patch(`/users/${id}`, input)
+        const re= await  axios.patch(`/users/${userLoged.id}`, input)
          .then(d=> {   
             console.log(d)
             return d.data.msg
@@ -63,36 +63,7 @@ export const ChangeForm=(props)=>{
         
 
             <div  >
-               {/* {change.usuario?(
-                <div className='changeInptCont'>
-                <TextField 
-                type="text" 
-                name="usuario" 
-                value={input.name}                
-                onChange={handleInputChange}
-                sx={{width:'82%',backgroundColor:'white',marginLeft: '10%'}} id="outlined-basic" label="Usuario" variant="outlined" />
-                    <button 
-                            type='button'
-                            name='usuario'
-                            value={change.usuario}
-                            onClick={handleBtnEditar}
-                            className='btnFormEditListo'>
-                        
-                    </button>
-                </div >
-               ):(
-                <div className='changeInptCont'>
-                    {User.user.usuario?(<div className='descChang'><PersonIcon/> {User.user.usuario}</div>):(<div className='descChang'><PersonIcon/> Usuario</div>)}
-                    <button 
-                        type='button'
-                        name='usuario'
-                        value={change.usuario}
-                        onClick={handleBtnEditar}
-                        className='btnFormEdit'>
-                        
-                    </button>
-                </div>
-               )} */}
+              
                {change.nombre?(
                 <div className='changeInptCont'>
                 <TextField 
@@ -112,7 +83,7 @@ export const ChangeForm=(props)=>{
                 </div >
                ):(
                 <div className='changeInptCont'>
-                    {User.user.nombre ?(<div className='descChang'><PermContactCalendarIcon/> {User.user.nombre}</div>):(<div className='descChang'><PermContactCalendarIcon/> Nombre</div>)}
+                    {userLoged.nombre ?(<div className='descChang'><PermContactCalendarIcon/> {userLoged.nombre}</div>):(<div className='descChang'><PermContactCalendarIcon/> Nombre</div>)}
                     <button 
                         type='button'
                         name='nombre'
@@ -142,7 +113,7 @@ export const ChangeForm=(props)=>{
                 </div >
                ):(
                 <div className='changeInptCont'>
-                    {User.user.apellido?(<div className='descChang'><PermContactCalendarIcon/> {User.user.apellido}</div>):(<div className='descChang'><PersonIcon/> apellido</div>)}
+                    {userLoged.apellido?(<div className='descChang'><PermContactCalendarIcon/> {userLoged.apellido}</div>):(<div className='descChang'><PersonIcon/> apellido</div>)}
                     <button 
                         type='button'
                         name='apellido'
@@ -172,7 +143,7 @@ export const ChangeForm=(props)=>{
                 </div >
                ):(
                 <div className='changeInptCont'>
-                    {User.user.foto_principal?(<div className='descChang'><AddAPhotoIcon/> {'Foto'}</div>):(<div className='descChang'><PersonIcon/> Foto principal</div>)}
+                    {userLoged.foto_principal?(<div className='descChang'><AddAPhotoIcon/> {'Foto'}</div>):(<div className='descChang'><PersonIcon/> Foto principal</div>)}
                     <button 
                         type='button'
                         name='foto_principal'
@@ -202,7 +173,7 @@ export const ChangeForm=(props)=>{
                 </div >
                ):(
                 <div className='changeInptCont'>
-                    {User.user.foto_portada?(<div className='descChang'><AddPhotoAlternateIcon/> {'Foto Portada'}</div>):(<div className='descChang'><PersonIcon/> foto portada</div>)}
+                    {userLoged.foto_portada?(<div className='descChang'><AddPhotoAlternateIcon/> {'Foto Portada'}</div>):(<div className='descChang'><PersonIcon/> foto portada</div>)}
                     <button 
                         type='button'
                         name='foto_portada'
@@ -232,7 +203,7 @@ export const ChangeForm=(props)=>{
                 </div >
                ):(
                 <div className='changeInptCont'>
-                    {User.user.descripcion?(<div className='descChang'><AccessibilityIcon/> {'Descripcion'}</div>):(<div className='descChang'><PersonIcon/> Descripcion</div>)}
+                    {userLoged.descripcion?(<div className='descChang'><AccessibilityIcon/> {'Descripcion'}</div>):(<div className='descChang'><PersonIcon/> Descripcion</div>)}
                     <button 
                         type='button'
                         name='descripcion'
@@ -246,7 +217,7 @@ export const ChangeForm=(props)=>{
 
                 
                
-               <button onClick={handleSubmit}  className='btnCreCuenta'>Guardar Cambios</button>
+               <button onClick={handleSubmit}  className='btnGuarCamb'>Guardar Cambios</button>
             </div>
         
         

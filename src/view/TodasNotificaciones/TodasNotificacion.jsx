@@ -1,7 +1,8 @@
 import './TodasNotificacion.css'
 import * as React from 'react';
 import { Nav } from "../../components/Nav/Nav"
-
+import { MiniPErfil } from '../../components/MiniPerfil/MinPerfil';
+import { useNavigate } from 'react-router-dom';
 const options=[
   {id:1,
     authorPicture:'https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc',
@@ -109,30 +110,42 @@ const options=[
 ]
 
  export const TodasNotificacion=()=>{
-    
+  const navigate= useNavigate()
+  const handleonClickAbout=()=>{
+    navigate('/about')
+}
     return (
       <div className='notificacionesPag'>
         <Nav/>
-        <div className='todaNotificacionesCont'>
-          {options.map((o ,i)=>(
-            <div className='notiEspSing' key={i}>
-              <div className={`noti notiEsp ${o.visto===false&&'notiSinVer '}`}>
-                <img className={`notiPic`} src={o.authorPicture} alt={'pic'}/>
-                <div className='notiText'>
-                    <span className='autNoti'>
-                        {o.authorName}
-                    </span>
-                    <br></br>
-                    <span  className='descNoti'>
-                        {o.description}
-                    </span>
-            </div>
-                <img className='mediaREf' src={o.ref.info.media} alt='ref'/>
-            
+        <div className='notiCol'>
+
+          <div>
+            <MiniPErfil/>
+            <div onClick={handleonClickAbout} className='AboutonHome'>About</div>
+          </div>
+          <div className='todaNotificacionesCont'>
+            {options.map((o ,i)=>(
+              <div className='notiEspSing' key={i}>
+                <div className={`noti notiEsp ${o.visto===false&&'notiSinVer '}`}>
+                  <img className={`notiPic`} src={o.authorPicture} alt={'pic'}/>
+                  <div className='notiText'>
+                      <span className='autNoti'>
+                          {o.authorName}
+                      </span>
+                      <br></br>
+                      <span  className='descNoti'>
+                          {o.description}
+                      </span>
+              </div>
+                  <img className='mediaREf' src={o.ref.info.media} alt='ref'/>
+              
+          </div>
+              </div>
+            ))}
+          </div>
+
         </div>
-            </div>
-          ))}
-        </div>
+        
       </div>
     );
 }

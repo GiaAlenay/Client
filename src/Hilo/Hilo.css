@@ -1,0 +1,78 @@
+.HiloCont{
+    background-color: rgb(37, 37, 48);
+    color: blanchedalmond;
+    width: 25%;
+    position: fixed;
+    height: 100%;
+    right: 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    
+}
+.hideHiloCont{
+    display: none
+}
+.HiloHeader{
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    padding-left: 4%;
+    width: 96%;
+    height: 10%;
+    display: grid;
+    grid-template-columns: 88% 12%;
+    border-bottom: 0.5px solid rgb(255, 255, 255 ,0.5);
+
+}
+
+.hiloinputCont{
+    height: 30%;
+    width: 100%;
+    border-top:  0.3px solid rgb(255, 255, 255 ,0.5);
+}
+
+.comentsHiloCont{
+    height: 60%;
+    width: 100%;
+    
+}
+.hiloInput{
+    margin-top: 4%;
+    padding: 2%;
+    color:white;
+    margin-left: 5%;
+    height: 40%;
+    width: 86%;
+    background-color: rgb(80, 77, 77);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.AuthorComentCont{
+    margin-top: 4%;
+    margin-left: 3%;
+    padding-bottom: 4%;
+    width: 94%;
+    display:grid;
+    grid-template-columns:22% 78% ;    
+    border-bottom:  0.1px solid rgba(37, 37, 18);
+}
+.mainAu{
+    border-bottom:  0.3px solid rgb(255, 255, 255 ,0.5);
+}
+.mainFotoAuthHilo{
+    width: 96%;
+}
+
+.usuarioContHilo{
+    margin-left: 4%;
+    
+}
+
+.usAuHilo{
+    font-weight: bolder;
+    color: bisque;
+}
+
+.allComentsonComent{
+    height: 340px;
+    overflow-y: scroll;
+    -webkit-scrollbar-track:black;
+}

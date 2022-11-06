@@ -1,14 +1,15 @@
-import { Box } from "@mui/material";
+
 import { Post } from "./Post";
 
 export const Feed =({allPosts})=>{
 
     return(
-       <Box flex={4} p={{xs:0, md:2}}>
+       <div className="feedCont">
            {allPosts?.map((e)=>{
             return(
                 <div >
                 <Post
+                id={e.id}
                 user={e.user.usuario}
                 foto={e.user.foto_principal}
                 titulo={e.titulo}
@@ -18,6 +19,6 @@ export const Feed =({allPosts})=>{
                 </div>
             )
         })}  
-       </Box> 
+       </div> 
     );
 }

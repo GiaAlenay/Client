@@ -1,5 +1,13 @@
 .reglasCont{
-    margin-left: 10%;
-    width: 80%;
     
+    width: 100%;
+    height: 80%;
+    
+}
+
+.reglasLista{
+    margin-left: 10%;
+    width: 80;
+    height: 90%;
+    overflow-y: scroll;
 }

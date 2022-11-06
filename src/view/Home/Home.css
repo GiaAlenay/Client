@@ -2,3 +2,17 @@
     width: 100%;
   
 }
+
+.homeCompCont{
+    
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+
+.AboutonHome{
+    margin-left: 45%;
+    cursor: pointer;
+}
+.AboutonHome:hover{
+    color: rgb(106, 89, 207);
+}

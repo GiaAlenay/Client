@@ -3,14 +3,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import './Perfil.css'
-
+import { Esqueleto } from "../../components/Skeleton/Skeleton";
 import { Nav } from "../../components/Nav/Nav"
 import { Reglas } from "../../components/Reglas/Reglas";
 import { ChangeForm } from "../../components/ChangeForm/ChangeForm";
 import { CuadroSobrepuesto } from "../../components/CuadroSobrepuesto/CuadroSobrepuesto";
 import { DescUsuario } from '../../components/DescripcionUsuario/DescripcionUsuario';
 import { Feed } from '../../components/Feed/Feed.jsx'
-import Loading from "../Loading/Loading.jsx"
+
 
 import { deleteUser, createUser } from "../../redux/actions/users";
 import { getPosts } from '../../redux/actions/posts';
@@ -96,16 +96,25 @@ export const Perfil =()=>{
     return(
         <div>
             {loading || isLoading 
-                ? <Loading/>
+                ? (
+                    <div>
+                        <Nav/>
+                        <div className="esqCont">
+                            <Esqueleto type={3}/>
+
+                        </div>
+
+                    </div>
+                )
                 : <div className="perfil">
                     <Nav/>
 
                     <div className={`${configurar?"configurarCuenta":'noConfigurar'}`}>
-                        <CuadroSobrepuesto onClose={onClose} child={<div>ChangeForm</div>} reason={'Editar Perfil'}/>
+                        <CuadroSobrepuesto onClose={onClose} child={<ChangeForm/>} reason={'Editar Perfil'}/>
                     </div>
 
                     <div className={`${reglas?"configurarCuenta":'noConfigurar'}`}>
-                        <CuadroSobrepuesto onClose={onClose} child={<div>Reglas</div>} reason={'Reglamento'}/>
+                        <CuadroSobrepuesto onClose={onClose} child={<Reglas/>} reason={'Reglamento'}/>
                     </div>
 
                     <div className="profile">

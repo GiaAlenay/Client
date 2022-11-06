@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getResponsesSearch } from '../../redux/actions';
 import './SearchBar.css'
 const dataGeneral= [
     'alan or','python','react','Lady Gaga', 'avigail','aveces'
     ]
 
 export const SearchBar =()=>{
+    const dispatch=useDispatch()
     const history=useNavigate()
     const[suggestions , setSuggestions]=useState([])
     const [text,setText]=useState('')
@@ -58,6 +61,7 @@ export const SearchBar =()=>{
         setText(text)
         console.log('va')
         setSuggestions([])
+        dispatch(getResponsesSearch(text))
         history('/search') 
        }       
     }
