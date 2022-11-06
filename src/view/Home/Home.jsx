@@ -15,8 +15,6 @@ export const Home = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const allPosts = useSelector(state => state.Posts)
     const dispatch = useDispatch()
-
-    
     
     useEffect(() => {
         if(isAuthenticated){
