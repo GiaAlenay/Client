@@ -5,6 +5,9 @@ import './Landing.css'
 import { IniciarSesion } from '../../components/IniciarSesion/InciarSecion'
 import { useEffect, useState } from 'react'
 import { getUsers } from "../../redux/actions/users";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { display } from "@mui/system";
 
 export const Landing =()=>{
     const dispatch=useDispatch()
@@ -29,6 +32,12 @@ export const Landing =()=>{
             <div className='laCont'>
             <div className='landArribaCont'>
                 <div className='logo'>SYT</div>
+                <Link to={"/SobreNosotros"}>
+                    <div >
+                        <button className='btnCreCu'>SobreNosotros</button>
+                    </div>        
+                </Link>
+
                 <button onClick={hamdleConfigAccountForm} className='btnCreCu'>Crear cuenta</button>
             </div>
             <div className='lan1Cont'>

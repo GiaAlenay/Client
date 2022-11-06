@@ -1,3 +1,6 @@
+a{
+    all:unset;
+}
 body{
     margin: 0;
 }
@@ -68,7 +71,7 @@ body{
 .landArribaCont{
     width: 100%;
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 60% 20% 20%;
 }
 
 .sytTitle{
@@ -91,6 +94,4 @@ height: 80%;
 width: 100%;
 filter: drop-shadow(10px 5px 4px #1b1b1b);
 filter: drop-shadow(0 0 0.75rem rgb(223, 214, 216));
-
-    
 }
