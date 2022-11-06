@@ -9,6 +9,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     //Actions USERS
     case 'GET_USERS':
       return {
@@ -37,14 +38,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         mensajeResultado:action.payload.msg,
         UserLoged: action.payload.user,
-        loading: false
-      };
-
-    case 'GET_USER_LOGED':
-      return{
-        ...state,
-        mensajeResultado:action.payload.msg,
-        UserLoged:action.payload.user,
         loading: false
       };
 

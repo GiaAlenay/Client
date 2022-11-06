@@ -30,13 +30,6 @@ export const createUser=(form)=>dispatch=>{
     .catch(e=> console.log(e))
 }
 
-export const getUserLoged=(form)=>dispatch=>{
-    dispatch(loading())
-    return axios.post('/users/login', form)
-    .then(d=> dispatch({ type:'GET_USER_LOGED', payload: d.data }))
-    .catch(e=> console.log(e))
-}
-
 export const editUser=(form)=>dispatch=>{
     dispatch(loading())
     return axios.patch(`/users/${form.id}`, form)

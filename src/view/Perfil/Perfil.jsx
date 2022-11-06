@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import './Perfil.css'
@@ -101,11 +101,11 @@ export const Perfil =()=>{
                     <Nav/>
 
                     <div className={`${configurar?"configurarCuenta":'noConfigurar'}`}>
-                        <CuadroSobrepuesto onClose={onClose} child={<div>ChangeForm</div>} reason={'Editar Perfil'}/>
+                        <CuadroSobrepuesto onClose={onClose} child={<div><ChangeForm User={ userLoged }/></div>} reason={'Editar Perfil'}/>
                     </div>
 
                     <div className={`${reglas?"configurarCuenta":'noConfigurar'}`}>
-                        <CuadroSobrepuesto onClose={onClose} child={<div>Reglas</div>} reason={'Reglamento'}/>
+                        <CuadroSobrepuesto onClose={onClose} child={<div><Reglas/></div>} reason={'Reglamento'}/>
                     </div>
 
                     <div className="profile">
