@@ -1,0 +1,36 @@
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #cfd2e0;
+    background-size: cover;
+
+    font-weight: bold;
+
+}
+.h1Adm{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #382c4b;
+    /* text-shadow:  2px 2px 15px #000; */
+    /* margin-top: 50px; */
+    margin-bottom: 40px;
+    margin-left: 300px;
+    letter-spacing: 0.05em;
+}
+.h3Adm{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: #382c4b;
+    /* text-shadow:  2px 2px 15px #000; */
+    /* margin-top: 50px; */
+    margin-bottom: 20px;
+    margin-left:450px;
+
+}
+.suspendido{
+    margin-left:550px;
+    margin-bottom: 20px;
+
+}
