@@ -103,6 +103,9 @@ export const Nav =()=>{
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
       <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
+      <Link to={`/home/admin`}>
+        <MenuItem onClick={handleMenuClose}>Administrador</MenuItem>
+      </Link>
     </Menu>
   );
 
