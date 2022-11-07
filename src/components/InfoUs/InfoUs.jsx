@@ -7,7 +7,7 @@ export const infoUs = [
         git:"https://github.com/userJAMT",
         link:""
     },
-    {
+    { 
         id:"2",
         nombre:"Luis Condori",
         img:"https://discord.com/channels/1004174458438828244/1004174459260915722/1030597826662649918",
