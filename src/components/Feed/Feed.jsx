@@ -14,7 +14,8 @@ export const Feed =({allPosts, loading})=>{
                 foto={e.user.foto_principal}
                 titulo={e.titulo}
                 texto={e.texto}
-                media={e.media}               
+                media={e.media}
+                id={e.id}              
                 />
                 </div>
             )

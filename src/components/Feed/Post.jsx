@@ -1,9 +1,9 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
 import parse from "html-react-parser";
+import {deletePost} from "../../redux/actions/posts"
 
-
-export const Post=({titulo,user,texto,media,foto})=>{
+export const Post=({titulo,user,texto,media,foto ,id})=>{
 
 
     function urlify(text) {
