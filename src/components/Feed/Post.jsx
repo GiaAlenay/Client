@@ -4,7 +4,11 @@ import parse from "html-react-parser";
 import {deletePost} from "../../redux/actions/posts"
 
 export const Post=({titulo,user,texto,media,foto ,id})=>{
+    const dispatch= useDispatch()
 
+    function handleDeletePost(e){
+        dispatch(deletePost(e))
+    }
 
     function urlify(text) {
         var urlRegex = /(https?:\/\/[^\s]+)/g;
