@@ -11,6 +11,29 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
     function handleDeletePost(e){
         dispatch(deletePost(e))
     }
+    function sumarMegustas(e){
+
+        console.log("sumar")
+    }
+
+    function verificarMedia(e){
+        if(e === null){return (<> </>)}
+        else{
+            const archivo = e.slice(-3) 
+            if(archivo === "pdf"){
+                return (<a href={e} > archivo subido  </a>)
+            }
+            if(archivo !== "pdf"){
+                return(<CardMedia
+                    component="img"
+                    height="20%"
+                    width="50px"
+                    image={media} 
+                    alt=" "
+                    />)
+            }
+        }
+    }
 
     function urlify(text) {
         var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -42,32 +65,32 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
 
             title= {userpost}
             />
+
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
                 {titulo}
                 </Typography>
             </CardContent>
+
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                     {texto && parse(urlify(texto))}
                 </Typography>
             </CardContent>
             
-            {media && 
-            <CardMedia
-            component="img"
-            height="20%"
-            width="50px"
-            image={media} 
-            alt=" "
-            />
-            }
+            <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                {media && verificarMedia(media)}
+
+                </Typography>
+            </CardContent>
+                 <br/>
 
         {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
            
             
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                <IconButton aria-label= "add to favorites" onClick={sumarMegustas}>
                 <Checkbox
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />
