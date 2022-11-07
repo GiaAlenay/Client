@@ -25,14 +25,6 @@ export const Home = () => {
     }
   }, [isAuthenticated, dispatch]);
 
-  if (isLoading) {
-    return <div> Loading...</div>;
-  }
-
-  const handlerOpen = (value) => {
-    setOpen(value);
-  };
-
   return (
     <div className="home">
       <Nav />

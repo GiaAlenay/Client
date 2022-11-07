@@ -47,7 +47,7 @@ export const Post=({titulo,user,texto,media,foto})=>{
             image={media} 
             alt=" "
             />
-           
+ 
             
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
