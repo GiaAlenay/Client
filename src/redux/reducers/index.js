@@ -61,6 +61,7 @@ const rootReducer = (state = initialState, action) => {
     case "CREATE_POST":
       return {
         ...state,
+        Posts: [action.payload.post, ...state.Posts],
         loading: false
       };
 

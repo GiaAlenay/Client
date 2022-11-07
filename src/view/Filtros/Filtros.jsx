@@ -27,8 +27,8 @@ export default function Filtros(props) {
       </button>
       <div className="categoriasDivMap">
         {allcategories &&
-          allcategories.map((c) => (
-            <div className="buttonCategorieHover">
+          allcategories.map((c,i) => (
+            <div className="buttonCategorieHover" key={i}>
               <button
                 className={`imgIcono ${
                   selectcss.includes(c.name) && "categorieSelect"

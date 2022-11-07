@@ -1,4 +1,5 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
+<<<<<<< HEAD
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox, Button} from "@mui/material";
 import { useDispatch } from "react-redux";
 import {deletePost} from '../../redux/actions/posts'
@@ -16,6 +17,29 @@ if(isLoading){
 }
 
 
+=======
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
+import parse from "html-react-parser";
+
+
+export const Post=({titulo,user,texto,media,foto})=>{
+
+
+    function urlify(text) {
+        var urlRegex = /(https?:\/\/[^\s]+)/g;
+        var youtubeRegex = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?/;
+        
+        return text?.replace(urlRegex, function(url) {
+            if(url.match(youtubeRegex)){
+                return '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + url.slice(-11) + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            }
+            return '<a href="' + url + '">' + url + '</a>';
+        })
+        // or alternatively
+        // return text.replace(urlRegex, '<a href="$1">$1</a>')
+    }
+
+>>>>>>> 2174ee16f4f360fd7d0eb15791850a95410761de
     return(
         <div>
             {isAuthenticated &&(
@@ -42,27 +66,45 @@ if(isLoading){
             </CardContent>
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
+<<<<<<< HEAD
                 {texto}
                 
                    
+=======
+                    {texto && parse(urlify(texto))}
+>>>>>>> 2174ee16f4f360fd7d0eb15791850a95410761de
                 </Typography>
 
             </CardContent>
             
+<<<<<<< HEAD
             {media?.slice(-3) === "pdf"? 
                 <Typography variant="body2" color="text.secondary">
                 <a href={media} target="_blank">arhivo subido</a>
                 </Typography> :<CardMedia
+=======
+            {media && 
+            <CardMedia
+>>>>>>> 2174ee16f4f360fd7d0eb15791850a95410761de
             component="img"
             height="20%"
             width="50px"
             image={media} 
+<<<<<<< HEAD
 
             alt=""
             />}
         {!isLoading && isAuthenticated && user.nickname === userpost &&  <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
               
 >>>>>>>>> Temporary merge branch 2
+=======
+            alt=" "
+            />
+            }
+
+           
+            
+>>>>>>> 2174ee16f4f360fd7d0eb15791850a95410761de
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                 <Checkbox
