@@ -1,26 +1,20 @@
-import {SearchBar} from '../SearchBar/SearchBar'
+
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import './Nav.css'
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
-import { useEffect } from 'react';
-import { Notificaciones } from '../Notificaciones/Notificaciones';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useAuth0 } from "@auth0/auth0-react";
+
+import {SearchBar} from '../SearchBar/SearchBar'
+import { Notificaciones } from '../Notificaciones/Notificaciones';
+
+import { Avatar, AppBar, Box, Toolbar, IconButton, Typography, Badge, MenuItem, Menu,  } from '@mui/material';
+import { 
+  AccountCircle,
+  Mail as MailIcon,
+  Notifications as NotificationsIcon,
+  MoreVert as MoreIcon
+} from '@mui/icons-material';
 
 const notificaciones=[
   {id:1,
@@ -228,11 +222,7 @@ export const Nav =()=>{
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-
       <Notificaciones open={open}/>
     </Box>
-
-
-  );
-    
+  ); 
 }

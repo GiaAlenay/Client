@@ -10,6 +10,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     //Actions USERS
     case "GET_USERS":
       return {
@@ -29,40 +30,32 @@ const rootReducer = (state = initialState, action) => {
     case "DELETE_USER":
       return {
         ...state,
-        mensajeResultado: action.payload.msg,
-        loading: false,
+        mensajeResultado:action.payload.msg,
+        loading: false
       };
 
-    case "CREATE_USER":
-      return {
+    case 'CREATE_USER':
+      return{
         ...state,
-        mensajeResultado: action.payload.msg,
+        mensajeResultado:action.payload.msg,
         UserLoged: action.payload.user,
-        loading: false,
-      };
-
-    case "GET_USER_LOGED":
-      return {
-        ...state,
-        mensajeResultado: action.payload.msg,
-        UserLoged: action.payload.user,
-        loading: false,
+        loading: false
       };
 
     case "EDIT_USER":
       return {
         ...state,
-        mensajeResultado: action.payload.msg,
-        UserLoged: action.payload.user,
-        loading: false,
+        mensajeResultado:action.payload.msg,
+        UserLoged:action.payload.user,
+        loading: false
       };
 
     //Actions POSTS
     case "GET_POSTS":
       return {
         ...state,
-        Posts: action.payload,
-        loading: false,
+        Posts:action.payload,
+        loading: false
       };
 
     case "CREATE_POST":
