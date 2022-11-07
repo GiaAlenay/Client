@@ -15,6 +15,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
+    const loading = useSelector(state => state.loading)
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
@@ -28,6 +29,10 @@ export const Home = () => {
   const handlerOpen = (value) => {
     setOpen(value);
   };
+
+  if(isLoading){
+    return <div>loading</div>
+  }
 
   return (
     <div className="home">
@@ -46,9 +51,8 @@ export const Home = () => {
             <TuneIcon />
           </button>
         </div>
-        <Feed allPosts={allPosts} />
-        <div>
-          {" "}
+        <Feed allPosts={allPosts} loading={loading} />
+        <div className="publicidadEnElHome">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-rLzCRzGR_Scho_i96QmMPBQaJ2fcbsPclrRGjbFKgjLiY-9GiAhzkTmyfK2X6xlUE2g&usqp=CAU"
             alt="publicidad"

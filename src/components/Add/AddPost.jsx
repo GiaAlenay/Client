@@ -126,20 +126,20 @@ export const AddPost = () => {
 
             <div>
               <select onChange={(e) => handlerSelectCategoria(e)}>
-                <option value="" hidden>
+                <option value="" hidden key={0}>
                   Elije una categoria
                 </option>
                 {allcategorias &&
-                  allcategorias.map((c) => (
-                    <option value={c.name} key={c.name}>
+                  allcategorias.map((c,i) => (
+                    <option value={c.name} key={i+1}>
                       {c.name}
                     </option>
                   ))}
               </select>
               <ul>
                 <li>
-                  {input.categories.map((c) => (
-                    <div>
+                  {input.categories.map((c,i) => (
+                    <div key={i}>
                       {c}
                       <button
                         onClick={() => handlerDeleteCategoria(c)}

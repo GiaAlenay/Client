@@ -1,13 +1,14 @@
 import { Box } from "@mui/material";
 import { Post } from "./Post";
 
-export const Feed =({allPosts})=>{
+export const Feed =({allPosts, loading})=>{
 
     return(
        <Box flex={4} p={{xs:0, md:2}}>
-           {allPosts?.map((e)=>{
+        {loading? <div>loading</div>
+        :allPosts?.map((e)=>{
             return(
-                <div >
+                <div key = {e.id}>
                 <Post
                 user={e.user.usuario}
                 foto={e.user.foto_principal}
@@ -17,7 +18,8 @@ export const Feed =({allPosts})=>{
                 />
                 </div>
             )
-        })}  
+        }) 
+        }
        </Box> 
     );
 }
