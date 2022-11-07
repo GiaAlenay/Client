@@ -69,6 +69,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
+    case "DELETE_POST":
+      return{
+        ...state
+      }
     
     //DEFAULT
     default:

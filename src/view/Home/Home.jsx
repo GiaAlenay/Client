@@ -1,5 +1,5 @@
 import './Home.css'
-import { Stack } from '@mui/material'
+import { Button, Stack } from '@mui/material'
 import { Feed } from '../../components/Feed/Feed'
 import { Filters } from '../../components/Filters/Filters'
 import { Nav } from '../../components/Nav/Nav'
@@ -28,6 +28,8 @@ export const Home = () => {
     }
 
     return (
+        <div>
+        {isAuthenticated &&(
         <div className='home'>
             <Nav />
             <Stack direction="row" spacing={3} justifyContent="space-between">
@@ -38,6 +40,7 @@ export const Home = () => {
 
             <AddPost/>
 
+        </div>)}
         </div>
     )
 }

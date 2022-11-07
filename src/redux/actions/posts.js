@@ -28,3 +28,16 @@ export function createPost(payload){
     console.log(e)
   }
 }
+export function deletePost(id){
+  try{
+    return async function(dispatch){
+      const response = await axios.delete("/posts/"+id)
+      return dispatch({
+        type: "DELETE_POST",
+        payload: response.data
+      })
+    }
+  }catch(e){
+    console.log(e)
+  }
+}
