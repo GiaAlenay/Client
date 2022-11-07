@@ -25,6 +25,10 @@ export const Home = () => {
     }
   }, [isAuthenticated, dispatch]);
 
+  const handlerOpen = (value) => {
+    setOpen(value);
+  };
+
   return (
     <div className="home">
       <Nav />
