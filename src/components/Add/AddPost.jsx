@@ -35,7 +35,7 @@ export const AddPost = () => {
     titulo: "",
     texto: "",
     file: {},
-    categories:[]
+    categories: [],
   });
 
   useEffect(() => {
@@ -59,7 +59,10 @@ export const AddPost = () => {
     e.preventDefault();
     dispatch(
       createPost({
-        ...input,
+        titulo:input.titulo,
+        texto:input.texto,
+        file:input.file,
+        categories:JSON.stringify(input.categories),
         userId: userLoged.id,
       })
     );
@@ -78,7 +81,6 @@ export const AddPost = () => {
       ...input,
       categories: [...input.categories, e.target.value],
     });
-    console.log(input);
   };
   const handlerDeleteCategoria = (e) => {
     setInput({
@@ -127,7 +129,6 @@ export const AddPost = () => {
                 <option value="" hidden>
                   Elije una categoria
                 </option>
-                {console.log(allcategorias)}
                 {allcategorias &&
                   allcategorias.map((c) => (
                     <option value={c.name} key={c.name}>
@@ -135,23 +136,22 @@ export const AddPost = () => {
                     </option>
                   ))}
               </select>
-              { <ul>
-              <li>
-                {input.categories.map((c) => (
-                  <div>
-                    {c}
-                    <button
-                      onClick={() => handlerDeleteCategoria(c)}
-                      type="button"
-                    >
-                      X
-                    </button>
-                  </div>
-                ))}
-              </li>
-            </ul> }
+              <ul>
+                <li>
+                  {input.categories.map((c) => (
+                    <div>
+                      {c}
+                      <button
+                        onClick={() => handlerDeleteCategoria(c)}
+                        type="button"
+                      >
+                        X
+                      </button>
+                    </div>
+                  ))}
+                </li>
+              </ul>
             </div>
-
 
             <TextField
               sx={{ width: "100%" }}

@@ -15,6 +15,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import './Nav.css'
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useEffect } from 'react';
 import { Notificaciones } from '../Notificaciones/Notificaciones';
 import { useState } from 'react';
@@ -104,9 +105,9 @@ export const Nav =()=>{
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* <Link to={`/profile/${userLoged.id}`}>
+      <Link to={`/profile`}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      </Link> */}
+      </Link>
       <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
     </Menu>
   );

@@ -5,6 +5,7 @@ const initialState = {
   User: {},
   mensajeResultado: "",
   UserLoged: {},
+  loading: false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         Users: action.payload,
+        loading: false
       };
 
     case "GET_USER_BY_ID":
@@ -21,12 +23,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         mensajeResultado: action.payload.msg,
         User: action.payload.user,
+        loading: false,
       };
 
     case "DELETE_USER":
       return {
         ...state,
         mensajeResultado: action.payload.msg,
+        loading: false,
       };
 
     case "CREATE_USER":
@@ -34,6 +38,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         mensajeResultado: action.payload.msg,
         UserLoged: action.payload.user,
+        loading: false,
       };
 
     case "GET_USER_LOGED":
@@ -41,6 +46,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         mensajeResultado: action.payload.msg,
         UserLoged: action.payload.user,
+        loading: false,
       };
 
     case "EDIT_USER":
@@ -48,6 +54,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         mensajeResultado: action.payload.msg,
         UserLoged: action.payload.user,
+        loading: false,
       };
 
     //Actions POSTS
@@ -55,11 +62,20 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         Posts: action.payload,
+        loading: false,
       };
 
     case "CREATE_POST":
       return {
         ...state,
+        loading: false
+      };
+
+    //EXTRA
+    case "LOADING":
+      return{
+        ...state,
+        loading: true
       };
     //Actions CATEGORIES
     case "GET_CATEGORIES":

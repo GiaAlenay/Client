@@ -6,7 +6,7 @@ import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 import EmailIcon from '@mui/icons-material/Email';
 import { Esqueleto } from '../Skeleton/Skeleton'
 export const DescUsuario=()=>{
-    const User=useSelector(state=>state.User)
+    const User=useSelector(state=>state.UserLoged)
     return(
         <div className='descripcionUsuario'>
             {Object.entries(User).length === 0?(
@@ -15,16 +15,16 @@ export const DescUsuario=()=>{
             </div>):(
             <div className='descripCont'>
                 <div className='descContLeft'>
-                    {User.user.descripcion?(<div><AccessibilityIcon/> {User.user.descripcion}</div>):(<div><AccessibilityIcon/> Descripcion</div>)}
+                    {User.descripcion?(<div><AccessibilityIcon/> {User.descripcion}</div>):(<div><AccessibilityIcon/> Descripcion</div>)}
 
                 </div>
                 <div className='descContRigth'>
                     <div className='desRi'>
                         
-                        {User.user.usuario?(<div className='desc'><PersonIcon/> {User.user.usuario}</div>):(<div className='desc'><PersonIcon/> Usuario</div>)}
-                        {User.user.email ?(<div className='desc'><EmailIcon/> {User.user.email}</div>):(<div className='desc'><EmailIcon/> Email</div>)}
-                        {User.user.nombre ?(<div className='desc'><PermContactCalendarIcon/> {User.user.nombre}</div>):(<div className='desc'><PermContactCalendarIcon/> Nombre</div>)}
-                        {User.user.apellido ?(<div className='desc'> <PermContactCalendarIcon/> {User.user.apellido}</div>):(<div className='desc'><PermContactCalendarIcon/> Apellido</div>)}
+                        {User.usuario?(<div className='desc'><PersonIcon/> {User.usuario}</div>):(<div className='desc'><PersonIcon/> Usuario</div>)}
+                        {User.email ?(<div className='desc'><EmailIcon/> {User.email}</div>):(<div className='desc'><EmailIcon/> Email</div>)}
+                        {User.nombre ?(<div className='desc'><PermContactCalendarIcon/> {User.nombre}</div>):(<div className='desc'><PermContactCalendarIcon/> Nombre</div>)}
+                        {User.apellido ?(<div className='desc'> <PermContactCalendarIcon/> {User.apellido}</div>):(<div className='desc'><PermContactCalendarIcon/> Apellido</div>)}
                     </div>
                 </div>
             </div>
