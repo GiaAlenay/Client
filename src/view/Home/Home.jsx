@@ -4,7 +4,7 @@ import { Feed } from '../../components/Feed/Feed'
 import { Filters } from '../../components/Filters/Filters'
 import { Nav } from '../../components/Nav/Nav'
 import { AddPost } from '../../components/Add/AddPost'
-import { useEffect } from 'react'
+import { useEffect , useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPosts } from '../../redux/actions/posts'
 import { createUser } from '../../redux/actions/users'
@@ -15,7 +15,6 @@ import TuneIcon from "@mui/icons-material/Tune";
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
-    const loading = useSelector(state => state.loading)
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
@@ -30,10 +29,6 @@ export const Home = () => {
     setOpen(value);
   };
 
-  if(isLoading){
-    return <div>loading</div>
-  }
-
   return (
     <div className="home">
       <Nav />
@@ -41,19 +36,14 @@ export const Home = () => {
         <div>
         {isAuthenticated &&(
         <div className='home'>
-            <Nav />
-            <Stack direction="row" spacing={3} justifyContent="space-between">
+           
                 <Filters/>
-                <Feed allPosts={allPosts}/>
-
-            </Stack>
-
-            <AddPost/>
 
         </div>)}
         </div>
-        <Feed allPosts={allPosts} loading={loading} />
-        <div className="publicidadEnElHome">
+        <Feed allPosts={allPosts} />
+        <div>
+          {" "}
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-rLzCRzGR_Scho_i96QmMPBQaJ2fcbsPclrRGjbFKgjLiY-9GiAhzkTmyfK2X6xlUE2g&usqp=CAU"
             alt="publicidad"
