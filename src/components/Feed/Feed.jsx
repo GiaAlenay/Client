@@ -10,7 +10,7 @@ export const Feed =({allPosts, loading})=>{
             return(
                 <div key = {e.id}>
                 <Post
-                user={e.user.usuario}
+                userpost={e.user.usuario}
                 foto={e.user.foto_principal}
                 titulo={e.titulo}
                 texto={e.texto}

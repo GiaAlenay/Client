@@ -1,9 +1,11 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox,Button} from "@mui/material";
 import parse from "html-react-parser";
 import {deletePost} from "../../redux/actions/posts"
-
-export const Post=({titulo,user,texto,media,foto ,id})=>{
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+export const Post=({titulo,userpost,texto,media,foto ,id})=>{
+    const {user,isAuthenticated,isLoading }= useAuth0()
     const dispatch= useDispatch()
 
     function handleDeletePost(e){
@@ -38,7 +40,7 @@ export const Post=({titulo,user,texto,media,foto ,id})=>{
                 </IconButton>
             }
 
-            title= {user}
+            title= {userpost}
             />
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
@@ -61,6 +63,7 @@ export const Post=({titulo,user,texto,media,foto ,id})=>{
             />
             }
 
+        {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
            
             
             <CardActions disableSpacing>
