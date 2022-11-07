@@ -34,17 +34,18 @@ export const Home = () => {
       <Nav />
       <div className="homeDividir">
         <div>
-          <div className={`${open ? "mostrarfiltros" : "nomostrarfiltros"}`}>
-            <Filtros open={open} function={handlerOpen} />
-          </div>
-          <button
-            className="butonFiltrosHome"
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            <TuneIcon />
-          </button>
+        {isAuthenticated &&(
+        <div className='home'>
+            <Nav />
+            <Stack direction="row" spacing={3} justifyContent="space-between">
+                <Filters/>
+                <Feed allPosts={allPosts}/>
+
+            </Stack>
+
+            <AddPost/>
+
+        </div>)}
         </div>
         <Feed allPosts={allPosts} />
         <div>
