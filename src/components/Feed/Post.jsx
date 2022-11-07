@@ -14,20 +14,7 @@ function handleDeletePost(e){
 if(isLoading){
     return <div> Loading...</div>
 }
- function videoYoutube(e){
-    
-    let cosita= "";
-    let nuevo  = cosita + e;
-    console.log(nuevo)
-    return <iframe width="560" 
-    height="315" 
-    src="https://youtu.be/4dOT1BoJFko"
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-    </iframe>
-}
+
 
     return(
         <div>
@@ -55,20 +42,11 @@ if(isLoading){
             </CardContent>
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                {texto }
-                <iframe width="560" 
-                height="315" 
-                src="https://www.youtube.com/embed/4dOT1BoJFko"
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-                </iframe>
+                {texto}
+                
                    
                 </Typography>
-{/* sss https://www.youtube.com/embed/fba3wi8ipLU */}
-{/* ss https://youtu.be/fba3wi8ipLU */}
-        {/* // https://youtu.be/4dOT1BoJFko  https://www.youtube.com/embed/ss05HQ-kG44     "https://www.youtube.com/embed/fba3wi8ipLU" */}
+
             </CardContent>
             
             {media?.slice(-3) === "pdf"? 
