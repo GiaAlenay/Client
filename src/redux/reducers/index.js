@@ -72,6 +72,7 @@ const rootReducer = (state = initialState, action) => {
       // const filter = allposteos.filter(el => el.id !== action.payload.buscarid.id)
       return{
         ...state,
+        
       }
     //EXTRA
     case "LOADING":
