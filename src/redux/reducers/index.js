@@ -4,7 +4,10 @@ const initialState = {
   User:{},
   mensajeResultado:'',
   UserLoged:{},
-  loading: false
+  loading: false,
+  //************ */
+  userEliminado:[],
+
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -69,6 +72,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
+
+    //User Eliminado
+      case "ELIMINAR_USER":
+        return {
+          ...state,
+          userEliminado:action.payload,    
+        }
     
     //DEFAULT
     default:
