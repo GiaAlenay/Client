@@ -30,11 +30,14 @@ export const Home = () => {
     return (
         <div className='home'>
             <Nav />
-            <Stack direction="row" spacing={2} justifyContent="space-between">
+            <Stack direction="row" spacing={3} justifyContent="space-between">
                 <Filters/>
                 <Feed allPosts={allPosts}/>
+
             </Stack>
+
             <AddPost/>
+
         </div>
     )
 }
