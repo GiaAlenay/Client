@@ -57,10 +57,11 @@ if(isLoading){
             height="20%"
             width="50px"
             image={media} 
+
             alt=""
             />}
         {!isLoading && isAuthenticated && user.nickname === userpost &&  <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
-              
+             
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                 <Checkbox
