@@ -10,7 +10,7 @@ export const infoUs = [
     {
         id:"2",
         nombre:"Luis Condori",
-        img:"https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg",
+        img:"https://discord.com/channels/1004174458438828244/1004174459260915722/1030597826662649918",
         cargo:"Full-Stack Developer",
         git:"https://github.com/Luis-ase",
         link:"https://www.linkedin.com/in/michael-condori-2a0394251/"
