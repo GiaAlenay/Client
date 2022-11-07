@@ -10,7 +10,7 @@ export const Post=({titulo,user,texto,media,foto})=>{
         var urlRegex = /(https?:\/\/[^\s]+)/g;
         var youtubeRegex = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?/;
         
-        return text.replace(urlRegex, function(url) {
+        return text?.replace(urlRegex, function(url) {
             if(url.match(youtubeRegex)){
                 return '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + url.slice(-11) + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
             }
@@ -43,7 +43,7 @@ export const Post=({titulo,user,texto,media,foto})=>{
             </CardContent>
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    {parse(urlify(texto))}
+                    {texto && parse(urlify(texto))}
                 </Typography>
             </CardContent>
             

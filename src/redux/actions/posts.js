@@ -1,3 +1,4 @@
+import { ConstructionOutlined } from "@mui/icons-material";
 import axios from "axios"
 import { loading } from "./index.js";
 
@@ -19,12 +20,13 @@ export function createPost(payload){
       dispatch(loading())
       const response = await axios.post("/posts",payload,{
         headers: {
-          "Content-Type": "multipart/form-data",
+           "Content-Type": "multipart/form-data",
         },
       })
-      return dispatch({ type:"CREATE_POST", payload: response.data.post })    
+      return dispatch({ type:"CREATE_POST", payload: response.data })    
     }
   } catch (e) {
     console.log(e)
   }
 }
+
