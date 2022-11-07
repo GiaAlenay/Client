@@ -1,24 +1,20 @@
-import {SearchBar} from '../SearchBar/SearchBar'
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import './Nav.css'
-import { Link , useNavigate, useParams} from "react-router-dom"
-import { useEffect } from 'react';
-import { Notificaciones } from '../Notificaciones/Notificaciones';
-import { useState } from 'react';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { useAuth0 } from "@auth0/auth0-react";
+
+import {SearchBar} from '../SearchBar/SearchBar'
+import { Notificaciones } from '../Notificaciones/Notificaciones';
+
+import { Avatar, AppBar, Box, Toolbar, IconButton, Typography, Badge, MenuItem, Menu,  } from '@mui/material';
+import { 
+  AccountCircle,
+  Mail as MailIcon,
+  Notifications as NotificationsIcon,
+  MoreVert as MoreIcon
+} from '@mui/icons-material';
 
 const notificaciones=[
   {id:1,
@@ -44,22 +40,22 @@ const notificaciones=[
   visto:false}
 ]
 
-export const Nav =(props)=>{
-  const User=useSelector(state=>state.User)
+export const Nav =()=>{
+  const {logout}= useAuth0()
   const history=useNavigate();
   const [notCount, SetNotCount]=React.useState(0)
-    const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const[open,setOpen]=useState(false)
-  const { id } = useParams();
+  const userLoged = useSelector(state => state.UserLoged);
 
-  useEffect(()=>{
-    notificaciones.map((n)=>{
-      if(n.visto===false){
-        SetNotCount(notCount+1)
-      }
-    })
-  },[])
+  // useEffect(()=>{
+  //   notificaciones.map((n)=>{
+  //     if(n.visto===false){
+  //       SetNotCount(notCount+1)
+  //     }
+  //   })
+  // },[])
 
 
   const isMenuOpen = Boolean(anchorEl);
@@ -103,12 +99,10 @@ export const Nav =(props)=>{
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to={`/profile/${id}`}>
+      <Link to={`/profile`}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
-      <Link to={`/`}>
-      <MenuItem onClick={handleMenuClose}>Cerrar Sesion</MenuItem>
-      </Link>
+      <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
     </Menu>
   );
 
@@ -175,43 +169,43 @@ export const Nav =(props)=>{
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <button className='SYN' onClick={(e)=>{history(`/home/${User.user.id}`);}} >SYT</button>
+            <button className='SYN' onClick={(e)=>{history(`/home`);}} >SYT</button>
 
           </Typography>
             <SearchBar/>
           
-
+          
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            
-            <IconButton
-              onClick={handleNotification}
-              onBlur={()=>{setTimeout(()=>{setOpen(false)},100)}}
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={notCount} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              {Object.entries(User).length === 0?(
-                <Avatar alt={'...'}src={'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'}/>
-              ):(
-                <Avatar alt={`${User.user.usuario}`} src={User.user.foto_principal} />
-              )}
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               
-            </IconButton>
-          </Box>
+              <IconButton
+                onClick={handleNotification}
+                onBlur={()=>{setTimeout(()=>{setOpen(false)},100)}}
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={notCount} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                 {Object.entries(userLoged).length === 0?(
+                  <Avatar alt={'...'}src={'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'}/>
+                ):(
+                  <Avatar alt={`${userLoged.usuario}`} src={userLoged.foto_principal} />
+                )}
+                
+              </IconButton>
+            </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -228,11 +222,7 @@ export const Nav =(props)=>{
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-
       <Notificaciones open={open}/>
     </Box>
-
-
-  );
-    
+  ); 
 }

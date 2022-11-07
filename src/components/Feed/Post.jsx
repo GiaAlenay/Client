@@ -1,7 +1,7 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
 
-export const Post=({titulo,user,texto,media,foto,nombre,apellido, usuario})=>{
+export const Post=({titulo,user,texto,media,foto})=>{
     return(
         <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
             <CardHeader
@@ -16,8 +16,7 @@ export const Post=({titulo,user,texto,media,foto,nombre,apellido, usuario})=>{
                 </IconButton>
             }
 
-            title= {nombre && apellido ? nombre + " " + apellido: "usuario"}
-            // title={usuario}
+            title= {user}
             />
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
@@ -27,6 +26,14 @@ export const Post=({titulo,user,texto,media,foto,nombre,apellido, usuario})=>{
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                 {texto}
+                {/* <iframe width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/fba3wi8ipLU" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe> */}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                 <a href={media}>arhivo subido</a>
@@ -40,7 +47,7 @@ export const Post=({titulo,user,texto,media,foto,nombre,apellido, usuario})=>{
             image={media} 
             alt=" "
             />
-           
+ 
             
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">

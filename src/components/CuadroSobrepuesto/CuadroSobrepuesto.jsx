@@ -6,12 +6,12 @@ export const CuadroSobrepuesto=(props)=>{
     return(
         <div className='CuadroSobrepuesto'>
             
-            <form  className='ChangeProfileForm'>
+            <div  className='ChangeProfileForm'>
             <button type='button' className=' closeBtn' onClick={onClose}>x</button>
                 <span className='EditarPerf'>{props.reason}</span>
                 <hr></hr>
                 {props.child}
-            </form>
+            </div>
         </div>
     )
 }

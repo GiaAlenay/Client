@@ -1,12 +1,51 @@
-import './GoPremium.css'
-export const GoPremium=()=>{
-    return(
-        <div className='GoPremium'>
-            <img className='workingonit' 
-            src={'https://www.pngitem.com/pimgs/m/207-2073884_work-in-progress-computer-hd-png-download.png'}
-             alt='working on it...'/>
+import { Card } from "../../components/Cards/Cards";
+import styles from "./GoPremium.module.css";
 
-             <h1 className='prox'>PROXIMAMENTE..</h1>
+export function GoPremium() {
+
+  return (
+    <>
+      <div
+        className={styles.mainContainer }
+      >
+        <div
+          className={styles.subcontainer}
+        >
+          <span
+            className={styles.Title}
+          >
+            ¿Quieres mejores veneficios?
+          </span>
+          <br/>
+          <span
+            className={ styles.SubTitle }
+          >
+            hazte premium y disfrutalos
+          </span>
         </div>
-    )
+        <div
+          className={styles.containerCard }
+        >
+          <Card
+            plan={"$999.99 / 1 month"}
+            btnPrice={"10"}
+            month={"1"}
+            title={"Monthly"}
+          />
+            <Card
+            plan={"$9999.99 / 6 month"}
+            btnPrice={"20"}
+            month={"6"}
+            title={"Monthly"}
+          />
+            <Card
+            plan={"$99999.99 / 12 month"}
+            btnPrice={"30"}
+            month={"12"}
+            title={"Monthly"}
+          />
+        </div>
+      </div>
+    </>
+  );
 }
