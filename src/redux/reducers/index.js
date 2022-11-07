@@ -5,7 +5,8 @@ const initialState = {
   User: {},
   mensajeResultado: "",
   UserLoged: {},
-  loading: false
+  loading: false,
+  allPosts:[]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -55,7 +56,9 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         Posts:action.payload,
-        loading: false
+        allPosts:action.payload,
+        loading: false,
+        
       };
 
     case "CREATE_POST":
@@ -64,9 +67,15 @@ const rootReducer = (state = initialState, action) => {
         Posts: [action.payload.post, ...state.Posts],
         loading: false
       };
-
+    case "DELETE_POST":
+      // const allposteos = state.allPosts
+      // const filter = allposteos.filter(el => el.id !== action.payload.buscarid.id)
+      return{
+        ...state,
+      }
     //EXTRA
     case "LOADING":
+      
       return{
         ...state,
         loading: true

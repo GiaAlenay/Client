@@ -12,11 +12,15 @@ import {
   IconButton,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import React, { useEffect, useState } from "react";
+import List from '@mui/material/List';
 import SendIcon from "@mui/icons-material/Send";
-import { useDispatch, useSelector } from "react-redux";
-import { createPost } from "../../redux/actions/posts";
+
 import MenuItem from "@mui/material/MenuItem";
+
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { createPost } from "../../redux/actions/posts";
 import { getCategories } from "../../redux/actions/categories";
 
 const StyledModal = styled(Modal)({
@@ -106,7 +110,7 @@ export const AddPost = () => {
         aria-describedby="modal-modal-description"
       >
         <form onSubmit={(e) => handleSubmit(e)}>
-          <Box width={400} height={330} bgcolor="white" p={3} borderRadius={5}>
+          <Box width={400} height={400} bgcolor="white" p={3} borderRadius={5}>
             <Typography variant="h6" color="gray" textAlign="center">
               Create a Post
             </Typography>
@@ -125,21 +129,21 @@ export const AddPost = () => {
             />
 
             <div>
-              <select onChange={(e) => handlerSelectCategoria(e)}>
-                <option value="" hidden key={0}>
+              <Select onChange={(e) => handlerSelectCategoria(e)}>
+                <MenuItem value="" hidden key={0} disabled>
                   Elije una categoria
-                </option>
+                </MenuItem>
                 {allcategorias &&
                   allcategorias.map((c,i) => (
-                    <option value={c.name} key={i+1}>
+                    <MenuItem value={c.name} key={i+1}>
                       {c.name}
-                    </option>
+                    </MenuItem>
                   ))}
-              </select>
+              </Select>
               <ul>
-                <li>
+                <List>
                   {input.categories.map((c,i) => (
-                    <div key={i}>
+                    <Box component="span" sx={{ p: 0.5, border: '1px solid black' }} key={i}>
                       {c}
                       <button
                         onClick={() => handlerDeleteCategoria(c)}
@@ -147,9 +151,9 @@ export const AddPost = () => {
                       >
                         X
                       </button>
-                    </div>
+                    </Box>
                   ))}
-                </li>
+                </List>
               </ul>
             </div>
 
