@@ -12,9 +12,10 @@ export const HomeAdmin = () =>{
         <div className={styles.homeContainer}>
             <h1 className={styles.h1Adm}>Bienvenido Administrador</h1>
             <h3 className={styles.h3Adm}>Todos los Usuarios Activos</h3>
-            <div>
-            <UsuariosAll/>  
+            <div className={styles.suspendido}>
+                <a href="/UserInactivo">Usuarios Suspendidos</a>
             </div>
+            <UsuariosAll/>  
 
         </div>
     )

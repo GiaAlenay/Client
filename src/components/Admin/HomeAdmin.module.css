@@ -15,7 +15,7 @@
     color: #382c4b;
     /* text-shadow:  2px 2px 15px #000; */
     /* margin-top: 50px; */
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     margin-left: 300px;
     letter-spacing: 0.05em;
 }
@@ -25,7 +25,12 @@
     color: #382c4b;
     /* text-shadow:  2px 2px 15px #000; */
     /* margin-top: 50px; */
-    margin-bottom: 80px;
+    margin-bottom: 20px;
     margin-left:450px;
+
+}
+.suspendido{
+    margin-left:550px;
+    margin-bottom: 20px;
 
 }

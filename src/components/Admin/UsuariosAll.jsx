@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers,eliminarUser } from "../../redux/actions/users";
@@ -60,14 +60,15 @@ export default function UsuariosAll (){
                                 <TableCell>{user.usuario}</TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell align="right">
-                                    <button 
-                                    onClick={()=>suspenderUsuario(user.id)}
-                                    >Suspender</button>
+                                    <Button size="large"
+                                    onClick={()=>suspenderUsuario(user.id)}>
+                                        Suspender           
+                                    </Button>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <button
+                                    <Button
                                     onClick={()=>borrarUsuario(user.id)}
-                                    >Eliminar</button>
+                                    >Eliminar</Button>
                                 </TableCell>
 
                             </TableRow>
