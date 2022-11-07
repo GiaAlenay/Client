@@ -34,7 +34,6 @@ export function deletePost(id){
     return async function(dispatch){
       dispatch(loading())
       var response = await axios.delete(`/posts/${id}`);
-      console.log(response)
       return dispatch({ type: "DELETE_POST", payload: response.data })      
     }
   } catch (e) {
