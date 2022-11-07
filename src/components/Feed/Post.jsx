@@ -1,7 +1,25 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
+import parse from "html-react-parser";
+
 
 export const Post=({titulo,user,texto,media,foto})=>{
+
+
+    function urlify(text) {
+        var urlRegex = /(https?:\/\/[^\s]+)/g;
+        var youtubeRegex = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?/;
+        
+        return text.replace(urlRegex, function(url) {
+            if(url.match(youtubeRegex)){
+                return '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + url.slice(-11) + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            }
+            return '<a href="' + url + '">' + url + '</a>';
+        })
+        // or alternatively
+        // return text.replace(urlRegex, '<a href="$1">$1</a>')
+    }
+
     return(
         <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
             <CardHeader
@@ -25,21 +43,11 @@ export const Post=({titulo,user,texto,media,foto})=>{
             </CardContent>
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                {texto}
-                {/* <iframe width="560" 
-                height="315" 
-                src="https://www.youtube.com/embed/fba3wi8ipLU" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-                </iframe> */}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                <a href={media}>arhivo subido</a>
+                    {parse(urlify(texto))}
                 </Typography>
             </CardContent>
             
+            {media && 
             <CardMedia
             component="img"
             height="20%"
@@ -47,6 +55,8 @@ export const Post=({titulo,user,texto,media,foto})=>{
             image={media} 
             alt=" "
             />
+            }
+
            
             
             <CardActions disableSpacing>

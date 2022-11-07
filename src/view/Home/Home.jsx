@@ -14,6 +14,7 @@ export const Home = () => {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
     const allPosts = useSelector(state => state.Posts)
+    const loading = useSelector(state => state.loading)
     const dispatch = useDispatch()
     
     useEffect(() => {
