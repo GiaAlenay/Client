@@ -79,6 +79,10 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           userEliminado:action.payload,    
         }
+    case "DELETE_POST":
+      return{
+        ...state
+      }
     
     //DEFAULT
     default:

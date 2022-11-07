@@ -9,11 +9,12 @@ export const Feed =({allPosts})=>{
             return(
                 <div >
                 <Post
-                user={e.user.usuario}
+                userpost={e.user.usuario}
                 foto={e.user.foto_principal}
                 titulo={e.titulo}
                 texto={e.texto}
-                media={e.media}               
+                media={e.media}
+                id={e.id}         
                 />
                 </div>
             )

@@ -1,9 +1,26 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox, Button} from "@mui/material";
+import { useDispatch } from "react-redux";
+import {deletePost} from '../../redux/actions/posts'
+import { useAuth0 } from "@auth0/auth0-react";
 
-export const Post=({titulo,user,texto,media,foto})=>{
+export const Post=({titulo,userpost,texto,media,foto,id})=>{
+    const { user, isAuthenticated, isLoading } = useAuth0();
+const dispatch= useDispatch()
+
+function handleDeletePost(e){
+    dispatch(deletePost(e))
+}
+if(isLoading){
+    return <div> Loading...</div>
+}
+
+
     return(
-        <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
+        <div>
+            {isAuthenticated &&(
+                <div>
+                <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
             <CardHeader
             avatar ={
                 <Avatar sx={{bgcolor: "blue"}}>
@@ -16,7 +33,7 @@ export const Post=({titulo,user,texto,media,foto})=>{
                 </IconButton>
             }
 
-            title= {user}
+            title= {userpost}
             />
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
@@ -26,37 +43,36 @@ export const Post=({titulo,user,texto,media,foto})=>{
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                 {texto}
-                {/* <iframe width="560" 
-                height="315" 
-                src="https://www.youtube.com/embed/fba3wi8ipLU" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-                </iframe> */}
+                
+                   
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                <a href={media}>arhivo subido</a>
-                </Typography>
+
             </CardContent>
             
-            <CardMedia
+            {media?.slice(-3) === "pdf"? 
+                <Typography variant="body2" color="text.secondary">
+                <a href={media} target="_blank">arhivo subido</a>
+                </Typography> :<CardMedia
             component="img"
             height="20%"
             width="50px"
             image={media} 
-            alt=" "
-            />
- 
-            
+
+            alt=""
+            />}
+        {!isLoading && isAuthenticated && user.nickname === userpost &&  <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
+             
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                 <Checkbox
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />
                 </IconButton>
-
+            
             </CardActions>
         </Card>
+            </div>)}
+        </div>
+        
     );
 }
