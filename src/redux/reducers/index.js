@@ -7,9 +7,10 @@ const initialState = {
   mensajeResultado: "",
   UserLoged: {},
   loading: false,
-  allPosts:[]
-
+  allPosts:[],
+  userInactivo:[],
 };
+
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -51,8 +52,8 @@ const rootReducer = (state = initialState, action) => {
         mensajeResultado:action.payload.msg,
         UserLoged:action.payload.user,
         loading: false
-      };
 
+      };   
     //Actions POSTS
     case "GET_POSTS":
       return {
@@ -62,13 +63,13 @@ const rootReducer = (state = initialState, action) => {
         loading: false,
         
       };
-
     case "CREATE_POST":
       return {
         ...state,
         Posts: [action.payload.post, ...state.Posts],
         loading: false
       };
+
     case "DELETE_POST":
       // const allposteos = state.allPosts
       // const filter = allposteos.filter(el => el.id !== action.payload.buscarid.id)
@@ -76,6 +77,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         
       }
+
     //EXTRA
     case "LOADING":
       
@@ -88,6 +90,13 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           userEliminado:action.payload,    
+        };
+
+      case "GET_INACTIVE_USER":
+        return{
+          ...state,
+          usuarioInactivo: action.payload,
+
         }
     //Actions CATEGORIES
     case "GET_CATEGORIES":
@@ -109,7 +118,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         Posts: [...categoriesFilter],
       };
-
 
     //DEFAULT
     default:
