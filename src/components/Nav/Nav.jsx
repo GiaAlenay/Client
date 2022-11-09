@@ -104,7 +104,7 @@ export const Nav =()=>{
       </Link>
       <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
       {isAuthenticated && userLoged.admin === true ? <Link to={`/home/admin`}>
-        <MenuItem onClick={handleMenuClose}> Administrador </MenuItem>
+        <MenuItem onClick={handleMenuClose}>Administrador</MenuItem>
       </Link>: <></>}
       
     </Menu>

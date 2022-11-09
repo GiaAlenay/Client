@@ -2,3 +2,31 @@
     width: 100%;
   
 }
+.homeDividir{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+.butonFiltrosHome{
+    width: 70px;
+    height: 70px;
+}
+.mostrarfiltros{
+    width: 100%;
+    height: 100%;    
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;   
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgba(0,0,0, 0.6);
+    overflow-x: hidden;  
+
+}
+.nomostrarfiltros{
+    width: 0%;
+}
+
+.publicidadEnElHome{
+    padding: 30px;
+}
