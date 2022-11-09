@@ -35,7 +35,7 @@ export const AddPost = () => {
   const userLoged = useSelector((state) => state.UserLoged);
   const allcategorias = useSelector((state) => state.Categories);
   const dispatch = useDispatch();
-
+  console.log("SSSSSSSSS",userLoged)
 
   const [input, setInput] = useState({
     titulo: "",
