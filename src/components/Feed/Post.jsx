@@ -49,8 +49,12 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
         // return text.replace(urlRegex, '<a href="$1">$1</a>')
     }
 
+
     return(
-        <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
+        <div>
+            {isAuthenticated &&(
+                <div>
+                <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
             <CardHeader
             avatar ={
                 <Avatar sx={{bgcolor: "blue"}}>
@@ -77,7 +81,7 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
                     {texto && parse(urlify(texto))}
                 </Typography>
             </CardContent>
-            
+        
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                 {media && verificarMedia(media)}
@@ -94,8 +98,11 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />
                 </IconButton>
-
+            
             </CardActions>
         </Card>
+            </div>)}
+        </div>
+        
     );
 }

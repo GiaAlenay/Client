@@ -36,3 +36,21 @@ export const editUser=(form)=>dispatch=>{
     .then(d=> dispatch({ type:'EDIT_USER', payload: d.data }))
     .catch(e=> console.log(e))
 }
+// Usuarios Suspendidos o Eliminados
+
+export const eliminarUser = (id, paranoid)=>{
+    return async function(dispatch){
+        try{
+            const eliminar = await axios.delete(`/users/${id}`,
+            {
+                data:{ paranoid:paranoid},
+            });
+            return dispatch({
+                type:"ELIMINAR_USER",
+                payload:eliminar.data
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+}

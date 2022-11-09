@@ -7,6 +7,7 @@ import {GoPremium} from './view/GoPremium/GoPremium'
 import {TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
 import PageNotFound from "./view/PageNotFound/PageNotFound.jsx"
+import { HomeAdmin } from './components/Admin/HomeAdmin';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
         <Route path ='/search' element={<SearchPag/>}/>
         <Route path="*" element={<PageNotFound/>} />
+
+        {/* Ruta del adminisrador */}
+
+        <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
       </Routes>
     </div>
   );

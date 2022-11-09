@@ -29,11 +29,13 @@ const StyledModal = styled(Modal)({
   justifyContent: "center",
 });
 
+
 export const AddPost = () => {
   const [open, setOpen] = useState(false);
   const userLoged = useSelector((state) => state.UserLoged);
   const allcategorias = useSelector((state) => state.Categories);
   const dispatch = useDispatch();
+
 
   const [input, setInput] = useState({
     titulo: "",
