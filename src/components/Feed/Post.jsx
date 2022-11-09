@@ -85,7 +85,6 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
                 </Typography>
             </CardContent>
                  <br/>
-
         {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
            
             
