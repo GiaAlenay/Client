@@ -7,6 +7,8 @@ const initialState = {
   loading: false,
   //************ */
   userEliminado:[],
+  userInactivo:[],
+  userHabilitado:[],
 
 };
 
@@ -78,7 +80,20 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           userEliminado:action.payload,    
+        };
+
+      case "GET_INACTIVE_USER":
+        return{
+          ...state,
+          usuarioInactivo: action.payload,
+
         }
+      
+      // case "HABILITAR_USER":
+      //   return {
+      //     ...state,
+      //     userEliminado:action.payload
+      //   }
     
     //DEFAULT
     default:

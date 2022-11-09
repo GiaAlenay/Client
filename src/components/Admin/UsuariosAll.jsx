@@ -2,10 +2,14 @@ import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers,eliminarUser } from "../../redux/actions/users";
+import styles from "./UsuariosAll.module.css";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function UsuariosAll (){
     const dispatch = useDispatch();
     const usuarios = useSelector((state)=> state.Users)
+    const navigate = useNavigate();
 
     useEffect (()=>{
         dispatch (getUsers());
@@ -16,7 +20,17 @@ export default function UsuariosAll (){
         console.log("AGARRO SUSPENDIDO", id, paranoid)
 
         dispatch(eliminarUser(id,paranoid));
-        alert("Usuario Suspendido")
+        // alert("Usuario Suspendido")
+
+       Swal.fire({
+            title: "Usuario Suspendido Correctamente",
+            color: "#382c4b",
+            icon: "success",
+            confirmButtonColor: "#382c4b",
+            confirmButtonText: "OK",
+            background: "#e8e8e8",
+        })
+        navigate("/home/admin");
         dispatch(getUsers());
     }
 
@@ -25,8 +39,17 @@ export default function UsuariosAll (){
         console.log("AGARRO ELIMINADO", id, paranoid)
 
         dispatch(eliminarUser(id,paranoid));
-        alert("Usuario Eliminado")
+        //alert("Usuario Eliminado")
 
+        
+       Swal.fire({
+        title: "Usuario Eliminado Correctamente",
+        color: "#382c4b",
+        icon: "success",
+        confirmButtonColor: "#382c4b",
+        confirmButtonText: "OK",
+        background: "#e8e8e8",
+    })
         dispatch(getUsers());
 
     }
@@ -60,15 +83,19 @@ export default function UsuariosAll (){
                                 <TableCell>{user.usuario}</TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell align="right">
-                                    <Button size="large"
-                                    onClick={()=>suspenderUsuario(user.id)}>
+                                    <button size="large"
+                                    onClick={()=>suspenderUsuario(user.id)}
+                                    className={styles.buttonUsuario}>
                                         Suspender           
-                                    </Button>
+                                    </button>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Button
+                                    <button
                                     onClick={()=>borrarUsuario(user.id)}
-                                    >Eliminar</Button>
+                                    className={styles.buttonUsuario}
+                                    >
+                                    Eliminar
+                                    </button>
                                 </TableCell>
 
                             </TableRow>
