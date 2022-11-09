@@ -6,7 +6,7 @@ import UsuariosAll from "./UsuariosAll";
 
 
 export const HomeAdmin = () =>{
-    const dispatch = useDispatch();
+    
 
     return (
         <div className={styles.homeContainer}>

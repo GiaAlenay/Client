@@ -41,8 +41,8 @@ export default function UsuariosAll (){
                     <TableCell >#</TableCell>
                     <TableCell >Nombre</TableCell>
                     <TableCell >Email</TableCell>
-                    <TableCell align="right">Suspender</TableCell>
-                    <TableCell align="right">Eliminar</TableCell>
+                    <TableCell align="right"> Suspender </TableCell>
+                    <TableCell align="right"> Eliminar </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
