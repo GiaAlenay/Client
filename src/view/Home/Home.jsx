@@ -1,3 +1,5 @@
+
+
 import "./Home.css";
 import { Stack } from "@mui/material";
 import { Feed } from "../../components/Feed/Feed";
@@ -8,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/actions/posts";
 import { createUser } from "../../redux/actions/users";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -30,9 +33,11 @@ export const Home = () => {
     setOpen(value);
   };
 
+
   if(isLoading){
     return <div>loading</div>
   }
+
 
   return (
     <div className="home">

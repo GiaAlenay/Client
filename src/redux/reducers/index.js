@@ -1,12 +1,14 @@
 const initialState = {
   Users: [],
   Posts: [],
+  userEliminado:[],
   Categories: [],
   User: {},
   mensajeResultado: "",
   UserLoged: {},
   loading: false,
   allPosts:[]
+
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -81,6 +83,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
+    //User Eliminado
+      case "ELIMINAR_USER":
+        return {
+          ...state,
+          userEliminado:action.payload,    
+        }
     //Actions CATEGORIES
     case "GET_CATEGORIES":
       return {
@@ -101,6 +109,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         Posts: [...categoriesFilter],
       };
+
 
     //DEFAULT
     default:

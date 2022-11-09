@@ -15,7 +15,7 @@ export const Feed =({allPosts, loading})=>{
                 titulo={e.titulo}
                 texto={e.texto}
                 media={e.media}
-                id={e.id}              
+                id={e.id}         
                 />
                 </div>
             )
