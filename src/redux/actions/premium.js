@@ -8,3 +8,12 @@ export async function getMercadoPago(email, btnPrice, month) {
       console.log(error);
     }
   }
+
+export async function getMercadoPagoPayment(){
+  try{
+    const payment = await axios.get(`${axios.defaults.baseURL}/premium/payment`);
+    return {url:payment.data.init_point}
+  }catch(error){
+    console.log(error)
+  }
+}
