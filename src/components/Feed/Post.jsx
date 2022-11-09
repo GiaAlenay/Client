@@ -7,15 +7,18 @@ import { useDispatch } from "react-redux";
 export const Post=({titulo,userpost,texto,media,foto ,id})=>{
     const {user,isAuthenticated,isLoading }= useAuth0()
     const dispatch= useDispatch()
-
+    
+    
     function handleDeletePost(e){
         dispatch(deletePost(e))
     }
     function sumarMegustas(e){
-
+        
         console.log("sumar")
     }
-
+    
+    
+    
     function verificarMedia(e){
         if(e === null){return (<> </>)}
         else{
@@ -47,6 +50,9 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
         })
         // or alternatively
         // return text.replace(urlRegex, '<a href="$1">$1</a>')
+    }
+    if(isLoading){
+        return (<>loading</>)
     }
 
 
