@@ -8,7 +8,7 @@ import {TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
 import PageNotFound from "./view/PageNotFound/PageNotFound.jsx"
 import { HomeAdmin } from './components/Admin/HomeAdmin';
-
+import {Email} from "./components/Email/Email"
 function App() {
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
         <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
         <Route path ='/search' element={<SearchPag/>}/>
         <Route path="*" element={<PageNotFound/>} />
-
+        <Route path="/reports" element={<Email/>} />
         {/* Ruta del adminisrador */}
 
         <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
