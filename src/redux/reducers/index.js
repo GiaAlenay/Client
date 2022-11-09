@@ -49,8 +49,7 @@ const rootReducer = (state = initialState, action) => {
         mensajeResultado:action.payload.msg,
         UserLoged:action.payload.user,
         loading: false
-      };
-    
+      };   
     //Actions POSTS
     case "GET_POSTS":
       return{
@@ -58,13 +57,11 @@ const rootReducer = (state = initialState, action) => {
         Posts:action.payload,
         loading: false
       };
-
     case "CREATE_POST":
       return{
         ...state,
         loading: false
       };
-
     //EXTRA
     case "LOADING":
       return{
