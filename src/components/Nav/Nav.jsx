@@ -98,10 +98,10 @@ export const Nav =()=>{
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-    >
-      <Link to={`/profile`}>
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      </Link>
+    > {userLoged.usuario?<Link to={`/profile`}>
+    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+  </Link>: <></> }
+      
       <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
       {isAuthenticated && userLoged.admin === true ? <Link to={`/home/admin`}>
         <MenuItem onClick={handleMenuClose}>Administrador</MenuItem>
