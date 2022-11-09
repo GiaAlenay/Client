@@ -51,7 +51,7 @@ export const AddPost =() =>{
             titulo: "",
             texto:"",
             file:{},
-            categories :"JAVASCRIPT"
+            categories :"JAVASCRIPT",
         })
     }
     return (

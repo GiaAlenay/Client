@@ -5,11 +5,8 @@ const initialState = {
   mensajeResultado:'',
   UserLoged:{},
   loading: false,
-  //************ */
   userEliminado:[],
   userInactivo:[],
-  userHabilitado:[],
-
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -88,13 +85,10 @@ const rootReducer = (state = initialState, action) => {
           usuarioInactivo: action.payload,
 
         }
-      
-      // case "HABILITAR_USER":
-      //   return {
-      //     ...state,
-      //     userEliminado:action.payload
-      //   }
-    
+    case "DELETE_POST":
+      return{
+        ...state
+      }   
     //DEFAULT
     default:
       return {
