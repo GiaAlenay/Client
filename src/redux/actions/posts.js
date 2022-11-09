@@ -1,3 +1,4 @@
+import { ConstructionOutlined } from "@mui/icons-material";
 import axios from "axios"
 import { loading } from "./index.js";
 
@@ -19,25 +20,26 @@ export function createPost(payload){
       dispatch(loading())
       const response = await axios.post("/posts",payload,{
         headers: {
-          "Content-Type": "multipart/form-data",
+           "Content-Type": "multipart/form-data",
         },
       })
-      return dispatch({ type:"CREATE_POST", payload: response.data.post })    
+      return dispatch({ type:"CREATE_POST", payload: response.data })    
     }
   } catch (e) {
     console.log(e)
   }
 }
 export function deletePost(id){
-  try{
+  try {
     return async function(dispatch){
-      const response = await axios.delete("/posts/"+id)
-      return dispatch({
-        type: "DELETE_POST",
-        payload: response.data
-      })
+      dispatch(loading())
+      var response = await axios.delete(`/posts/${id}`);
+      return dispatch({ type: "DELETE_POST", payload: response.data })      
     }
-  }catch(e){
-    console.log(e)
+  } catch (e) {
+    console.log(e)      
   }
-}
+};
+
+
+

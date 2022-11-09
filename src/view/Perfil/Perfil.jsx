@@ -50,6 +50,9 @@ export const Perfil =()=>{
         
     },[ isLoading, isAuthenticated ])
     
+    if(userLoged.usuario === undefined){
+        navigate("/")
+    }
     const handlePrimium=(e)=>{
         history('/premium')
     }
@@ -186,7 +189,7 @@ export const Perfil =()=>{
                                 <div className="detalleInfo">
                                     {current===0 &&(
                                         <div className={`detInf detInf0`}>
-                                            <Feed allPosts={allPosts}/>
+                                            <Feed allPosts={allPosts.filter(e => e.userId === userLoged.id)}/>
                                         </div>)
                                     }
                                     {current===1 &&(
