@@ -2,14 +2,16 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react";
 import styles from "./HomeAdmin.module.css";
 import UsuariosAll from "./UsuariosAll";
-
+import { Nav } from "../Nav/Nav";
 
 
 export const HomeAdmin = () =>{
     
 
     return (
+        
         <div className={styles.homeContainer}>
+            <Nav/>
             <h1 className={styles.h1Adm}>Bienvenido Administrador</h1>
             <h3 className={styles.h3Adm}>Todos los Usuarios Activos</h3>
             <div className={styles.suspendido}>

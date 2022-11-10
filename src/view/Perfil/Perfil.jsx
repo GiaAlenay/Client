@@ -50,9 +50,6 @@ export const Perfil =()=>{
         
     },[ isLoading, isAuthenticated ])
     
-    if(userLoged.usuario === undefined){
-        navigate("/")
-    }
     const handlePrimium=(e)=>{
         history('/premium')
     }

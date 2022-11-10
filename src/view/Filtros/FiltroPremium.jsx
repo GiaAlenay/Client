@@ -38,7 +38,7 @@ export default function Filtros(props) {
               key={c}
               onClick={(e) => {
                 handlerFilterCategories(e);
-              }}
+              }} 
             ></button>
             <br />
             <span className="spanNombres">{c}</span>
@@ -48,3 +48,4 @@ export default function Filtros(props) {
     </div>
   );
 }
+

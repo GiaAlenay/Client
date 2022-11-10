@@ -4,7 +4,7 @@ import { BsTabletLandscape } from "react-icons/bs";
 import { HiOutlineDeviceTablet } from "react-icons/hi";
 import { FiCheck } from "react-icons/fi";
 import { IconContext } from "react-icons";
-import { getMercadoPago } from "../../redux/actions/premium";
+import { getMercadoPago ,getMercadoPagoPayment} from "../../redux/actions/premium";
 import styles from "./Cards.module.css";
 
 function Check({ text }) {
@@ -18,10 +18,10 @@ function Check({ text }) {
 
 export function Card({ plan, btnPrice, month, title }) {
   const handleclick = async () => {
-    const responseMp = await getMercadoPago("test_user_66385999@testuser.com", btnPrice, month);
+    const responseMp = await getMercadoPago("test_user_80440501@testuser.com", btnPrice, month);
     window.location.replace(responseMp.url);
   };
-
+  
   return (
     <div className={styles.mainContainerCard}>
       <span className={styles.Title}>SYT {title}</span>
@@ -40,7 +40,7 @@ export function Card({ plan, btnPrice, month, title }) {
       <span className={styles.plan}>{plan}</span>
       <button
         className={styles.button}
-        onClick={handleclick}
+        onClick={(e)=>handleclick(e)}
       >
         Adquirir plan
       </button>

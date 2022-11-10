@@ -27,6 +27,7 @@ export default function Filtros(props) {
       setSelectcss(selectcss.filter((c) => c !== e.target.value));
     }
   }
+  
 
   return (
     <div className={`${props.open ? "fondo" : "nofondo"}`}>
