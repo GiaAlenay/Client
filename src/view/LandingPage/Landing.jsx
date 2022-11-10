@@ -25,13 +25,13 @@ export const Landing = () => {
                             <img className='sytTitle' alt='img' src={'title.png'} />
                         </div>
                         <div className='landDesc'>
-                            <h5>No hay duda de que puedes beneficiarte en un foro de desarrolladores web. El desafío es encontrar la comunidad de programación o desarrollo web adecuada para sus necesidades.Y aqui tenemos la mejor opcion:
+                            <h5>No hay duda de que puedes beneficiarte en un foro de desarrolladores web. El desafío es encontrar la comunidad de programación adecuada para tus necesidades.Y aqui tenemos la mejor opcion:
                                 Unete a la Comunidad más grande de desarrolladores de software</h5>
                             <h5>HAZ CLICK AQUI PARA SER PARTE</h5>
                             <button onClick={loginWithRedirect} className='btnCreCu' > UNETE </button>
                             {isAuthenticated && 
                             (<>
-                            <Link to="/home"> <button className='btnCreCu'> Ahora esta con nosotros  </button> </Link>
+                            <Link to="/home"> <button className='btnCreCu'> Ahora sos parte  </button> </Link>
                             </>)}
                         </div>
                     </div>
