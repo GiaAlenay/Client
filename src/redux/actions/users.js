@@ -36,3 +36,51 @@ export const editUser=(form)=>dispatch=>{
     .then(d=> dispatch({ type:'EDIT_USER', payload: d.data }))
     .catch(e=> console.log(e))
 }
+// Usuarios Suspendidos o Eliminados
+
+export const eliminarUser = (id, paranoid)=>{
+    return async function(dispatch){
+        try{
+            const eliminar = await axios.delete(`/users/${id}`,
+            {
+                data:{ paranoid:paranoid},
+            });
+            return dispatch({
+                type:"ELIMINAR_USER",
+                payload:eliminar.data
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getInactiveUser = () =>{
+    return async (dispatch) => {
+        try{
+            const usuarioInactivo = await axios.get("/userInactivo");
+            dispatch({
+                type: "GET_INACTIVE_USER",
+                payload: usuarioInactivo.data,
+            });
+        }catch(error){
+            console.log(error);
+        }
+    };
+};
+
+export const habilitarUser = (id) =>{
+    console.log(id);
+    return async function (dispatch){
+        try {
+            const habilitado = await axios.put(`/userInactivo/${id}`
+            );
+            return dispatch ({
+                type:"HABILITAR_USER",
+                payload: habilitado.data,
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+}

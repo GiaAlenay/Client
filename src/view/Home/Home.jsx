@@ -8,16 +8,19 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/actions/posts";
 import { createUser } from "../../redux/actions/users";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
+import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
 
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
-    const loading = useSelector(state => state.loading)
+  const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [openPremium, setOpenPremium] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -29,9 +32,12 @@ export const Home = () => {
   const handlerOpen = (value) => {
     setOpen(value);
   };
+  const handlerOpenPremium = (value) => {
+    setOpenPremium(value);
+  };
 
-  if(isLoading){
-    return <div>loading</div>
+  if (isLoading) {
+    return <div>loading</div>;
   }
 
   return (
@@ -46,6 +52,19 @@ export const Home = () => {
             className="butonFiltrosHome"
             onClick={() => {
               setOpen(true);
+            }}
+          >
+            <TuneIcon />
+          </button>
+          <div
+            className={`${openPremium ? "mostrarfiltros" : "nomostrarfiltros"}`}
+          >
+            <FiltroPremium open={openPremium} function={handlerOpenPremium} />
+          </div>
+          <button
+            className="butonFiltrosHome"
+            onClick={() => {
+              setOpenPremium(true);
             }}
           >
             <TuneIcon />

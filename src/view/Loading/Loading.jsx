@@ -1,10 +1,15 @@
 import React from "react";
-
+import "./Loading.css"
+import { Link } from "react-router-dom";
 
 export default function Loading() {
   return (
-    <div>
-    <img src="https://i.ytimg.com/vi/wk2dYASyn74/maxresdefault.jpg"/>
-    </div>
+    <body className="loading">
+      <div>
+        <Link to="/home">
+          <button className="home404">BACK TO HOME</button>
+        </Link>
+      </div>
+    </body>
   );
 }

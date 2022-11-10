@@ -1,10 +1,42 @@
 import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox} from "@mui/material";
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox,Button} from "@mui/material";
 import parse from "html-react-parser";
-
-
-export const Post=({titulo,user,texto,media,foto})=>{
-
+import {deletePost} from "../../redux/actions/posts"
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+export const Post=({titulo,userpost,texto,media,foto ,id})=>{
+    const {user,isAuthenticated,isLoading }= useAuth0()
+    const dispatch= useDispatch()
+    
+    
+    function handleDeletePost(e){
+        dispatch(deletePost(e))
+    }
+    function sumarMegustas(e){
+        
+        console.log("sumar")
+    }
+    
+    
+    
+    function verificarMedia(e){
+        if(e === null){return (<> </>)}
+        else{
+            const archivo = e.slice(-3) 
+            if(archivo === "pdf"){
+                return (<a href={e} > archivo subido  </a>)
+            }
+            if(archivo !== "pdf"){
+                return(<CardMedia
+                    component="img"
+                    height="20%"
+                    width="50px"
+                    image={media} 
+                    alt=" "
+                    />)
+            }
+        }
+    }
 
     function urlify(text) {
         var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -19,9 +51,16 @@ export const Post=({titulo,user,texto,media,foto})=>{
         // or alternatively
         // return text.replace(urlRegex, '<a href="$1">$1</a>')
     }
+    if(isLoading){
+        return (<>loading</>)
+    }
+
 
     return(
-        <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
+        <div>
+            {isAuthenticated &&(
+                <div>
+                <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
             <CardHeader
             avatar ={
                 <Avatar sx={{bgcolor: "blue"}}>
@@ -34,39 +73,42 @@ export const Post=({titulo,user,texto,media,foto})=>{
                 </IconButton>
             }
 
-            title= {user}
+            title= {userpost}
             />
+
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
                 {titulo}
                 </Typography>
             </CardContent>
+
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                     {texto && parse(urlify(texto))}
                 </Typography>
             </CardContent>
-            
-            {media && 
-            <CardMedia
-            component="img"
-            height="20%"
-            width="50px"
-            image={media} 
-            alt=" "
-            />
-            }
+        
+            <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                {media && verificarMedia(media)}
 
+                </Typography>
+            </CardContent>
+                 <br/>
+        {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
            
             
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                <IconButton aria-label= "add to favorites" onClick={sumarMegustas}>
                 <Checkbox
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />
                 </IconButton>
-
+            
             </CardActions>
         </Card>
+            </div>)}
+        </div>
+        
     );
 }
