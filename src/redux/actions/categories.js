@@ -17,3 +17,10 @@ export function filterByCategories(value) {
     payload: value,
   };
 }
+
+export function filterParaPremium(value) {
+  return {
+    type: "FILTER_PARA_PREMIUM",
+    payload: value,
+  };
+}
