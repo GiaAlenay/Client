@@ -4,6 +4,8 @@ import parse from "html-react-parser";
 import {deletePost} from "../../redux/actions/posts"
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 export const Post=({titulo,userpost,texto,media,foto ,id})=>{
     const {user,isAuthenticated,isLoading }= useAuth0()
     const dispatch= useDispatch()
@@ -102,6 +104,11 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
                 <IconButton aria-label= "add to favorites" onClick={sumarMegustas}>
                 <Checkbox
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
+                />
+                </IconButton>
+                <IconButton aria-label= "add to favorites" onClick={sumarMegustas}>
+                <Checkbox
+                icon={<StarBorderIcon/>} checkedIcon={<StarIcon sx= {{color: "orange"}}/>}
                 />
                 </IconButton>
             
