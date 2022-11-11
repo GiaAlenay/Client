@@ -9,6 +9,7 @@ import { SearchPag } from './view/SearchPag/SearchPag'
 import PageNotFound from "./view/PageNotFound/PageNotFound.jsx"
 import { HomeAdmin } from './components/Admin/HomeAdmin';
 import UserInactivo from './components/Admin/UserInactivo';
+import {SendEmail} from './view/SendEmail/SendEmail';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="*" element={<PageNotFound/>} />
 
         {/* Ruta del adminisrador */}
-
+        <Route path="/send/email" element={<SendEmail/>} />
         <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
         <Route path={'/UserInactivo'} element= {<UserInactivo/>}/>
       </Routes>

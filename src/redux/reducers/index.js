@@ -134,6 +134,10 @@ const rootReducer = (state = initialState, action) => {
         Posts: [...filtroNivel],
         filtrosAplicadosPremium: action.payload,
       };
+      case "POST_REPORT_EMAIL":
+      return{
+        ...state
+      }
 
     //DEFAULT
     default:
