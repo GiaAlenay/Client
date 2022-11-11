@@ -6,6 +6,8 @@ import { FiCheck } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { getMercadoPago ,getMercadoPagoPayment} from "../../redux/actions/premium";
 import styles from "./Cards.module.css";
+import { useEffect ,useState} from "react";
+import { useMercadopago } from "react-sdk-mercadopago";
 
 function Check({ text }) {
   return (
@@ -16,12 +18,39 @@ function Check({ text }) {
   )
 }
 
-export function Card({ plan, btnPrice, month, title }) {
-  const handleclick = async () => {
-    const responseMp = await getMercadoPago("test_user_80440501@testuser.com", btnPrice, month);
-    window.location.replace(responseMp.url);
-  };
-  
+export function Card({ plan, title }) {
+  // const handleclick = async () => {
+  //   const responseMp = await getMercadoPago("test_user_80440501@testuser.com", btnPrice, month);
+  //   window.location.replace(responseMp.url);
+  // };
+  const mercadopago = useMercadopago.v2(
+    "APP_USR-d319d9f1-1689-4260-97c8-8d2d34a85cb2",
+    {
+      locale: "es-AR"
+    }
+  );
+  console.log(mercadopago)
+  const [rendered, setRendered] = useState(false)
+  useEffect(() => {
+    if (mercadopago && !rendered) {
+      mercadopago.checkout({
+        preference: {
+          id: "1234560647-2fbcc244-c195-4442-b978-ad15ff1b7ebc"
+        },
+        render: {
+          container: ".cho-container",
+          label: "Pagar"
+        }
+      });
+      setRendered(true);
+    }
+    
+  }, [mercadopago,rendered]);
+
+
+
+
+
   return (
     <div className={styles.mainContainerCard}>
       <span className={styles.Title}>SYT {title}</span>
@@ -35,15 +64,14 @@ export function Card({ plan, btnPrice, month, title }) {
       </div>
       <div className={styles.cardwordsContainer}>
         <Check text={'Nuevos avatares mas facheros facheritos'} />
-
       </div>
       <span className={styles.plan}>{plan}</span>
       <button
         className={styles.button}
-        onClick={(e)=>handleclick(e)}
       >
         Adquirir plan
       </button>
+      <div className="cho-container"></div>
     </div>
   );
 }

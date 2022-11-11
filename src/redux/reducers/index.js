@@ -69,10 +69,12 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case "DELETE_POST":
-      // const allposteos = state.allPosts
-      // const filter = allposteos.filter(el => el.id !== action.payload.buscarid.id)
+      const allposteos = state.allPosts
+      const filter = state.Posts.filter(el => el.id !== action.payload.posts.id)
       return {
         ...state,
+        Posts:filter? filter:allposteos,
+        loading: false
       };
 
     //EXTRA
@@ -134,6 +136,12 @@ const rootReducer = (state = initialState, action) => {
         Posts: [...filtroNivel],
         filtrosAplicadosPremium: action.payload,
       };
+
+    //REPORTSEMAIL
+    case "CREATE_REPORT":
+      return{
+        ...state
+      }
 
     //DEFAULT
     default:
