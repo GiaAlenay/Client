@@ -1,114 +1,175 @@
-import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox,Button} from "@mui/material";
+import { MoreVert, Favorite, FavoriteBorder } from "@mui/icons-material";
+import {
+  Avatar,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  IconButton,
+  Typography,
+  Checkbox,
+  Button,
+} from "@mui/material";
 import parse from "html-react-parser";
-import {deletePost} from "../../redux/actions/posts"
+import { deletePost, editPost, getPosts } from "../../redux/actions/posts";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch } from "react-redux";
-export const Post=({titulo,userpost,texto,media,foto ,id})=>{
-    const {user,isAuthenticated,isLoading }= useAuth0()
-    const dispatch= useDispatch()
-    
-    
-    function handleDeletePost(e){
-        dispatch(deletePost(e))
-    }
-    function sumarMegustas(e){
-        
-        console.log("sumar")
-    }
-    
-    
-    
-    function verificarMedia(e){
-        if(e === null){return (<> </>)}
-        else{
-            const archivo = e.slice(-3) 
-            if(archivo === "pdf"){
-                return (<a href={e} > archivo subido  </a>)
-            }
-            if(archivo !== "pdf"){
-                return(<CardMedia
-                    component="img"
-                    height="20%"
-                    width="50px"
-                    image={media} 
-                    alt=" "
-                    />)
-            }
-        }
-    }
+import { useDispatch, useSelector } from "react-redux";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
+import { useState } from "react";
+import { useEffect } from "react";
+export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const dispatch = useDispatch();
+  const userLoged = useSelector((state) => state.UserLoged);
+  const [likeComprobacion, setLikeComprobacion] = useState(false);
+  const [contador, setContador] = useState(0);
 
-    function urlify(text) {
-        var urlRegex = /(https?:\/\/[^\s]+)/g;
-        var youtubeRegex = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?/;
-        
-        return text?.replace(urlRegex, function(url) {
-            if(url.match(youtubeRegex)){
-                return '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + url.slice(-11) + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-            }
-            return '<a href="' + url + '">' + url + '</a>';
+  useEffect(() => {
+    if (likes.includes(userLoged.id)) setLikeComprobacion(true);
+  }, [likes]);
+
+  function handleDeletePost(e) {
+    dispatch(deletePost(e));
+  }
+  function handleEditLikePost(e) {
+    e.preventDefault();
+    setContador(likes.length);
+    console.log("dale que va");
+    if (!likes.find((elem) => elem === userLoged.id)) {
+      setLikeComprobacion(true);
+      likes = [...likes, userLoged.id];
+      setContador(likes.length + 1);
+      dispatch(
+        editPost({
+          id,
+          likes,
         })
-        // or alternatively
-        // return text.replace(urlRegex, '<a href="$1">$1</a>')
+      );
+    } else {
+      setLikeComprobacion(false);
+      setContador(likes.length - 1);
+      dispatch(
+        editPost({
+          id,
+          likes: likes.filter((i) => i !== userLoged.id),
+        })
+      );
     }
-    if(isLoading){
-        return (<>loading</>)
+  }
+
+  function verificarMedia(e) {
+    if (e === null) {
+      return <> </>;
+    } else {
+      const archivo = e.slice(-3);
+      if (archivo === "pdf") {
+        return <a href={e}> archivo subido </a>;
+      }
+      if (archivo !== "pdf") {
+        return (
+          <CardMedia
+            component="img"
+            height="20%"
+            width="50px"
+            image={media}
+            alt=" "
+          />
+        );
+      }
     }
+  }
 
+  function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    var youtubeRegex =
+      /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?/;
 
-    return(
+    return text?.replace(urlRegex, function (url) {
+      if (url.match(youtubeRegex)) {
+        return (
+          '<iframe width="560" height="315" src="https://www.youtube.com/embed/' +
+          url.slice(-11) +
+          '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        );
+      }
+      return '<a href="' + url + '">' + url + "</a>";
+    });
+    // or alternatively
+    // return text.replace(urlRegex, '<a href="$1">$1</a>')
+  }
+  if (isLoading) {
+    return <>loading</>;
+  }
+
+  return (
+    <div>
+      {isAuthenticated && (
         <div>
-            {isAuthenticated &&(
-                <div>
-                <Card sx= {{xs:8, margin: 2, marginRight:50, width:"600px"}} >
+          <Card sx={{ xs: 8, margin: 2, marginRight: 50, width: "600px" }}>
             <CardHeader
-            avatar ={
-                <Avatar sx={{bgcolor: "blue"}}>
-                    <img src={foto} alt="foto" height={40} />
+              avatar={
+                <Avatar sx={{ bgcolor: "blue" }}>
+                  <img src={foto} alt="foto" height={40} />
                 </Avatar>
-            }
-            action ={
+              }
+              action={
                 <IconButton aria-label="settings">
-                    <MoreVert/>
+                  <MoreVert />
                 </IconButton>
-            }
-
-            title= {userpost}
+              }
+              title={userpost}
             />
 
-            <CardContent >
-                <Typography variant="body2" color="text.secondary">
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
                 {titulo}
-                </Typography>
+              </Typography>
             </CardContent>
 
             <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                    {texto && parse(urlify(texto))}
-                </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {texto && parse(urlify(texto))}
+              </Typography>
             </CardContent>
-        
+
             <CardContent>
-                <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary">
                 {media && verificarMedia(media)}
-
-                </Typography>
+              </Typography>
             </CardContent>
-                 <br/>
-        {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
-           
-            
+            <br />
+            {!isLoading && isAuthenticated && user.nickname === userpost && (
+              <Button onClick={() => handleDeletePost(id)}>ELIMINAR</Button>
+            )}
+
             <CardActions disableSpacing>
-                <IconButton aria-label= "add to favorites" onClick={sumarMegustas}>
+              <IconButton
+                aria-label="add to favorites"
+                onClick={handleEditLikePost}
+              >
+                {likes.length}
                 <Checkbox
-                icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
+                  icon={
+                    likeComprobacion ? (
+                      <Favorite sx={{ color: "red" }} />
+                    ) : (
+                      <FavoriteBorder />
+                    )
+                  }
                 />
-                </IconButton>
-            
+              </IconButton>
+              {/* <IconButton aria-label="add to favorites" onClick={sumarMegustas}>
+                <Checkbox
+                  icon={<StarBorderIcon />}
+                  checkedIcon={<StarIcon sx={{ color: "orange" }} />}
+                />
+            </IconButton> */}
             </CardActions>
-        </Card>
-            </div>)}
+          </Card>
         </div>
-        
-    );
-}
+      )}
+    </div>
+  );
+};

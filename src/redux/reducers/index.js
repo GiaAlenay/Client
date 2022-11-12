@@ -10,7 +10,7 @@ const initialState = {
   allPosts: [],
   userInactivo: [],
   filtrosAplicados: [],
-  filtrosAplicadosPremium: "",
+  filtrosAplicadosPremium: ""
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -138,6 +138,12 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state
       }
+
+      case "EDIT_POST":
+      return {
+        ...state,
+
+      };
 
     //DEFAULT
     default:
