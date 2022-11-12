@@ -4,23 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import {creatReport} from "../../redux/actions/email"
 import "./SendEmail.css";
 import {useAuth0} from "@auth0/auth0-react";
-
+import { useNavigate } from "react-router-dom";
 export function SendEmail(){
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
   const {isAuthenticated, isLoading,user} =useAuth0()
+
   useEffect(()=>{
     !isLoading && !isAuthenticated && navigate("/")
-    if(!isLoading && isAuthenticated) {
-        dispatch(createUser({usuario: user.nickname, email: user.email}))
-        dispatch(getPosts())
-    } 
+  
+  },[ isLoading, isAuthenticated ])
     
-},[ isLoading, isAuthenticated ])
     
-    const userLoged = useSelector((state) => state.UserLoged);
+    
     const [input, setInput] = useState({
         msg:"",
         usarioreport:"",
-        nombreUser:"",
         tituloPost:"",
       });
       function handleChang(e){
@@ -30,8 +30,24 @@ export function SendEmail(){
           [e.target.name]: e.target.value,
         });
       }
+
     function handleSubmit(e){
         e.preventDefault();
+        dispatch(creatReport({
+          name:user.nickname,
+          email: user.email,
+          msg:input.msg,
+        usarioreport:input.usarioreport,
+        tituloPost:input.usarioreport,
+        }))
+        alert("enviado")
+        setInput({
+        msg:"",
+        usarioreport:"",
+        tituloPost:"",
+        })
+        navigate("/home")
+        
     }
 
 if(isLoading){
@@ -39,36 +55,24 @@ if(isLoading){
 }
 
 
-    return(
-    <div>
+    return(<div>
+      <div>
         <Nav/>
+      </div>
+    <div>
+        
         <div className="BodyReport" >
          <div className="ContenedorReport">
          <h2 className="tituloReport">Realize su report </h2>
-         <br/>
-         <form  > 
-                <label className="labelReport">Ingrese su nombre de usuario </label>
                 <br/>
-                <input className="inputReport" type={"text"} 
-                name="nombreUser"
-                value={input.nombreUser}
-                onChange={(e) => handleChang(e)}
-                />
-                <br/>
-
-                <label className="labelReport">Email</label>
-                <br/>
-                <input className="inputReport" type={"email"}
                 
-                name="emailReport"
-                value={input.emailReport}
-                onChange={(e) => handleChang(e)}
-                 />
+             <form onSubmit={(e) => handleSubmit(e)}> 
+                
                 <br/>
-
                 <label className="labelReport">Titulo del post a reportar</label>
                 <br/>
-                <input className="inputReport" type={"text"} 
+                <input className="inputReport" 
+                type={"text"} 
                 name="tituloPost"
                 value={input.tituloPost}
                 onChange={(e) => handleChang(e)}
@@ -77,7 +81,8 @@ if(isLoading){
 
                 <label className="labelReport">Ingrese el nombre del propietario del posts  </label>
                 <br/>
-                <input className="inputReport" type={"text"} 
+                <input className="inputReport" 
+                type={"text"} 
                 name="usarioreport"
                 value={input.usarioreport}
                 onChange={(e) => handleChang(e)}
@@ -92,10 +97,10 @@ if(isLoading){
                 onChange={(e) => handleChang(e)} 
                 cols="10" rows="10" />
                 <br/>
-
-                <button className="buttonReport">Enviar su report</button>
+                <button id="submit" className="buttonReport" type="submit"   >Enviar su report</button>
             </form>
             </div>
         </div>
+    </div>
     </div>)
 }
