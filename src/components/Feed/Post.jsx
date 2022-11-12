@@ -104,7 +104,6 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />
                 </IconButton>
-            
             </CardActions>
         </Card>
             </div>)}
@@ -112,3 +111,6 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
         
     );
 }
+
+
+// crear un componente que obtenga los datos de mercado pago, utilizar las hook de usesEfffect para obtener el 

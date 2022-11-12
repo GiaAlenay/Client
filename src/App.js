@@ -9,7 +9,8 @@ import { SearchPag } from './view/SearchPag/SearchPag'
 import PageNotFound from "./view/PageNotFound/PageNotFound.jsx"
 import { HomeAdmin } from './components/Admin/HomeAdmin';
 import UserInactivo from './components/Admin/UserInactivo';
-
+import {FeedBack} from './view/FeedBack/FeedBack'
+//useSerchParam
 function App() {
   return (
     <div className="App">
@@ -21,7 +22,7 @@ function App() {
         <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
         <Route path ='/search' element={<SearchPag/>}/>
         <Route path="*" element={<PageNotFound/>} />
-
+        <Route path="/premium/feedback" element={<FeedBack/>}/> 
         {/* Ruta del adminisrador */}
 
         <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
