@@ -13,6 +13,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
+import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -52,6 +53,9 @@ export const Home = () => {
       <Nav />
       <div className="homeDividir">
         <div>
+          <div>
+            <MiniPerfil />
+          </div>
           <div className={`${open ? "mostrarfiltros" : "nomostrarfiltros"}`}>
             <Filtros open={open} function={handlerOpen} />
           </div>
@@ -77,9 +81,7 @@ export const Home = () => {
             <TuneIcon />
           </button>
           <div>
-            <select
-              onChange={(e) => handlerOrderLikes(e)}
-            >
+            <select onChange={(e) => handlerOrderLikes(e)}>
               <option value="" hidden>
                 Rating
               </option>
