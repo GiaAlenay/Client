@@ -14,7 +14,6 @@ export function FeedBack(){
 
     if (status === "loading"){
         <p>Para que esta cargando la data pa </p>
-
     }
     if(status=== "error"){
         <p>Dudosa compra pa que hiciste </p>
