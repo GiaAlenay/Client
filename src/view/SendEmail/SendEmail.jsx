@@ -2,18 +2,29 @@ import React, { useEffect, useState } from "react";
 import {Nav} from "../../components/Nav/Nav"
 import { useDispatch, useSelector } from "react-redux";
 import {creatReport} from "../../redux/actions/email"
-import "./SendEmail.css"
+import "./SendEmail.css";
+import {useAuth0} from "@auth0/auth0-react";
+
 export function SendEmail(){
+  const {isAuthenticated, isLoading,user} =useAuth0()
+  useEffect(()=>{
+    !isLoading && !isAuthenticated && navigate("/")
+    if(!isLoading && isAuthenticated) {
+        dispatch(createUser({usuario: user.nickname, email: user.email}))
+        dispatch(getPosts())
+    } 
+    
+},[ isLoading, isAuthenticated ])
     
     const userLoged = useSelector((state) => state.UserLoged);
     const [input, setInput] = useState({
         msg:"",
-        emailReport:"",
-        nombreUser:""
+        usarioreport:"",
+        nombreUser:"",
+        tituloPost:"",
       });
       function handleChang(e){
         e.preventDefault();
-        console.log(e)
         setInput({
           ...input,
           [e.target.name]: e.target.value,
@@ -22,6 +33,11 @@ export function SendEmail(){
     function handleSubmit(e){
         e.preventDefault();
     }
+
+if(isLoading){
+  <div>Loading...</div>
+}
+
 
     return(
     <div>
@@ -49,7 +65,25 @@ export function SendEmail(){
                 onChange={(e) => handleChang(e)}
                  />
                 <br/>
-                
+
+                <label className="labelReport">Titulo del post a reportar</label>
+                <br/>
+                <input className="inputReport" type={"text"} 
+                name="tituloPost"
+                value={input.tituloPost}
+                onChange={(e) => handleChang(e)}
+                />
+                <br/>
+
+                <label className="labelReport">Ingrese el nombre del propietario del posts  </label>
+                <br/>
+                <input className="inputReport" type={"text"} 
+                name="usarioreport"
+                value={input.usarioreport}
+                onChange={(e) => handleChang(e)}
+                />
+                <br/>
+
                 <label className="labelReport" >Razons de report</label>
                 <br></br>
                 <textarea  className="textReport"

@@ -136,7 +136,8 @@ const rootReducer = (state = initialState, action) => {
       };
       case "POST_REPORT_EMAIL":
       return{
-        ...state
+        ...state,
+
       }
 
       case "EDIT_POST":
