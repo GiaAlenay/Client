@@ -5,7 +5,7 @@ import axios from "axios";
 export function FeedBack(){
 
    async function getPremiun(){
-    const response = axios("http://localhost:3000/profile/feedback");
+    const response = axios("http://localhost:3001/premium/feedback");
     console.log(response)
     return response;
     }
