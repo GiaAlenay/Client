@@ -140,6 +140,32 @@ const rootReducer = (state = initialState, action) => {
         ...state,
 
       };
+      case "ORDER_LIKES":
+        let allPost = state.Posts;
+        let orderRating =
+          action.payload === "menos"
+            ? allPost.sort(function (a, b) {
+                if (a.likes.length > b.likes.length) {
+                  return 1;
+                }
+                if (a.likes.length < b.likes.length) {
+                  return -1;
+                }
+                return 0;
+              })
+            : allPost.sort(function (a, b) {
+                if (a.likes.length > b.likes.length) {
+                  return -1;
+                }
+                if (a.likes.length < b.likes.length) {
+                  return 1;
+                }
+                return 0;
+              });
+        return {
+          ...state,
+          Posts: orderRating,
+        };
 
     //DEFAULT
     default:
