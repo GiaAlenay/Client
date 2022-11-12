@@ -8,12 +8,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/actions/posts";
 import { createUser } from "../../redux/actions/users";
-
+import axios from "axios"
 import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
-
+import { useQuery } from "react-query";
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
@@ -21,6 +21,17 @@ export const Home = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [openPremium, setOpenPremium] = useState(false);
+  
+  const {  error, data } = useQuery('repoData', () =>
+  fetch('http://localhost:3001/premium/feedback').then(res =>
+    res.json()
+  )
+)
+    console.log("****************************************")
+    console.log(data)
+    console.log("****************************************")
+
+
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -39,6 +50,19 @@ export const Home = () => {
   if (isLoading) {
     return <div>loading</div>;
   }
+  if( data && user){
+    const objetoamandar = {
+      msg : data,
+      name: user.nickname,
+      email: user.email
+    }
+    const mensaj = axios.post('http://localhost:3001/send/emails/premium',objetoamandar)
+    // const hacerpremium = axios.put('http://localhost:3001/users/')
+    console.log(mensaj)
+    // console.log(hacerpremium)
+  }  
+ 
+   if (error) return 'An error has occurred: ' + error.message
 
   return (
     <div className="home">

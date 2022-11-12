@@ -13,8 +13,6 @@ export default function UserInactivo(){
         dispatch(getInactiveUser());
     },[dispatch])
 
-    console.log(usuarioInactivo)
-
     async function borrarUsuario(id){
         let paranoid=false;
         console.log("AGARRO ELIMINADO", id, paranoid)

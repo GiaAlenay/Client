@@ -7,9 +7,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios'
 import { Auth0Provider } from '@auth0/auth0-react'
-
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 axios.defaults.baseURL = process.env.REACT_APP_API;
-
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
@@ -18,9 +18,11 @@ root.render(
     redirectUri={window.location.origin}>
     <Provider store={store}>
       <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <App />
+            <App />
         </BrowserRouter>
+          </QueryClientProvider>
       </React.StrictMode>
     </Provider>
   </Auth0Provider>
