@@ -26,7 +26,7 @@ export const Landing = () => {
         <div className='landing'>
                 <div className='laCont'>
                     <div className='landArribaCont'>
-                             <div className='logo'>SYT</div>
+                             <div className='logo'>SYT </div>
                             <Link to={"/SobreNosotros"}>
                                 <div >
                                  <button className='btnCreCu'>SobreNosotros</button>
@@ -54,7 +54,7 @@ export const Landing = () => {
                                     <h5>HAZ CLICK AQUI PARA SER PARTE</h5>
                                 <button onClick={loginWithRedirect} className='btnCreCu' > UNETE </button>
                                 </div>
-                    </div>
+                     </div>
                     <div className='lan2rigth'>
                         <img className='laRiImg' alt='img' src={'riri.png'} />
                     </div>
