@@ -84,3 +84,20 @@ export const habilitarUser = (id) =>{
         }
     }
 }
+
+export const userPremiun = (id, payload) =>{
+    console.log(id);
+    return async function (dispatch){
+        try {
+            const premium = await axios.put(`/users/premium/${id}`, payload
+            );
+            return dispatch ({
+                type:"USER_PREMIUM",
+                payload: premium.data,
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
+
