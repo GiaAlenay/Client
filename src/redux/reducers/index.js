@@ -10,7 +10,7 @@ const initialState = {
   allPosts: [],
   userInactivo: [],
   filtrosAplicados: [],
-  filtrosAplicadosPremium: ""
+  filtrosAplicadosPremium: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -39,6 +39,14 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case "CREATE_USER":
+      return {
+        ...state,
+        mensajeResultado: action.payload.msg,
+        UserLoged: action.payload.user,
+        loading: false,
+      };
+
+    case "GET_USER_LOGED":
       return {
         ...state,
         mensajeResultado: action.payload.msg,
@@ -135,10 +143,35 @@ const rootReducer = (state = initialState, action) => {
         filtrosAplicadosPremium: action.payload,
       };
 
-      case "EDIT_POST":
+    case "EDIT_POST":
       return {
         ...state,
-
+      };
+    case "ORDER_LIKES":
+      let allPost = state.Posts;
+      let orderRating =
+        action.payload === "menos"
+          ? allPost.sort(function (a, b) {
+              if (a.likes.length > b.likes.length) {
+                return 1;
+              }
+              if (a.likes.length < b.likes.length) {
+                return -1;
+              }
+              return 0;
+            })
+          : allPost.sort(function (a, b) {
+              if (a.likes.length > b.likes.length) {
+                return -1;
+              }
+              if (a.likes.length < b.likes.length) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        Posts: orderRating,
       };
 
     //DEFAULT

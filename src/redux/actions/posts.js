@@ -50,3 +50,10 @@ export const editPost = (form) => (dispatch) => {
     })
     .catch((e) => console.log(e));
 };
+
+export function orderLikes(value) {
+  return {
+    type: "ORDER_LIKES",
+    payload: value,
+  };
+}

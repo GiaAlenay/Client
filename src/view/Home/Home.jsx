@@ -6,13 +6,14 @@ import { Nav } from "../../components/Nav/Nav";
 import { AddPost } from "../../components/Add/AddPost";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../redux/actions/posts";
+import { getPosts, orderLikes } from "../../redux/actions/posts";
 import { createUser } from "../../redux/actions/users";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
+import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -21,6 +22,7 @@ export const Home = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [openPremium, setOpenPremium] = useState(false);
+  const [rating, setRating] = useState("");
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -40,11 +42,20 @@ export const Home = () => {
     return <div>loading</div>;
   }
 
+  function handlerOrderLikes(e) {
+    e.preventDefault();
+    dispatch(orderLikes(e.target.value));
+    setRating(`RATING ${e.target.value} `);
+  }
+
   return (
     <div className="home">
       <Nav />
       <div className="homeDividir">
         <div>
+          <div>
+            <MiniPerfil />
+          </div>
           <div className={`${open ? "mostrarfiltros" : "nomostrarfiltros"}`}>
             <Filtros open={open} function={handlerOpen} />
           </div>
@@ -69,6 +80,15 @@ export const Home = () => {
           >
             <TuneIcon />
           </button>
+          <div>
+            <select onChange={(e) => handlerOrderLikes(e)}>
+              <option value="" hidden>
+                Rating
+              </option>
+              <option value="mas">Mas Likes</option>
+              <option value="menos">Menos Likes</option>
+            </select>
+          </div>
         </div>
         <Feed allPosts={allPosts} loading={loading} />
         <div className="publicidadEnElHome">
