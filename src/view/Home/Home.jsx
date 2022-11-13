@@ -54,7 +54,7 @@ export const Home = () => {
     const objetoamandar = {
       msg : data,
       name: user.nickname,
-      email: user.email
+      email: user.email,
     }
     const mensaj = axios.post('http://localhost:3001/send/emails/premium',objetoamandar)
     // const hacerpremium = axios.put('http://localhost:3001/users/')
