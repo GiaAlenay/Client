@@ -28,7 +28,7 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
   const userLoged = useSelector((state) => state.UserLoged);
   const [likeComprobacion, setLikeComprobacion] = useState(false);
   const [contador, setContador] = useState(0);
-
+  const [starComprobacion, setStarComprobacion] = useState(false);
 
   useEffect(() => {
     if (likes.includes(userLoged.id)) setLikeComprobacion(true);
@@ -39,9 +39,11 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
   }
   function handleDeleteFav(e){
     dispatch(deleteFav(e))
+    setStarComprobacion(false)
   }
   function handleAddFav(e){
      dispatch(AddToFav(e))
+     setStarComprobacion(true)
   }
 
   function handleEditLikePost(e) {
@@ -180,10 +182,10 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
               <IconButton aria-label="add to favorites" onClick={() => handleAddFav(id)}>
                 <Checkbox
                   icon={
-                    likeComprobacion ? (
+                    setStarComprobacion ? (
                       <StarIcon sx={{ color: "orange" }} />
                     ) : (
-                      <FavoriteBorder />
+                      <StarBorderIcon />
                     )
                   }
                   
