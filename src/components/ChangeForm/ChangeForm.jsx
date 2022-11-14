@@ -135,9 +135,9 @@ export const ChangeForm = (props) => {
           ></button>
         </div>
       )}
-      {change.foto_principal ? (
+      { change.foto_principal ? (
         <div className="changeInptCont">
-          <TextField
+          { userLoged.premiun === true ? <TextField
             type="text"
             name="foto_principal"
             value={input.foto_principal}
@@ -146,7 +146,12 @@ export const ChangeForm = (props) => {
             id="outlined-basic"
             label="foto principal"
             variant="outlined"
-          />
+          /> : <select>
+            <option>gatito</option>
+            <option>perrito</option>
+            <option>cositas</option>
+            <option>cositas</option>
+            </select>}
           <button
             type="button"
             name="foto_principal"
