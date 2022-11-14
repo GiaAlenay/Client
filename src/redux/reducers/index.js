@@ -14,7 +14,6 @@ const initialState = {
   // : JSON.parse(localStorage.getItem('favs')))
 };
 
-
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     

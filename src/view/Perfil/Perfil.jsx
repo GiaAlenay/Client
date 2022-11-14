@@ -214,6 +214,7 @@ export const Perfil =()=>{
                                             
                                         </div>)
                                     }
+                                    
                                     {current===4 &&(
                                         <div className={`detInf detInfdetInf4`}>
                                             <div className="configOpCont1">
