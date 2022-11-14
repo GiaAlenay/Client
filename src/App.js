@@ -8,6 +8,7 @@ import {TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
 import PageNotFound from "./view/PageNotFound/PageNotFound.jsx"
 import { HomeAdmin } from './components/Admin/HomeAdmin';
+import UserInactivo from './components/Admin/UserInactivo';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         {/* Ruta del adminisrador */}
 
         <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
+        <Route path={'/UserInactivo'} element= {<UserInactivo/>}/>
       </Routes>
     </div>
   );

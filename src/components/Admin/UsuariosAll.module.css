@@ -1,0 +1,119 @@
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #cfd2e0;
+    background-size: cover;
+    font-weight: bold;
+
+}
+
+.h3title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: #382c4b;
+    /* text-shadow:  2px 2px 15px #000; */
+    margin-top: 80px; 
+    margin-bottom: -15px;
+    /* margin-left:550px;  */
+    text-align: center;
+
+}
+.buttonUsuario{
+    text-decoration: none;
+    --color:#260e4afb;
+    width: 6.5em;
+    height: 2.6rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color) ;
+    transition: color .5s;
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: bolder;
+    z-index: 1;
+    border-radius: 10px;
+    font-weight: 500;
+    color: var(--color);
+    box-shadow: 2px 2px 5px;
+    cursor: pointer;  
+}
+.buttonUsuario:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgb(96, 18, 180);
+    height: 150px;
+    width: 250px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+.buttonUsuario:hover{
+    color:#e8e8e8;
+    border-color:  #8020da ;
+}
+
+.buttonUsuario:hover:before{
+    top: -30px;
+    left: -30px;
+}
+/* -------------------- */
+
+.suspen{
+    display: flex;
+    padding: 50px;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button{
+    text-decoration: none;
+    --color: #260e4afb;
+    font-family: inherit;
+    display: inline-block; 
+    width: 8em;
+    height: 2.8em;
+    line-height:3em;
+    text-align: center;
+    margin: 10px auto; 
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    background-color: transparent;
+    text-decoration: none;
+    font-family:'Montserrat', sans-serif;
+    font-weight: bold;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: var(--color);
+    box-shadow: 2px 2px 5px black;
+    /*margin-left: 15em;*/ 
+}
+
+.button:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgb(96, 18, 180);
+    height: 150px;
+    width: 250px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+.button:hover{
+    color: #e8e8e8;
+    border-color: #8020da ;
+}
+
+.button:hover:before{
+    top: -30px;
+    left: -30px;
+}

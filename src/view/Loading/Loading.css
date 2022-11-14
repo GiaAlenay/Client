@@ -1,0 +1,14 @@
+
+
+.loading {
+  background-image: url(https://gifimage.net/wp-content/uploads/2017/11/gambar-gif-loading-13.gif);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+  height: 100%;
+}
+
+
+

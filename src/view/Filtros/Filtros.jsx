@@ -8,26 +8,39 @@ export default function Filtros(props) {
 
   const allcategories = useSelector((state) => state.Categories);
   const [selectcss, setSelectcss] = useState([]);
+  const [acumulador, setAcumulador] = useState([]);
 
   function handlerFilterCategories(e) {
     e.preventDefault();
-    setSelectcss((prev) => [...prev, e.target.value]);
-    dispatch(filterByCategories(e.target.value));
+    console.log(acumulador)
+    dispatch(filterByCategories(acumulador));
+    props.function(false);
+  }
+
+  function handleChange(e) {
+    e.preventDefault();
+    if (!acumulador.includes(e.target.value)) {
+      setAcumulador((prev) => [...prev, e.target.value]);
+      setSelectcss((prev) => [...prev, e.target.value]);
+    } else {
+      setAcumulador(acumulador.filter((c) => c !== e.target.value));
+      setSelectcss(selectcss.filter((c) => c !== e.target.value));
+    }
   }
 
   return (
     <div className={`${props.open ? "fondo" : "nofondo"}`}>
       <button
         className="butonCloseFiltro"
-        onClick={() => {
-          props.function(false);
+        onClick={(e) => {
+          handlerFilterCategories(e);
         }}
       >
         X
       </button>
       <div className="categoriasDivMap">
         {allcategories &&
-          allcategories.map((c,i) => (
+          allcategories.map((c, i) => (
             <div className="buttonCategorieHover" key={i}>
               <button
                 className={`imgIcono ${
@@ -37,7 +50,7 @@ export default function Filtros(props) {
                 value={c.name}
                 key={c.name}
                 onClick={(e) => {
-                  handlerFilterCategories(e);
+                  handleChange(e);
                 }}
               ></button>
               <br />

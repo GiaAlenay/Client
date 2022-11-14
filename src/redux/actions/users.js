@@ -30,6 +30,13 @@ export const createUser=(form)=>dispatch=>{
     .catch(e=> console.log(e))
 }
 
+export const getUserLoged=(form)=>dispatch=>{
+    dispatch(loading())
+    return axios.post('/users/login', form)
+    .then(d=> dispatch({ type:'GET_USER_LOGED', payload: d.data }))
+    .catch(e=> console.log(e))
+}
+
 export const editUser=(form)=>dispatch=>{
     dispatch(loading())
     return axios.patch(`/users/${form.id}`, form)
@@ -54,3 +61,50 @@ export const eliminarUser = (id, paranoid)=>{
         }
     }
 }
+
+export const getInactiveUser = () =>{
+    return async (dispatch) => {
+        try{
+            const usuarioInactivo = await axios.get("/userInactivo");
+            dispatch({
+                type: "GET_INACTIVE_USER",
+                payload: usuarioInactivo.data,
+            });
+        }catch(error){
+            console.log(error);
+        }
+    };
+};
+
+export const habilitarUser = (id) =>{
+    console.log(id);
+    return async function (dispatch){
+        try {
+            const habilitado = await axios.put(`/userInactivo/${id}`
+            );
+            return dispatch ({
+                type:"HABILITAR_USER",
+                payload: habilitado.data,
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const userPremiun = (id, payload) =>{
+    console.log(id);
+    return async function (dispatch){
+        try {
+            const premium = await axios.put(`/users/premium/${id}`, payload
+            );
+            return dispatch ({
+                type:"USER_PREMIUM",
+                payload: premium.data,
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
+

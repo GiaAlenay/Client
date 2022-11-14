@@ -14,13 +14,13 @@ export function GoPremium() {
           <span
             className={styles.Title}
           >
-            ¿Quieres mejores veneficios?
+            ¿Quieres mejores beneficios?
           </span>
           <br/>
           <span
             className={ styles.SubTitle }
           >
-            hazte premium y disfrutalos
+            Hazte premium y disfrutalos
           </span>
         </div>
         <div

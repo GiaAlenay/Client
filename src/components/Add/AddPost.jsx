@@ -12,7 +12,7 @@ import {
   IconButton,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import List from '@mui/material/List';
+import List from "@mui/material/List";
 import SendIcon from "@mui/icons-material/Send";
 
 import MenuItem from "@mui/material/MenuItem";
@@ -29,19 +29,18 @@ const StyledModal = styled(Modal)({
   justifyContent: "center",
 });
 
-
 export const AddPost = () => {
   const [open, setOpen] = useState(false);
   const userLoged = useSelector((state) => state.UserLoged);
   const allcategorias = useSelector((state) => state.Categories);
   const dispatch = useDispatch();
-  console.log("SSSSSSSSS",userLoged)
 
   const [input, setInput] = useState({
     titulo: "",
     texto: "",
     file: {},
     categories: [],
+    premium: "",
   });
 
   useEffect(() => {
@@ -65,11 +64,12 @@ export const AddPost = () => {
     e.preventDefault();
     dispatch(
       createPost({
-        titulo:input.titulo,
-        texto:input.texto,
-        file:input.file,
-        categories:JSON.stringify(input.categories),
+        titulo: input.titulo,
+        texto: input.texto,
+        file: input.file,
+        categories: JSON.stringify(input.categories),
         userId: userLoged.id,
+        premium: input.premium,
       })
     );
     alert("Nueva publicacion Creada");
@@ -79,6 +79,7 @@ export const AddPost = () => {
       texto: "",
       file: {},
       categories: [],
+      premium: "",
     });
   }
 
@@ -94,6 +95,18 @@ export const AddPost = () => {
       categories: input.categories.filter((c) => c !== e),
     });
   };
+
+  const handleCheck = (e) => {
+    if (!input.premium) {
+      if (e.target.checked) {
+        setInput({
+          ...input,
+          premium: e.target.value,
+        });
+      }
+    }
+  };
+
   return (
     <>
       <Tooltip
@@ -136,16 +149,20 @@ export const AddPost = () => {
                   Elije una categoria
                 </MenuItem>
                 {allcategorias &&
-                  allcategorias.map((c,i) => (
-                    <MenuItem value={c.name} key={i+1}>
+                  allcategorias.map((c, i) => (
+                    <MenuItem value={c.name} key={i + 1}>
                       {c.name}
                     </MenuItem>
                   ))}
               </Select>
               <ul>
                 <List>
-                  {input.categories.map((c,i) => (
-                    <Box component="span" sx={{ p: 0.5, border: '1px solid black' }} key={i}>
+                  {input.categories.map((c, i) => (
+                    <Box
+                      component="span"
+                      sx={{ p: 0.5, border: "1px solid black" }}
+                      key={i}
+                    >
                       {c}
                       <button
                         onClick={() => handlerDeleteCategoria(c)}
@@ -157,6 +174,36 @@ export const AddPost = () => {
                   ))}
                 </List>
               </ul>
+            </div>
+
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  name="Principiante"
+                  value="Principiante"
+                  onChange={(e) => handleCheck(e)}
+                ></input>
+                Principiante
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="Avanzado"
+                  value="Avanzado"
+                  onChange={(e) => handleCheck(e)}
+                ></input>
+                Avanzado
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="Experto"
+                  value="Experto"
+                  onChange={(e) => handleCheck(e)}
+                ></input>
+                Experto
+              </label>
             </div>
 
             <TextField
