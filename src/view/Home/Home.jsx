@@ -13,6 +13,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
+
+import { Link } from "react-router-dom";
+
 import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
 export const Home = () => {
@@ -80,6 +83,9 @@ export const Home = () => {
           >
             <TuneIcon />
           </button>
+
+       
+
           <div>
             <select onChange={(e) => handlerOrderLikes(e)}>
               <option value="" hidden>
@@ -88,6 +94,9 @@ export const Home = () => {
               <option value="mas">Mas Likes</option>
               <option value="menos">Menos Likes</option>
             </select>
+              <div>
+                <Link to={"/send/email"}><button>Ponete la Gorra</button></Link>
+              </div>
           </div>
         </div>
         <Feed allPosts={allPosts} loading={loading} />

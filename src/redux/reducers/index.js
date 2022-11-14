@@ -145,6 +145,11 @@ const rootReducer = (state = initialState, action) => {
         Posts: [...filtroNivel],
         filtrosAplicadosPremium: action.payload,
       };
+      ///REPORT POSTS
+      case "POST_REPORT_EMAIL":
+      return{
+        ...state,
+      }
       //Actions Favoritos
     case "CREATE_FAV":
        const item = action.payload;
@@ -158,6 +163,7 @@ const rootReducer = (state = initialState, action) => {
       return {
        ...state,
         Fav: [...state.Fav,  item] }}
+
 
       case "DELETE_FAV":
         const del = action.payload

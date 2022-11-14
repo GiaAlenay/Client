@@ -6,9 +6,7 @@ import {Perfil} from './view/Perfil/Perfil'
 import {GoPremium} from './view/GoPremium/GoPremium'
 import {TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
-import PageNotFound from "./view/PageNotFound/PageNotFound.jsx"
-import { HomeAdmin } from './components/Admin/HomeAdmin';
-import UserInactivo from './components/Admin/UserInactivo';
+import {SendEmail} from './view/SendEmail/SendEmail'
 
 function App() {
   return (
@@ -20,12 +18,8 @@ function App() {
         <Route path='/premium' element={<GoPremium/>}/>
         <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
         <Route path ='/search' element={<SearchPag/>}/>
-        <Route path="*" element={<PageNotFound/>} />
-
-        {/* Ruta del adminisrador */}
-
-        <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
-        <Route path={'/UserInactivo'} element= {<UserInactivo/>}/>
+        
+        <Route path="/send/email" element={<SendEmail/>} />
       </Routes>
     </div>
   );
