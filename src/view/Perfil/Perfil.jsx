@@ -13,7 +13,7 @@ import { Feed } from "../../components/Feed/Feed.jsx";
 
 import { deleteUser, createUser } from "../../redux/actions/users";
 import { getPosts } from "../../redux/actions/posts";
-
+import { AddToFav} from "../../redux/actions/fav";
 import {
   Stack,
   Button,
@@ -31,15 +31,18 @@ import {
   WorkspacePremium as WorkspacePremiumIcon,
 } from "@mui/icons-material";
 
+
 export const Perfil = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const loading = useSelector((state) => state.loading);
   const userLoged = useSelector((state) => state.UserLoged);
   const allPosts = useSelector((state) => state.Posts);
+  const AllFavs = useSelector((state)=>state.Fav)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const history = useNavigate();
 
+  
   const [reglas, setreglas] = useState(false);
   const [configurar, setConfigurar] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -47,11 +50,13 @@ export const Perfil = () => {
   const [aceptar, setAceptar] = useState(false);
   const [open, setOpen] = useState(false);
 
+
   useEffect(() => {
     !isLoading && !isAuthenticated && navigate("/");
     if (!isLoading && isAuthenticated) {
       dispatch(createUser({ usuario: user.nickname, email: user.email }));
       dispatch(getPosts());
+      dispatch(AddToFav())   
     }
   }, [isLoading, isAuthenticated]);
 
@@ -254,7 +259,9 @@ export const Perfil = () => {
                     <div className={`detInf detInf2`}>Amigos</div>
                   )}
                   {current === 3 && (
-                    <div className={`detInf detInf3`}>Favoritos</div>
+                      <div className={`detInf detInf3`}>
+                          <Feed allPosts={ allPosts.filter(post =>  AllFavs.includes(post.id))}/>
+                      </div>
                   )}
                   {current === 4 && (
                     <div className={`detInf detInfdetInf4`}>

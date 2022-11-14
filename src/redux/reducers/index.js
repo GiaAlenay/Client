@@ -7,11 +7,14 @@ const initialState = {
   mensajeResultado: "",
   UserLoged: {},
   loading: false,
+  Fav: [],
   allPosts: [],
   userInactivo: [],
   filtrosAplicados: [],
   filtrosAplicadosPremium: "",
+  
 };
+
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -142,6 +145,28 @@ const rootReducer = (state = initialState, action) => {
         Posts: [...filtroNivel],
         filtrosAplicadosPremium: action.payload,
       };
+      //Actions Favoritos
+    case "CREATE_FAV":
+       const item = action.payload;
+       //const id = state.Fav.find(x => x.item); 
+       if (state.Fav.find(e => e === item)) {
+         return {
+           ...state,
+             Fav: state.Fav
+           }
+       }else{
+      return {
+       ...state,
+        Fav: [...state.Fav,  item] }}
+
+      case "DELETE_FAV":
+        const del = action.payload
+        const favoritos = state.Fav;
+        const filtro = favoritos.filter((fav) => fav !== del);  
+        return {
+          ...state,
+          Fav: filtro
+        };
 
     case "EDIT_POST":
       return {
@@ -174,7 +199,6 @@ const rootReducer = (state = initialState, action) => {
         Posts: orderRating,
       };
 
-    //DEFAULT
     default:
       return {
         ...state,
