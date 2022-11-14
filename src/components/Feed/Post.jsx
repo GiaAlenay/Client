@@ -11,8 +11,11 @@ import {
   Checkbox,
   Button,
 } from "@mui/material";
+
 import parse from "html-react-parser";
 import { deletePost, editPost, getPosts } from "../../redux/actions/posts";
+import {AddToFav} from "../../redux/actions/fav"
+import {deleteFav} from "../../redux/actions/fav";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
@@ -26,6 +29,7 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
   const [likeComprobacion, setLikeComprobacion] = useState(false);
   const [contador, setContador] = useState(0);
 
+
   useEffect(() => {
     if (likes.includes(userLoged.id)) setLikeComprobacion(true);
   }, [likes]);
@@ -33,6 +37,13 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
   function handleDeletePost(e) {
     dispatch(deletePost(e));
   }
+  function handleDeleteFav(e){
+    dispatch(deleteFav(e))
+  }
+  function handleAddFav(e){
+     dispatch(AddToFav(e))
+  }
+
   function handleEditLikePost(e) {
     e.preventDefault();
     setContador(likes.length);
@@ -139,10 +150,15 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
                 {media && verificarMedia(media)}
               </Typography>
             </CardContent>
+
+           
+            
+
             <br />
             {!isLoading && isAuthenticated && user.nickname === userpost && (
               <Button onClick={() => handleDeletePost(id)}>ELIMINAR</Button>
             )}
+            {!isLoading && isAuthenticated && <Button  onClick={()=>handleDeleteFav(id)}>ELIMINAR Favoritos</Button>}
 
             <CardActions disableSpacing>
               <IconButton
@@ -150,6 +166,7 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
                 onClick={handleEditLikePost}
               >
                 {likes.length}
+
                 <Checkbox
                   icon={
                     likeComprobacion ? (
@@ -160,12 +177,18 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
                   }
                 />
               </IconButton>
-              {/* <IconButton aria-label="add to favorites" onClick={sumarMegustas}>
+              <IconButton aria-label="add to favorites" onClick={() => handleAddFav(id)}>
                 <Checkbox
-                  icon={<StarBorderIcon />}
-                  checkedIcon={<StarIcon sx={{ color: "orange" }} />}
+                  icon={
+                    likeComprobacion ? (
+                      <StarIcon sx={{ color: "orange" }} />
+                    ) : (
+                      <FavoriteBorder />
+                    )
+                  }
+                  
                 />
-            </IconButton> */}
+            </IconButton>
             </CardActions>
           </Card>
         </div>

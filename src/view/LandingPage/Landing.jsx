@@ -2,7 +2,7 @@ import './Landing.css'
 import React, { useEffect } from 'react'
 import { useAuth0 } from "@auth0/auth0-react"
 import { useNavigate } from "react-router-dom";
-import {Link} from "react-router-dom"
+
 
 export const Landing = () => {
 
@@ -10,6 +10,11 @@ export const Landing = () => {
     const { loginWithRedirect, isAuthenticated } = useAuth0()
 
     
+    async function ALaHome(e){
+        e.preventDefault();
+    navigate("/home");
+    
+    }
 
     
 
@@ -31,7 +36,7 @@ export const Landing = () => {
                             <button onClick={loginWithRedirect} className='btnCreCu' > UNETE </button>
                             {isAuthenticated && 
                             (<>
-                            <Link to="/home"> <button className='btnCreCu'> Ahora sos parte  </button> </Link>
+                            <button className='btnCreCu1' onClick={(e) => ALaHome(e)}> Ahora sos parte  </button> 
                             </>)}
                         </div>
                     </div>

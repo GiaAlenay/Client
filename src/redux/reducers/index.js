@@ -7,11 +7,14 @@ const initialState = {
   mensajeResultado: "",
   UserLoged: {},
   loading: false,
+  Fav: [],
   allPosts: [],
   userInactivo: [],
   filtrosAplicados: [],
-  filtrosAplicadosPremium: ""
+  filtrosAplicadosPremium: "",
+  
 };
+
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -39,6 +42,14 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case "CREATE_USER":
+      return {
+        ...state,
+        mensajeResultado: action.payload.msg,
+        UserLoged: action.payload.user,
+        loading: false,
+      };
+
+    case "GET_USER_LOGED":
       return {
         ...state,
         mensajeResultado: action.payload.msg,
@@ -134,18 +145,66 @@ const rootReducer = (state = initialState, action) => {
         Posts: [...filtroNivel],
         filtrosAplicadosPremium: action.payload,
       };
+      ///REPORT POSTS
       case "POST_REPORT_EMAIL":
       return{
         ...state,
       }
+      //Actions Favoritos
+    case "CREATE_FAV":
+       const item = action.payload;
+       //const id = state.Fav.find(x => x.item); 
+       if (state.Fav.find(e => e === item)) {
+         return {
+           ...state,
+             Fav: state.Fav
+           }
+       }else{
+      return {
+       ...state,
+        Fav: [...state.Fav,  item] }}
 
-      case "EDIT_POST":
+
+      case "DELETE_FAV":
+        const del = action.payload
+        const favoritos = state.Fav;
+        const filtro = favoritos.filter((fav) => fav !== del);  
+        return {
+          ...state,
+          Fav: filtro
+        };
+
+    case "EDIT_POST":
       return {
         ...state,
-
+      };
+    case "ORDER_LIKES":
+      let allPost = state.Posts;
+      let orderRating =
+        action.payload === "menos"
+          ? allPost.sort(function (a, b) {
+              if (a.likes.length > b.likes.length) {
+                return 1;
+              }
+              if (a.likes.length < b.likes.length) {
+                return -1;
+              }
+              return 0;
+            })
+          : allPost.sort(function (a, b) {
+              if (a.likes.length > b.likes.length) {
+                return -1;
+              }
+              if (a.likes.length < b.likes.length) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        Posts: orderRating,
       };
 
-    //DEFAULT
     default:
       return {
         ...state,

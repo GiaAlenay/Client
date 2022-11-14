@@ -31,13 +31,7 @@ body{
     grid-template-columns: 50% 50%;
 }
 
-.lan1Left{
-    
-}
 
-.lan2rigth{
-    
-}
 .logo{
     margin-top: 1%;
     margin-left: 3%;
@@ -61,9 +55,30 @@ body{
     cursor: pointer;
     border:1px solid rgb(184, 205, 245);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
 }
 .btnCreCu:hover{
     background-image: linear-gradient(to right, rgb(33, 25, 155), rgb(83, 102, 211),rgb(34, 26, 138));
+        text-decoration: none;
+}
+.btnCreCu1{
+    all:unset;
+    background-image: linear-gradient(to right, rgb(19, 13, 102), rgb(58, 75, 167),rgb(13, 8, 77));
+    color: white;
+    width: 75%;
+    margin: 20px;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+    border-radius: 5px;
+    font-size: 19px;
+    cursor: pointer;
+    border:1px solid rgb(184, 205, 245);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
+.btnCreCu1:hover{
+    background-image: linear-gradient(to right, rgb(33, 25, 155), rgb(83, 102, 211),rgb(34, 26, 138));
+        text-decoration: none;
 }
 .landArribaCont{
     width: 100%;
