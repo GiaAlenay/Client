@@ -19,7 +19,7 @@ function App() {
         <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
         <Route path ='/search' element={<SearchPag/>}/>
         
-        <Route path="send/email" element={<SendEmail/>} />
+        <Route path="/send/email" element={<SendEmail/>} />
       </Routes>
     </div>
   );

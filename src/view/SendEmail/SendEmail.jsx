@@ -16,7 +16,11 @@ export function SendEmail(){
   
   },[ isLoading, isAuthenticated ])
     
-    
+  const [error,setError] =useState({
+    msg:"",
+    usarioreport:"",
+    tituloPost:"",
+    })
     
     const [input, setInput] = useState({
         msg:"",
@@ -24,11 +28,14 @@ export function SendEmail(){
         tituloPost:"",
       });
       function handleChang(e){
-        e.preventDefault();
-        setInput({
-          ...input,
-          [e.target.name]: e.target.value,
-        });
+        setInput((prevent)=>{
+          const newState= {
+            ...input,
+            [e.target.name]:e.target.value
+        } 
+        setError(validate(newState))
+        return newState
+        })
       }
 
     function handleSubmit(e){
@@ -54,6 +61,29 @@ if(isLoading){
   <div>Loading...</div>
 }
 
+function validate(state){
+  const errors ={}
+  if(!state.usarioreport){
+      errors.usarioreport = "Falta el nombre del propietario del posts"
+  }else if(state.usarioreport.length >= 90){
+      errors.usarioreport = "El nombre del propietario del posts es muy largo"
+  }else if( state.usarioreport[0] === " " ){
+      errors.usarioreport = "El nombre del propietario del posts comenzar con una letra "
+  }else if(state.usarioreport.length >= 4){
+      error.usarioreport = "No exite un usuario que tengo 3 letras ya lo busque"
+  } 
+  if(!state.tituloPost){
+      errors.tituloPost = "Falta la dificultad de la actividad "
+  }  
+
+  if(!state.msg){
+      errors.msg = "Falta el tiempo de la Actividad"
+  }
+  
+  return errors;
+
+}
+
 
     return(<div>
       <div>
@@ -77,6 +107,7 @@ if(isLoading){
                 value={input.tituloPost}
                 onChange={(e) => handleChang(e)}
                 />
+                <p className="denegar">{error.tituloPost || ""}</p>
                 <br/>
 
                 <label className="labelReport">Ingrese el nombre del propietario del posts  </label>
@@ -97,7 +128,7 @@ if(isLoading){
                 onChange={(e) => handleChang(e)} 
                 cols="10" rows="10" />
                 <br/>
-                <button id="submit" className="buttonReport" type="submit"   >Enviar su report</button>
+                <button id="submit" className="buttonReport" type="submit" disabled={Object.entries(error).length ? true : false}  >Enviar su report</button>
             </form>
             </div>
         </div>

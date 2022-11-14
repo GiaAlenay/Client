@@ -13,7 +13,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
-
+import { Link } from "react-router-dom";
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
@@ -69,6 +69,7 @@ export const Home = () => {
           >
             <TuneIcon />
           </button>
+       <Link to={"/send/email"}><button>Ponete la Gorra</button></Link>
         </div>
         <Feed allPosts={allPosts} loading={loading} />
         <div className="publicidadEnElHome">
