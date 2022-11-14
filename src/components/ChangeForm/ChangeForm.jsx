@@ -152,7 +152,7 @@ export const ChangeForm = (props) => {
             name="foto_principal"
             value={change.foto_principal}
             onClick={handleBtnEditar}
-            className="btnFormEditListo"
+            className="btnFormEditListo" 
           ></button>
         </div>
       ) : (
@@ -262,3 +262,4 @@ export const ChangeForm = (props) => {
     </div>
   );
 };
+
