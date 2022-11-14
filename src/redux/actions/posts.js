@@ -39,7 +39,7 @@ export function deletePost(id){
   } catch (e) {
     console.log(e)      
   }
-};
+}
 
 
 

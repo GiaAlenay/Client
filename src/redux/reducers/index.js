@@ -7,9 +7,13 @@ const initialState = {
   mensajeResultado: "",
   UserLoged: {},
   loading: false,
-  allPosts:[]
-
+  allPosts:[],
+  Fav: []
+  // ...(JSON.parse(localStorage.getItem('favs')) === null
+  // ? []
+  // : JSON.parse(localStorage.getItem('favs')))
 };
+
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -109,9 +113,29 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         Posts: [...categoriesFilter],
       };
+      //Actions Favoritos
+    case "CREATE_FAV":
+       const item = action.payload;
+       //const id = state.Fav.find(x => x.item); 
+       if (state.Fav.find(e => e === item)) {
+         return {
+           ...state,
+             Fav: state.Fav
+           }
+       }else{
+      return {
+       ...state,
+        Fav: [...state.Fav,  item] }}
 
+      case "DELETE_FAV":
+        const del = action.payload
+        const favoritos = state.Fav;
+        const filtro = favoritos.filter((fav) => fav !== del);  
+        return {
+          ...state,
+          Fav: filtro
+        };
 
-    //DEFAULT
     default:
       return {
         ...state,

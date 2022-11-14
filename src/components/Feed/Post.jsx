@@ -2,6 +2,8 @@ import {MoreVert, Favorite, FavoriteBorder} from "@mui/icons-material";
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography,Checkbox,Button} from "@mui/material";
 import parse from "html-react-parser";
 import {deletePost} from "../../redux/actions/posts"
+import {AddToFav} from "../../redux/actions/fav"
+import {deleteFav} from "../../redux/actions/fav";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 export const Post=({titulo,userpost,texto,media,foto ,id})=>{
@@ -12,9 +14,12 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
     function handleDeletePost(e){
         dispatch(deletePost(e))
     }
-    function sumarMegustas(e){
-        
-        console.log("sumar")
+    function handleDeleteFav(e){
+        dispatch(deleteFav(e))
+    }
+    function handleAddFav(e){
+        console.log(e)
+         dispatch(AddToFav(e))
     }
     
     
@@ -96,10 +101,11 @@ export const Post=({titulo,userpost,texto,media,foto ,id})=>{
             </CardContent>
                  <br/>
         {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeletePost(id)}>ELIMINAR</Button>}
+        {!isLoading && isAuthenticated && user.nickname === userpost && <Button  onClick={()=>handleDeleteFav(id)}>ELIMINAR Favoritos</Button>}
            
             
             <CardActions disableSpacing>
-                <IconButton aria-label= "add to favorites" onClick={sumarMegustas}>
+                <IconButton aria-label= "add to favorites" onClick={() => handleAddFav(id)}>
                 <Checkbox
                 icon={<FavoriteBorder/>} checkedIcon={<Favorite sx= {{color: "red"}}/>}
                 />

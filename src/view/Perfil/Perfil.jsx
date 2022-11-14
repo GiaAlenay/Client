@@ -14,6 +14,7 @@ import Loading from "../Loading/Loading.jsx"
 
 import { deleteUser, createUser } from "../../redux/actions/users";
 import { getPosts } from '../../redux/actions/posts';
+import { AddToFav} from "../../redux/actions/fav";
 
 import { Stack, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { 
@@ -30,6 +31,7 @@ export const Perfil =()=>{
     const loading = useSelector(state => state.loading)
     const userLoged = useSelector(state => state.UserLoged)
     const allPosts = useSelector((state)=>state.Posts)
+    const AllFavs = useSelector((state)=>state.Fav)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const history = useNavigate();
@@ -45,8 +47,9 @@ export const Perfil =()=>{
         !isLoading && !isAuthenticated && navigate("/")
         if(!isLoading && isAuthenticated) {
             dispatch(createUser({usuario: user.nickname, email: user.email}))
-            dispatch(getPosts())
-        } 
+            dispatch(getPosts()) 
+            dispatch(AddToFav())    
+        }
         
     },[ isLoading, isAuthenticated ])
     
@@ -158,7 +161,7 @@ export const Perfil =()=>{
                                     value={0} 
                                     onClick={(e)=>{changeCurrent(e)}} 
                                     className={`btn ${current=== 0 &&'selectedDetalle'}`}>
-                                        Publicaciones 
+                                        Publicaciones
                                     </button>
                                     <button 
                                     value={1} 
@@ -189,7 +192,7 @@ export const Perfil =()=>{
                                 <div className="detalleInfo">
                                     {current===0 &&(
                                         <div className={`detInf detInf0`}>
-                                            <Feed allPosts={allPosts.filter(e => e.userId === userLoged.id)}/>
+                                            <Feed allPosts={ allPosts.filter(e =>  e.userId === userLoged.id)}/>
                                         </div>)
                                     }
                                     {current===1 &&(
@@ -204,7 +207,11 @@ export const Perfil =()=>{
                                     }
                                     {current===3 &&(
                                         <div className={`detInf detInf3`}>
-                                            Favoritos
+                                            <div>
+                                            <Feed allPosts={ allPosts.filter(post =>  AllFavs.includes(post.id))}/>
+                                            
+                                            </div>
+                                            
                                         </div>)
                                     }
                                     {current===4 &&(
