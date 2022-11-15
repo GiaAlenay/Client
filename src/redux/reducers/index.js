@@ -150,10 +150,9 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
       }
-      //Actions Favoritos
+      //Actions Favoritos 
     case "CREATE_FAV":
-       const item = action.payload;
-       //const id = state.Fav.find(x => x.item); 
+       const item = action.payload; 
        if (state.Fav.find(e => e === item)) {
          return {
            ...state,
