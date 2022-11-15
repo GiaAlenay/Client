@@ -111,7 +111,6 @@ export const Home = () => {
               >
                 <MenuItem value={"Mas"}>Mas Likes</MenuItem>
                 <MenuItem value={"Menos"}>Menos Likes</MenuItem>
-
               </Select>
             </FormControl>
           </div>
