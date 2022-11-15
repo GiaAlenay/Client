@@ -165,7 +165,7 @@ export const Perfil = () => {
                       <Button
                         className="ou"
                         sx={{
-                          backgroundColor: "rgb(22, 17, 41)",
+                          backgroundColor: "rgb(19, 13, 102)",
                           display: `${!userLoged ? "none" : "block"}`,
                         }}
                         size="medium"
@@ -179,7 +179,7 @@ export const Perfil = () => {
                       <Button
                         onClick={handleCuadroSobrepuesto}
                         value={"config"}
-                        sx={{ backgroundColor: "rgb(22, 17, 41)" }}
+                        sx={{ backgroundColor: "rgb(19, 13, 102)" }}
                         size="medium"
                         variant="contained"
                       >
@@ -211,7 +211,7 @@ export const Perfil = () => {
                   >
                     Información
                   </button>
-                  <button
+               {/* {   <button
                     value={2}
                     onClick={(e) => {
                       changeCurrent(e);
@@ -219,7 +219,7 @@ export const Perfil = () => {
                     className={`btn ${current === 2 && "selectedDetalle"}`}
                   >
                     Amigos
-                  </button>
+                  </button>} */}
                   <button
                     value={3}
                     onClick={(e) => {
@@ -255,9 +255,9 @@ export const Perfil = () => {
                       <DescUsuario />
                     </div>
                   )}
-                  {current === 2 && (
+                 {/* { {current === 2 && (
                     <div className={`detInf detInf2`}>Amigos</div>
-                  )}
+                  )}} */}
                   {current === 3 && (
                       <div className={`detInf detInf3`}>
                           <Feed allPosts={ allPosts.filter(post =>  AllFavs.includes(post.id))}/>
