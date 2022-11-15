@@ -1,5 +1,5 @@
 .MuiAppBar-root{
-    background-color: rgb(22, 17, 41);
+    background-image: linear-gradient(to right, rgb(19, 13, 102), rgb(58, 75, 167),rgb(13, 8, 77));
     height: 50%;
 }
 
