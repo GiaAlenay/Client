@@ -6,7 +6,8 @@ import { FiCheck } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { getMercadoPago } from "../../redux/actions/premium";
 import styles from "./Cards.module.css";
-
+import { useMercadopago } from "react-sdk-mercadopago";
+import { useEffect, useState } from "react";
 function Check({ text }) {
   return (
     <div className={styles.wordsTitleContainer}>
@@ -16,11 +17,35 @@ function Check({ text }) {
   )
 }
 
-export function Card({ plan, btnPrice, month, title }) {
-  const handleclick = async () => {
-    const responseMp = await getMercadoPago("test_user_66385999@testuser.com", btnPrice, month);
-    window.location.replace(responseMp.url);
-  };
+export function Card({ plan, title }) {
+  // const handleclick = async () => {
+  //   const responseMp = await getMercadoPago("test_user_66385999@testuser.com", btnPrice, month);
+  //   window.location.replace(responseMp.url);
+  // };
+  const mercadopago = useMercadopago.v2(
+    "APP_USR-d319d9f1-1689-4260-97c8-8d2d34a85cb2",
+    {
+      locale: "es-AR"
+    }
+  );
+  
+
+  const [rendered, setRendered] = useState(false)
+  useEffect(() => {
+    if (mercadopago && !rendered) {
+      mercadopago.checkout({
+        preference: {
+          id: "1234560647-028df2d8-ef79-4ab3-8117-542f8d025633"
+        },
+        render: {
+          container: ".cho-container",
+          label: "Pagar"
+        }
+      });
+      setRendered(true);
+    }
+    
+  }, [mercadopago,rendered]);
 
   return (
     <div className={styles.mainContainerCard}>
@@ -39,11 +64,11 @@ export function Card({ plan, btnPrice, month, title }) {
       </div>
       <span className={styles.plan}>{plan}</span>
       <button
-        className={styles.button}
-        onClick={handleclick}
+        // onClick={handleclick}
       >
         Adquirir plan
       </button>
+      <div className="cho-container">pagar</div>
     </div>
   );
 }

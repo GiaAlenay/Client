@@ -56,7 +56,22 @@ export const Nav =()=>{
   //     }
   //   })
   // },[])
-
+  function reportEmail(e){
+    e.preventDefault();
+    history("/send/email");
+  }
+  function goProfile(e){
+    e.preventDefault();
+    history("/profile");
+  }
+  function goAdmin(e){
+    e.preventDefault();
+    history("/home/admin");
+  }
+  function goPay(e){
+    e.preventDefault()
+    history("/premium/pay")
+  }
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -98,15 +113,20 @@ export const Nav =()=>{
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-    > {userLoged.usuario?<Link to={`/profile`}>
-    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-  </Link>: <></> }
+    > {userLoged.usuario?
+    <MenuItem onClick={(e)=> goProfile(e)}>Profile</MenuItem>
+  : <></> }
       
       <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
-      {isAuthenticated && userLoged.admin === true ? <Link to={`/home/admin`}>
-        <MenuItem onClick={handleMenuClose}>Administrador</MenuItem>
-      </Link>: <></>}
-      
+      {isAuthenticated && userLoged.admin === true ? 
+        <MenuItem onClick={(e)=> goAdmin(e)}>Administrador</MenuItem>
+      : <></>}
+      {isAuthenticated  ? 
+        <MenuItem onClick={(e)=> reportEmail(e)}>Reportar posts</MenuItem>
+      : <></>}
+      {isAuthenticated  ? 
+        <MenuItem onClick={(e)=> goPay(e)}>Datos de pago</MenuItem>
+      : <></>}  
     </Menu>
   );
 

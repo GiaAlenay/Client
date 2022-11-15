@@ -1,8 +1,25 @@
-import './Reglas.css'
-export const Reglas=()=>{
-    return(
-        <div className="reglasCont">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-        </div>
-    )
-}
+import "./Reglas.css";
+export const Reglas = () => {
+  return (
+    <div className="reglasCont">
+      Comportamiento inaceptable No a las humillaciones sutiles ni al lenguaje
+      poco amistoso. Incluso si no es tu intención, esto puede tener un impacto
+      negativo en los demás. No a la intolerancia. No toleramos ninguna frase
+      que pueda ofender o apartar a las personas por motivos de raza, sexo,
+      orientación sexual o religión, y estos son solo algunos ejemplos. En caso
+      de duda, simplemente no lo hagas. No al acoso. Esto incluye, entre otros:
+      acoso, intimidación, lenguaje vulgar, amenazas directas o indirectas,
+      comentarios sexualmente sugestivos, patrones de contacto social
+      inapropiado e interrupciones sostenidas de la discusión. Reportar Cada
+      persona contribuye a construir una comunidad amable y respetuosa. Si
+      encuentras un comportamiento inaceptable dirigido a ti u otras personas,
+      puedes: Reportar el contenido nocivo. Dependiendo del contenido, reportar
+      alertará a los moderadores o activará una eliminación automática.
+      Contactarnos. Responderemos tan rápido como podamos. Aplicación Tomamos
+      tus reportes en serio. Aquellos que no sigan el Código de conducta de
+      buena fe pueden enfrentarse a las repercusiones que nuestro equipo de
+      moderación considere apropiadas. Todas las acciones se tomarán caso por
+      caso a discreción de nuestros moderadores. 
+    </div>
+  );
+};

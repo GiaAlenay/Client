@@ -1,0 +1,47 @@
+.ContenedorReport{
+
+    background-color:red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid black 3px;
+    flex-direction: column;
+    width: 540px;
+    height: 550px;
+    background-color: #828f94;
+    border-radius: 25px;
+    font-size: 30px;
+}
+.BodyReport{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 92.3vh;
+    background-color: #0e295d;
+}
+
+.labelReport{
+    
+    font-size: 2.5rem;
+}
+
+.inputReport{
+    height: 27px;
+    font-size: 1.4rem;
+    width: 75%;
+}
+.textReport{
+    height: 100px;
+    width: 100%;
+}
+.buttonReport{
+    display: flex;
+    height: 50px;
+    width: 25%;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: white;
+}
