@@ -7,7 +7,7 @@ import {GoPremium} from './view/GoPremium/GoPremium'
 import {TodasNotificacion} from './view/TodasNotificaciones/TodasNotificacion'
 import { SearchPag } from './view/SearchPag/SearchPag'
 import {SendEmail} from './view/SendEmail/SendEmail'
-
+import {Pay } from './view/Pay/Pay';
 function App() {
   return (
     <div className="App">
@@ -18,7 +18,7 @@ function App() {
         <Route path='/premium' element={<GoPremium/>}/>
         <Route path ='/notificaciones' element={<TodasNotificacion/>}/>
         <Route path ='/search' element={<SearchPag/>}/>
-        
+        <Route path='/premium/pay'element={<Pay/>}/>
         <Route path="/send/email" element={<SendEmail/>} />
       </Routes>
     </div>
