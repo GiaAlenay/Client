@@ -15,6 +15,7 @@ import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
 import { useQuery } from "react-query";
 export const Home = () => {
+  const userLoged = useSelector(state => state.UserLoged);
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
   const loading = useSelector((state) => state.loading);
@@ -22,11 +23,11 @@ export const Home = () => {
   const [open, setOpen] = useState(false);
   const [openPremium, setOpenPremium] = useState(false);
   
-  const {  error, data } = useQuery('repoData', () =>
+  const {   data } = useQuery('repoData', () =>
   fetch('http://localhost:3001/premium/feedback').then(res =>
     res.json()
   )
-)
+  )
     console.log("****************************************")
     console.log(data)
     console.log("****************************************")
@@ -52,17 +53,20 @@ export const Home = () => {
   }
   if( data && user){
     const objetoamandar = {
+      id: userLoged.id,
       msg : data,
       name: user.nickname,
       email: user.email,
     }
     const mensaj = axios.post('http://localhost:3001/send/emails/premium',objetoamandar)
     // const hacerpremium = axios.put('http://localhost:3001/users/')
+    console.log("****************************************")
     console.log(mensaj)
+    console.log("****************************************")
     // console.log(hacerpremium)
   }  
  
-   if (error) return 'An error has occurred: ' + error.message
+   
 
   return (
     <div className="home">

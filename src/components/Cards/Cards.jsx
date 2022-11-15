@@ -35,7 +35,7 @@ export function Card({ plan, title }) {
     if (mercadopago && !rendered) {
       mercadopago.checkout({
         preference: {
-          id: "1234560647-9a665d74-ce35-43d1-9a6d-a15f55431525"
+          id: "1234560647-4cf33a55-9b7b-4878-9329-4b797442af84"
         },
         render: {
           container: ".cho-container",
