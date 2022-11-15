@@ -150,7 +150,7 @@ const rootReducer = (state = initialState, action) => {
     case "ORDER_LIKES":
       let allPost = state.Posts;
       let orderRating =
-        action.payload === "menos"
+        action.payload === "Menos"
           ? allPost.sort(function (a, b) {
               if (a.likes.length > b.likes.length) {
                 return 1;

@@ -1,5 +1,5 @@
 import "./Home.css";
-import { Stack } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
 import { Feed } from "../../components/Feed/Feed";
 import { Filters } from "../../components/Filters/Filters";
 import { Nav } from "../../components/Nav/Nav";
@@ -15,13 +15,16 @@ import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
 import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
+
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const allPosts = useSelector((state) => state.Posts);
   const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
+
   const [open, setOpen] = useState(false);
   const [openPremium, setOpenPremium] = useState(false);
+
   const [rating, setRating] = useState("");
 
   useEffect(() => {
@@ -45,7 +48,7 @@ export const Home = () => {
   function handlerOrderLikes(e) {
     e.preventDefault();
     dispatch(orderLikes(e.target.value));
-    setRating(`RATING ${e.target.value} `);
+    setRating(`${e.target.value} `);
   }
 
   return (
@@ -56,6 +59,10 @@ export const Home = () => {
           <div>
             <MiniPerfil />
           </div>
+
+          <div className="container">
+          <Typography  variant="inherit" align="center" sx={{my:2 }}>Filtrado por Categoria</Typography>
+          {/* <div className="button"> */}
           <div className={`${open ? "mostrarfiltros" : "nomostrarfiltros"}`}>
             <Filtros open={open} function={handlerOpen} />
           </div>
@@ -63,10 +70,16 @@ export const Home = () => {
             className="butonFiltrosHome"
             onClick={() => {
               setOpen(true);
-            }}
-          >
-            <TuneIcon />
+            }}>
+            Categoria 
+            {/* <TuneIcon /> */}
           </button>
+
+          {/* </div> */}
+          </div>
+
+         <div className="container">
+          <Typography  variant="inherit" align="center" sx={{my:2 }}>Filtrado por Nivel</Typography>
           <div
             className={`${openPremium ? "mostrarfiltros" : "nomostrarfiltros"}`}
           >
@@ -78,8 +91,37 @@ export const Home = () => {
               setOpenPremium(true);
             }}
           >
-            <TuneIcon />
-          </button>
+            Experiencia
+            {/* <TuneIcon /> */}
+          </button>  
+
+          </div>
+
+          <div>
+          <Typography  variant="inherit" align="center" sx={{my:2 }}>Ordenamiento por Likes</Typography>
+            <FormControl align="center"sx={{mx:5, minWidth: 230 }}>
+              <InputLabel id="simple-select-label">Favoritos</InputLabel>
+              <Select
+              labelId="simple-select-label"
+              id="simple-select-label"
+              value={rating}
+              label="rating"
+              onChange={handlerOrderLikes}
+              renderValue={(value)=>`${value} Likes❤️`}
+              >
+                <MenuItem value={"Mas"}>Mas Likes</MenuItem>
+                <MenuItem value={"Menos"}>Menos Likes</MenuItem>
+
+              </Select>
+            </FormControl>
+          </div>
+      
+
+
+
+
+
+          {/* 
           <div>
             <select onChange={(e) => handlerOrderLikes(e)}>
               <option value="" hidden>
@@ -88,7 +130,9 @@ export const Home = () => {
               <option value="mas">Mas Likes</option>
               <option value="menos">Menos Likes</option>
             </select>
-          </div>
+          </div> 
+          */}
+
         </div>
         <Feed allPosts={allPosts} loading={loading} />
         <div className="publicidadEnElHome">
