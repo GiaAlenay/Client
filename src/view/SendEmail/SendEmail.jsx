@@ -47,7 +47,7 @@ export function SendEmail(){
         usarioreport:input.usarioreport,
         tituloPost:input.usarioreport,
         }))
-        alert("enviado")
+        alert("Su report se a enviado correctamente revise su gmmail")
         setInput({
         msg:"",
         usarioreport:"",
