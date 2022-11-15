@@ -12,9 +12,7 @@ const initialState = {
   userInactivo: [],
   filtrosAplicados: [],
   filtrosAplicadosPremium: "",
-  
 };
-
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -114,8 +112,21 @@ const rootReducer = (state = initialState, action) => {
     case "FILTER_CATEGORIES":
       const traerposts = state.Posts; //cambia
       const todos = state.allPosts; //no cambia, solo lo uso
+      const filtrosPremium = state.filtrosAplicadosPremium;
 
-      const filtrar = todos.filter(({ categories }) =>
+     const filtrar = todos.filter(({ categories }) =>
+        categories.find(({ name }) => action.payload.includes(name))
+      );
+      const sihayfiltrosPremium = todos.filter(({ categories }) =>
+        categories.find(({ name }) => filtrosPremium.includes(name))
+      );
+      const postFiltrados = state.filtrosAplicados.find(
+        (p) => p === action.payload
+      )
+        ? traerposts
+        : sihayfiltrosPremium;
+      
+        const filtroCategoria = postFiltrados.filter(({ categories }) =>
         categories.find(({ name }) => action.payload.includes(name))
       );
 
@@ -140,39 +151,46 @@ const rootReducer = (state = initialState, action) => {
           return p;
         }
       });
+      
+      const filtroPrimero = todosP.filter((p) => {
+        if (p.premium === action.payload) {
+          return p;
+        }
+      });
       return {
         ...state,
-        Posts: [...filtroNivel],
+        Posts: aplicados.length?[...filtroNivel]:filtroPrimero ,
         filtrosAplicadosPremium: action.payload,
       };
-      ///REPORT POSTS
-      case "POST_REPORT_EMAIL":
-      return{
-        ...state,
-      }
-      //Actions Favoritos
-    case "CREATE_FAV":
-       const item = action.payload;
-       //const id = state.Fav.find(x => x.item); 
-       if (state.Fav.find(e => e === item)) {
-         return {
-           ...state,
-             Fav: state.Fav
-           }
-       }else{
+    ///REPORT POSTS
+    case "POST_REPORT_EMAIL":
       return {
-       ...state,
-        Fav: [...state.Fav,  item] }}
-
-
-      case "DELETE_FAV":
-        const del = action.payload
-        const favoritos = state.Fav;
-        const filtro = favoritos.filter((fav) => fav !== del);  
+        ...state,
+      };
+    //Actions Favoritos
+    case "CREATE_FAV":
+      const item = action.payload;
+      //const id = state.Fav.find(x => x.item);
+      if (state.Fav.find((e) => e === item)) {
         return {
           ...state,
-          Fav: filtro
+          Fav: state.Fav,
         };
+      } else {
+        return {
+          ...state,
+          Fav: [...state.Fav, item],
+        };
+      }
+
+    case "DELETE_FAV":
+      const del = action.payload;
+      const favoritos = state.Fav;
+      const filtro = favoritos.filter((fav) => fav !== del);
+      return {
+        ...state,
+        Fav: filtro,
+      };
 
     case "EDIT_POST":
       return {
