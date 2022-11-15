@@ -23,10 +23,8 @@ export const Home = () => {
   const [open, setOpen] = useState(false);
   const [openPremium, setOpenPremium] = useState(false);
   
-  const {   data } = useQuery('repoData', () =>
-  fetch('http://localhost:3001/premium/feedback').then(res =>
-    res.json()
-  )
+  const {  data } = useQuery('repoData', () =>
+  axios('http://localhost:3001/premium/feedback')
   )
     console.log("****************************************")
     console.log(data)
@@ -51,20 +49,22 @@ export const Home = () => {
   if (isLoading) {
     return <div>loading</div>;
   }
-  if( data && user){
-    const objetoamandar = {
-      id: userLoged.id,
-      msg : data,
-      name: user.nickname,
-      email: user.email,
-    }
-    const mensaj = axios.post('http://localhost:3001/send/emails/premium',objetoamandar)
-    // const hacerpremium = axios.put('http://localhost:3001/users/')
-    console.log("****************************************")
-    console.log(mensaj)
-    console.log("****************************************")
-    // console.log(hacerpremium)
-  }  
+  // if( data && user){
+  //   const objetoamandar = {
+  //     id: userLoged.id,
+  //     msg : data,
+  //     name: user.nickname,
+  //     email: user.email,
+  //   }
+    
+  //   alert("mira tu gmail")
+  //   // const hacerpremium = axios.put('http://localhost:3001/users/')
+  //   console.log("****************************************")
+   
+  //   console.log("****************************************")
+    
+  //   // console.log(hacerpremium)
+  // }  
  
    
 
