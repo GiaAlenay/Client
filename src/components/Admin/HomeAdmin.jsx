@@ -19,6 +19,7 @@ export const HomeAdmin = () =>{
         <div>Loading...</div>
     }
     
+    
     return (
         !isLoading && isAuthenticated && user &&
         <div className={styles.homeContainer}>
