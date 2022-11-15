@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Notificaciones } from "../Notificaciones/Notificaciones";
 
+
 import {
   Avatar,
   AppBar,
