@@ -14,6 +14,7 @@ export function getPosts() {
   }
 }
 
+
 export function createPost(payload) {
   try {
     return async function (dispatch) {
@@ -29,6 +30,7 @@ export function createPost(payload) {
     console.log(e);
   }
 }
+
 export function deletePost(id) {
   try {
     return async function (dispatch) {
@@ -50,6 +52,7 @@ export const editPost = (form) => (dispatch) => {
     })
     .catch((e) => console.log(e));
 };
+
 
 export function orderLikes(value) {
   return {

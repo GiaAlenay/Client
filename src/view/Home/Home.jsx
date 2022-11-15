@@ -1,5 +1,12 @@
 import "./Home.css";
-import { FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Feed } from "../../components/Feed/Feed";
 import { Filters } from "../../components/Filters/Filters";
 import { Nav } from "../../components/Nav/Nav";
@@ -13,8 +20,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Filtros from "../Filtros/Filtros.jsx";
 import FiltroPremium from "../Filtros/FiltroPremium.jsx";
 import TuneIcon from "@mui/icons-material/Tune";
-import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
+import { Link } from "react-router-dom";
+
+import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -61,67 +70,69 @@ export const Home = () => {
           </div>
 
           <div className="container">
-          <Typography  variant="inherit" align="center" sx={{my:2 }}>Filtrado por Categoria</Typography>
-          {/* <div className="button"> */}
-          <div className={`${open ? "mostrarfiltros" : "nomostrarfiltros"}`}>
-            <Filtros open={open} function={handlerOpen} />
-          </div>
-          <button
-            className="butonFiltrosHome"
-            onClick={() => {
-              setOpen(true);
-            }}>
-            Categoria 
-            {/* <TuneIcon /> */}
-          </button>
+            <Typography variant="inherit" align="center" sx={{ my: 2 }}>
+              Filtrado por Categoria
+            </Typography>
+            {/* <div className="button"> */}
+            <div className={`${open ? "mostrarfiltros" : "nomostrarfiltros"}`}>
+              <Filtros open={open} function={handlerOpen} />
+            </div>
+            <button
+              className="butonFiltrosHome"
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
+              Categoria
+              {/* <TuneIcon /> */}
+            </button>
 
-          {/* </div> */}
+            {/* </div> */}
           </div>
 
-         <div className="container">
-          <Typography  variant="inherit" align="center" sx={{my:2 }}>Filtrado por Nivel</Typography>
-          <div
-            className={`${openPremium ? "mostrarfiltros" : "nomostrarfiltros"}`}
-          >
-            <FiltroPremium open={openPremium} function={handlerOpenPremium} />
-          </div>
-          <button
-            className="butonFiltrosHome"
-            onClick={() => {
-              setOpenPremium(true);
-            }}
-          >
-            Experiencia
-            {/* <TuneIcon /> */}
-          </button>  
-
+          <div className="container">
+            <Typography variant="inherit" align="center" sx={{ my: 2 }}>
+              Filtrado por Nivel
+            </Typography>
+            <div
+              className={`${
+                openPremium ? "mostrarfiltros" : "nomostrarfiltros"
+              }`}
+            >
+              <FiltroPremium open={openPremium} function={handlerOpenPremium} />
+            </div>
+            <button
+              className="butonFiltrosHome"
+              onClick={() => {
+                setOpenPremium(true);
+              }}
+            >
+              Experiencia
+              {/* <TuneIcon /> */}
+            </button>
           </div>
 
           <div>
-          <Typography  variant="inherit" align="center" sx={{my:2 }}>Ordenamiento por Likes</Typography>
-            <FormControl align="center"sx={{mx:5, minWidth: 230 }}>
+            <Typography variant="inherit" align="center" sx={{ my: 2 }}>
+              Ordenamiento por Likes
+            </Typography>
+            <FormControl align="center" sx={{ mx: 5, minWidth: 230 }}>
               <InputLabel id="simple-select-label">Favoritos</InputLabel>
               <Select
-              labelId="simple-select-label"
-              id="simple-select-label"
-              value={rating}
-              label="rating"
-              onChange={handlerOrderLikes}
-              renderValue={(value)=>`${value} Likes❤️`}
+                labelId="simple-select-label"
+                id="simple-select-label"
+                value={rating}
+                label="rating"
+                onChange={handlerOrderLikes}
+                renderValue={(value) => `${value} Likes❤️`}
               >
                 <MenuItem value={"Mas"}>Mas Likes</MenuItem>
                 <MenuItem value={"Menos"}>Menos Likes</MenuItem>
-
               </Select>
             </FormControl>
           </div>
-      
 
-
-
-
-
-          {/* 
+          {/*
           <div>
             <select onChange={(e) => handlerOrderLikes(e)}>
               <option value="" hidden>
@@ -132,7 +143,6 @@ export const Home = () => {
             </select>
           </div> 
           */}
-
         </div>
         <Feed allPosts={allPosts} loading={loading} />
         <div className="publicidadEnElHome">

@@ -1,7 +1,8 @@
+
 .perfil{
     width: 100%;
     height: 100vh;
-    background-color: azure;
+    background-image: linear-gradient( rgba(153, 146, 255, 0.486), rgba(210, 239, 241, 0.555),rgba(211, 239, 255, 0.795));
     
 }
 .firstCont{
@@ -82,7 +83,7 @@
     border: 1px solid rgb(224, 221, 221);
     width: 100%;
     display: grid;
-    grid-template-columns:  20% 20% 20% 20% 20%;
+    grid-template-columns:  25% 25% 25% 25% ;
     background-color: rgb(255, 255, 255);
     height: 52px;    
 }
@@ -172,7 +173,7 @@
 }
 .optPerf:hover{
     color: aliceblue;
-    background-color: rgb(4, 4, 34);
+    background-color: rgb(19, 13, 102);
     width: 56%;
     margin-left: 22%;
     height: 70px;
