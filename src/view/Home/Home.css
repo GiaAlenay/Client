@@ -5,7 +5,7 @@
 .homeDividir{
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    background-image: linear-gradient( rgba(153, 146, 255, 0.486), rgba(210, 239, 241, 0.555),rgba(211, 239, 255, 0.795));
+    background-image: linear-gradient( rgba(153, 146, 255, 0.486), rgba(216, 199, 233, 0.555),rgba(211, 239, 255, 0.795));
 }
 .butonFiltrosHome{
      /* width: 70px;
