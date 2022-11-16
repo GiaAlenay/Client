@@ -155,6 +155,8 @@ export const ChangeForm = (props) => {
             >morado</option>
             <option value={"https://th.bing.com/th/id/R.0b27b0db4253aa7afd345c4aa6034fc4?rik=qgmGQZeyvE%2f8Sg&riu=http%3a%2f%2fsabware.com%2f1109-medium_default%2fhoja-tamano-carta-eurocolors-color-rosa-51519.jpg&ehk=3VdX9TFAmL%2bg8Py7idAz8G0cwhSdgUV4LRPjKVXxDNA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"}
             >rosa</option>
+             <option value={"https://th.bing.com/th/id/OIP.3em8I3vBBTPf6xJr2vnnngHaEK?pid=ImgDet&rs=1"}
+            >azul</option>
             </select>
           }
           <button
