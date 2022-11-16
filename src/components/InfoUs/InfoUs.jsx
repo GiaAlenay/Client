@@ -41,10 +41,10 @@ export const infoUs = [
     },
     {
         id:"6",
-        nombre:"Franco",
+        nombre:"Franco Mafferra",
         img:"https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg",
         cargo:"Full-Stack Developer",
-        git:"",
+        git:"https://github.com/FrancoMafferra",
         link:""
     },
 ]

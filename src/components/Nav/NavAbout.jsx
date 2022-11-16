@@ -1,9 +1,13 @@
-import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Stack, Button, CardMedia } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import logo from "../../view/GoPremium/"
+import logo from "./logo.png"
 
 export const NavAbout = () => {
   const history = useNavigate();
+  const logoStyle={
+    width: "100%",
+  }
+
   return (
     <AppBar position="static">
       <Toolbar
@@ -22,8 +26,9 @@ export const NavAbout = () => {
             onClick={(e) => {
               history(`/`);
             }}
-          >
-            <img/>
+>
+
+          <img src={logo} alt="Logo" style={{widht:"100%"}}/>
           </button>
         </Typography>
         <Stack direction="row" spacing={2}>
