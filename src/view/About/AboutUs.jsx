@@ -26,16 +26,16 @@ export const AboutUs = ({ title }) => {
 
         <Box
           // #3f50b5
-          flex={4}
-          p={{ xs: 8, md: 4 }}
+          flex={8}
+          p={{ xs: 20, md: 2 }}
           sx={{
             display: "grid",
-            gridTemplateColumns: "25% 25% 25% 25%",
+            gridTemplateColumns: "30% 30% 30%",
             height: "100%",
-            width: "90%",
+            width: "80%",
             backgroundColor: "rgb(19, 13, 102)",
             fontWeight: "bold",
-            padding: "1em",
+            padding: "3em",
             borderRadius: "1em",
           }}
         >
