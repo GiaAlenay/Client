@@ -15,12 +15,6 @@ export const NavAbout = () => {
           backgroundColor: "rgb(19, 13, 102)",
         }}
       >
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ display: { xs: "none", sm: "block" } }}
-        >
           <button
             className="SYN"
             onClick={(e) => {
@@ -30,7 +24,6 @@ export const NavAbout = () => {
 
           <img src={logo} alt="Logo" style={logoStyle}/>
           </button>
-        </Typography>
         <Stack direction="row" spacing={2}>
           {/* <Button  color="inherit">Iniciar Sesion</Button>
                     <Button color="inherit">Crear Cuenta</Button> */}
