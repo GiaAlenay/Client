@@ -42,7 +42,7 @@ export const About =()=>{
             sx={{
               height: "100%",
               width: "100%",
-              backgroundColor: "#3f50b5",
+              backgroundColor: "rgb(19, 13, 102)",
               fontWeight: "bold",
               padding: "1em",
               borderRadius: "1em",
