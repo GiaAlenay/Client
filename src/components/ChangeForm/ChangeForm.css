@@ -47,16 +47,27 @@
     display: grid;
     grid-template-columns: 80% 14%;
     margin-bottom: 20px;
+    
 }
 .descChang{
     
     margin-left: 10%;
 }
 .btnGuarCamb{
-    margin-left: 40px;
+    margin-left: 60px;
     font-size: 1.1rem;
     border-radius: 30px;
     background-color: white;
     color: black;
     cursor:pointer;
+}
+
+.asadasa{
+    width: 124px;
+    height: 52px;
+    margin-left: 60px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    display: -webkit-inline-box;
 }
