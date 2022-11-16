@@ -54,9 +54,9 @@ export function Card({ plan, title, month}) {
         </div>
 
         <h2>Disfuta de los mejores Beneficios</h2>
-        <Check text={'Filtrado de Experiencia'} />
-        <Check text={'Nuevos avatares mas facheros facheritos'} />
-        <Check text={'Nuevos avatares mas facheros facheritos'} />
+        <Check text={'Filtrado por Experiencia'} />
+        <Check text={'Subir fotos para personalizar tu perfil'} />
+        <Check text={'Poder eliminar tus posteos'} />
         <br/>
         <div className={styles.conta}> 
         <div className="boxxStripe">
