@@ -35,7 +35,7 @@ export const AboutUs =({title})=>{
                 gridTemplateColumns:"25% 25% 25% 25%",
                  height: "100%",
                  width: "90%",
-                 backgroundColor: "#3f50b5",                
+                 backgroundColor: "rgb(19, 13, 102)",                
                  fontWeight: "bold",
                  padding: "1em",
                  borderRadius: "1em",
