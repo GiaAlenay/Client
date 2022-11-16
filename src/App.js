@@ -34,6 +34,7 @@ function App() {
         
         <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
         <Route path={'/UserInactivo'} element= {<UserInactivo/>}/>
+        
       </Routes>
     </div>
   );
