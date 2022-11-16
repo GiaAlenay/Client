@@ -84,10 +84,12 @@ export const AddPost = () => {
   }
 
   const handlerSelectCategoria = (e) => {
-    setInput({
-      ...input,
-      categories: [...input.categories, e.target.value],
-    });
+    if (!input.categories.find((c) => c === e.target.value)) {
+      setInput({
+        ...input,
+        categories: [...input.categories, e.target.value],
+      });
+    }
   };
   const handlerDeleteCategoria = (e) => {
     setInput({
@@ -111,7 +113,12 @@ export const AddPost = () => {
     <>
       <Tooltip
         onClick={(e) => setOpen(true)}
-        sx={{ position: "fixed", bottom: 30, left: 20 ,backgroundColor:"rgb(33, 25, 155)"}}
+        sx={{
+          position: "fixed",
+          bottom: 30,
+          left: 20,
+          backgroundColor: "rgb(33, 25, 155)",
+        }}
         title="New Post"
       >
         <Fab color="primary" aria-label="add">
@@ -242,7 +249,7 @@ export const AddPost = () => {
               variant="contained"
               endIcon={<SendIcon />}
               type="submit"
-              sx={{backgroundColor:"rgb(33, 25, 155)"}}
+              sx={{ backgroundColor: "rgb(33, 25, 155)" }}
             >
               Publicar
             </Button>
