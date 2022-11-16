@@ -24,7 +24,7 @@ root.render(
     redirectUri={window.location.origin}>
     <Provider store={store}>
 
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<div>loading</div>} persistor={persistor}>
         <React.StrictMode>
         <QueryClientProvider client={queryClient}>
            <BrowserRouter>
