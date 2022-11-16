@@ -19,8 +19,7 @@ export const NavAbout = () => {
             className="SYN"
             onClick={(e) => {
               history(`/`);
-            }}
->
+            }}>
 
           <img src={logo} alt="Logo" style={logoStyle}/>
           </button>

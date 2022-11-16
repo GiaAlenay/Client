@@ -1,7 +1,7 @@
 export const infoUs = [
     {
         id:"1",
-        nombre:"Luis Condori",
+        nombre:"Luiis  Condori",
         img:"https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg",
         cargo:"Full-Stack Developer",
         git:"https://github.com/Luis-ase",
@@ -33,7 +33,7 @@ export const infoUs = [
     },
     {
         id:"5",
-        nombre:"Danna Rengel",
+        nombre:"Dannaa   Rengel",
         img:"https://media-exp1.licdn.com/dms/image/C5603AQEIdbNp1HOSMw/profile-displayphoto-shrink_800_800/0/1644019182527?e=1672876800&v=beta&t=4EGkgRB_FRS8jkp_cFSeXYe_sAulo09QEJr9CC6Dq0o",
         cargo:"Full-Stack Developer",
         git:"https://github.com/Dannaelizabeth",
