@@ -1,53 +1,47 @@
-import './Nav.css'
-import * as React from 'react';
-import { useEffect, useState } from 'react';
+import "./Nav.css";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import {SearchBar} from '../SearchBar/SearchBar'
-import { Notificaciones } from '../Notificaciones/Notificaciones';
+import { SearchBar } from "../SearchBar/SearchBar";
+import { Notificaciones } from "../Notificaciones/Notificaciones";
 
-import { Avatar, AppBar, Box, Toolbar, IconButton, Typography, Badge, MenuItem, Menu,  } from '@mui/material';
-import { 
+
+import {
+  Avatar,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Badge,
+  MenuItem,
+  Menu,
+} from "@mui/material";
+import {
   AccountCircle,
   Mail as MailIcon,
   Notifications as NotificationsIcon,
-  MoreVert as MoreIcon
-} from '@mui/icons-material';
+  MoreVert as MoreIcon,
+} from "@mui/icons-material";
 
-const notificaciones=[
-  {id:1,
-    authorPicture:'',
-  authorName:'',
-  description:'',
-  visto:true}
-  ,
-  {id:2,
-    visto:true,
-    authorPicture:'',
-  authorName:'',
-  description:''},
-  {id:3,
-    authorPicture:'',
-  authorName:'',
-  description:'',
-  visto:false},
-  {id:4,
-    authorPicture:'',
-  authorName:'',
-  description:'',
-  visto:false}
-]
+const notificaciones = [
+  { id: 1, authorPicture: "", authorName: "", description: "", visto: true },
+  { id: 2, visto: true, authorPicture: "", authorName: "", description: "" },
+  { id: 3, authorPicture: "", authorName: "", description: "", visto: false },
+  { id: 4, authorPicture: "", authorName: "", description: "", visto: false },
+];
 
-export const Nav =()=>{
-  const {logout, user, isAuthenticated}= useAuth0()
-  const history=useNavigate();
-  const [notCount, SetNotCount]=React.useState(0)
+export const Nav = () => {
+  const { logout, user, isAuthenticated } = useAuth0();
+  const history = useNavigate();
+  const [notCount, SetNotCount] = React.useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const[open,setOpen]=useState(false)
-  const userLoged = useSelector(state => state.UserLoged);
+  const [open, setOpen] = useState(false);
+  const userLoged = useSelector((state) => state.UserLoged);
 
   // useEffect(()=>{
   //   notificaciones.map((n)=>{
@@ -56,7 +50,22 @@ export const Nav =()=>{
   //     }
   //   })
   // },[])
-
+  function reportEmail(e) {
+    e.preventDefault();
+    history("/send/email");
+  }
+  function goProfile(e) {
+    e.preventDefault();
+    history("/profile");
+  }
+  function goAdmin(e) {
+    e.preventDefault();
+    history("/home/admin");
+  }
+  function goPay(e) {
+    e.preventDefault();
+    history("/premium/pay");
+  }
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -78,51 +87,68 @@ export const Nav =()=>{
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleNotification=()=>{
-    setOpen(!open)
-    SetNotCount(0)
-  }
-  const menuId = 'primary-search-account-menu';
+  const handleNotification = () => {
+    setOpen(!open);
+    SetNotCount(0);
+  };
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-    > {userLoged.usuario?<Link to={`/profile`}>
-    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-  </Link>: <></> }
-      
-      <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}> LOGOUT </MenuItem>
-      {isAuthenticated && userLoged.admin === true ? <Link to={`/home/admin`}>
-        <MenuItem onClick={handleMenuClose}>Administrador</MenuItem>
-      </Link>: <></>}
-      
+    >
+      {" "}
+      {userLoged.usuario ? (
+        <MenuItem onClick={(e) => goProfile(e)}>Profile</MenuItem>
+      ) : (
+        <></>
+      )}
+      <MenuItem onClick={() => logout({ returnTo: window.Location.origin })}>
+        {" "}
+        LOGOUT{" "}
+      </MenuItem>
+      {isAuthenticated && userLoged.admin === true ? (
+        <MenuItem onClick={(e) => goAdmin(e)}>Administrador</MenuItem>
+      ) : (
+        <></>
+      )}
+      {isAuthenticated ? (
+        <MenuItem onClick={(e) => reportEmail(e)}>Reportar posts</MenuItem>
+      ) : (
+        <></>
+      )}
+      {isAuthenticated ? (
+        <MenuItem onClick={(e) => goPay(e)}>Datos de pago</MenuItem>
+      ) : (
+        <></>
+      )}
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       id={mobileMenuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
@@ -163,54 +189,71 @@ export const Nav =()=>{
   );
 
   return (
-    <Box sx={{ flexGrow: 1  }}>
-      <AppBar sx={{backgroundColor:'rgb(22, 17, 41)' }}  position="static">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar sx={{ backgroundColor: "rgb(22, 17, 41)" }} position="static">
         <Toolbar>
-        {/* Object.entries(User).length === 0 && `${User.user}` */}
+          {/* Object.entries(User).length === 0 && `${User.user}` */}
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: "none", sm: "block" } }}
           >
-            <button className='SYN' onClick={(e)=>{history(`/home`);}} >SYT</button>
-
+            <button
+              className="SYN"
+              onClick={(e) => {
+                history(`/home`);
+              }}
+            >
+              SYT
+            </button>
           </Typography>
-            <SearchBar/>
-          
-          
+
+          <SearchBar />
+
           <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              
-              <IconButton
-                onClick={handleNotification}
-                onBlur={()=>{setTimeout(()=>{setOpen(false)},100)}}
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
+         
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+            >
+              <button
+                className="SYN"
+                onClick={(e) => {
+                  history(`/SobreNosotros`);
+                }}
               >
-                <Badge badgeContent={notCount} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                 {Object.entries(userLoged).length === 0?(
-                  <Avatar alt={'...'}src={'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'}/>
-                ):(
-                  <Avatar alt={`${userLoged.usuario}`} src={userLoged.foto_principal} />
-                )}
-                
-              </IconButton>
-            </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                Sobre Nosotros
+              </button>
+            </Typography>
+
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              {Object.entries(userLoged).length === 0 ? (
+                <Avatar
+                  alt={"..."}
+                  src={
+                    "https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+                  }
+                />
+              ) : (
+                <Avatar
+                  alt={`${userLoged.usuario}`}
+                  src={userLoged.foto_principal}
+                />
+              )}
+            </IconButton>
+
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -226,7 +269,7 @@ export const Nav =()=>{
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <Notificaciones open={open}/>
+      <Notificaciones open={open} />
     </Box>
-  ); 
-}
+  );
+};

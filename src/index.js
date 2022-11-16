@@ -8,8 +8,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios'
 import { Auth0Provider } from '@auth0/auth0-react'
+
 import {PersistGate} from 'redux-persist/lib/integration/react';
 
+import { QueryClient, QueryClientProvider } from 'react-query'
+const queryClient = new QueryClient()
 
 axios.defaults.baseURL = process.env.REACT_APP_API;
 
@@ -20,11 +23,14 @@ root.render(
     clientId="lqdDdZr9Sak9Xnd7xhXoZhYVfdmnvJKm"
     redirectUri={window.location.origin}>
     <Provider store={store}>
+
       <PersistGate loading={null} persistor={persistor}>
         <React.StrictMode>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+           <BrowserRouter>
+             <App />
+           </BrowserRouter>
+          </QueryClientProvider>
         </React.StrictMode>
       </PersistGate>
     </Provider>
