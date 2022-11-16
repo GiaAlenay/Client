@@ -78,7 +78,7 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
     } else {
       const archivo = e.slice(-3);
       if (archivo === "pdf") {
-        return <a href={e}> archivo subido </a>;
+        return <a href={e} target="_blank"> archivo subido </a>;
       }
       if (archivo !== "pdf") {
         return (

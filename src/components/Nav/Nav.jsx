@@ -1,7 +1,7 @@
 import "./Nav.css";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -62,10 +62,7 @@ export const Nav = () => {
     e.preventDefault();
     history("/home/admin");
   }
-  function goPay(e) {
-    e.preventDefault();
-    history("/premium/pay");
-  }
+  
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -128,11 +125,7 @@ export const Nav = () => {
       ) : (
         <></>
       )}
-      {isAuthenticated ? (
-        <MenuItem onClick={(e) => goPay(e)}>Datos de pago</MenuItem>
-      ) : (
-        <></>
-      )}
+      
     </Menu>
   );
 
