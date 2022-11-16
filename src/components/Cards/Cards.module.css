@@ -1,4 +1,90 @@
-.mainContainerCard {
+:root{
+  --white-text:#fff;
+  --background:#c8e8f1;
+  --black-text:rgb(68,66,66);
+}
+
+.background_left_column{
+  /* background: linear-gradient(180deg, #21c8f6, #637bff); */
+  background-image: linear-gradient(to right, rgb(19, 13, 102), rgb(58, 75, 167),rgb(13, 8, 77));
+}
+
+.container{
+  justify-content: center;
+  align-items: center;
+}
+
+.card{
+  background-color: var(--white-text);
+  border-radius: 1rem;
+  box-shadow: 0 1rem 1rem rgba(0,0, 0, 0.3);
+  display: flex;
+  margin: 1rem;
+  overflow: hidden;
+  /* width:60rem; */
+}
+
+.card  h6 {
+  opacity: 0.6;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+/* .card h2{
+  letter-spacing: .1rem;
+  margin: 1rem 0;
+  color: var(--white-text);
+  font-size: 35px;
+} */
+.card h5{
+  opacity: 0.6;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.left_column{
+  color: var(--white-text);
+  padding: 2rem;
+  max-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+
+}
+.left_column h2{
+  font-size:45px;
+  align-items: center;
+
+}
+.logo{
+  width: 250px;
+  margin-top: -80px;
+}
+
+.rigth_column{
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: space-between;
+}
+.plan{
+  font-size: 55px;
+  
+}
+.wordsTitle {
+  margin-left: 18px;
+  font-size: 20px;
+}
+.conta{
+  padding: 2rem 8rem;
+}
+
+
+/* .mainContainerCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,9 +124,7 @@
     width: 220px;
   }
   
-  .wordsTitle {
-    margin-left: 12px;
-  }
+  
   
   .plan {
     font-size: 22px;
@@ -59,4 +143,4 @@
     border: 2px solid var(--mainColor);
     outline: 2px solid #fff;
     transition: 0.2s;
-  }
+  } */
