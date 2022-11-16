@@ -85,10 +85,14 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case "DELETE_POST":
-      // const allposteos = state.allPosts
-      // const filter = allposteos.filter(el => el.id !== action.payload.buscarid.id)
+      
+      console.log(action.payload.posts.id)
+       const allposteos = state.Posts
+       const filter = allposteos.filter(el => el.id !== action.payload.posts.id)
       return {
         ...state,
+        Posts : filter,
+        loading: false,
       };
 
     //EXTRA
