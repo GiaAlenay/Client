@@ -13,7 +13,7 @@ export function Pay(){
 
     const userLoged = useSelector(state => state.UserLoged);
     
-    //  const datos =   axios('http://localhost:3001/premium/feedback')
+    
     const datitos= {
         Status: "approve"
     }

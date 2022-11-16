@@ -9,6 +9,14 @@ import styles from "./Cards.module.css";
 import { useMercadopago } from "react-sdk-mercadopago";
 import { useEffect, useState } from "react";
 import logo from "./logo.png"
+
+import CheckoutForm from "./Stripe/Checkout";
+import axios from 'axios';
+
+import { useSelector } from 'react-redux';
+
+
+
 function Check({ text }) {
   return (
     <div className={styles.wordsTitleContainer}>
@@ -18,35 +26,12 @@ function Check({ text }) {
   )
 }
 
-export function Card({ plan, title, month}) {
-  // const handleclick = async () => {
-  //   const responseMp = await getMercadoPago("test_user_66385999@testuser.com", btnPrice, month);
-  //   window.location.replace(responseMp.url);
-  // };
-  const mercadopago = useMercadopago.v2(
-    "APP_USR-d319d9f1-1689-4260-97c8-8d2d34a85cb2",
-    {
-      locale: "es-AR"
-    }
-  );
-  
 
-  const [rendered, setRendered] = useState(false)
-  useEffect(() => {
-    if (mercadopago && !rendered) {
-      mercadopago.checkout({
-        preference: {
-          id: "1234560647-028df2d8-ef79-4ab3-8117-542f8d025633"
-        },
-        render: {
-          container: ".cho-container",
-          label: "Pagar"
-        }
-      });
-      setRendered(true);
-    }
-    
-  }, [mercadopago,rendered]);
+
+export function Card({ plan, title, month}) {
+ 
+  
+  
 
   return (
 
@@ -72,8 +57,11 @@ export function Card({ plan, title, month}) {
         <Check text={'Filtrado de Experiencia'} />
         <Check text={'Nuevos avatares mas facheros facheritos'} />
         <Check text={'Nuevos avatares mas facheros facheritos'} />
+        <br/>
         <div className={styles.conta}> 
-        <div className="cho-container" ></div>
+        <div className="boxxStripe">
+          <CheckoutForm/>
+        </div>
         </div>
         
       </div>

@@ -19,7 +19,7 @@ export function GoPremium() {
         </div>
         <div className={styles.containerCard }>
             <Card
-            plan={"$2"}
+            plan={"$1 US"}
             btnPrice={"30"}
             month={"Anual"}
             title={"Membresia"}
