@@ -5,7 +5,7 @@ import logo from "./logo.png"
 export const NavAbout = () => {
   const history = useNavigate();
   const logoStyle={
-    width: "100%",
+    width: "100px",
   }
 
   return (
@@ -28,7 +28,7 @@ export const NavAbout = () => {
             }}
 >
 
-          <img src={logo} alt="Logo" style={{widht:"100%"}}/>
+          <img src={logo} alt="Logo" style={logoStyle}/>
           </button>
         </Typography>
         <Stack direction="row" spacing={2}>
