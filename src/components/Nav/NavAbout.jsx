@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import logo from "../../view/GoPremium/"
 
 export const NavAbout = () => {
   const history = useNavigate();
@@ -22,7 +23,7 @@ export const NavAbout = () => {
               history(`/`);
             }}
           >
-            SYT
+            <img/>
           </button>
         </Typography>
         <Stack direction="row" spacing={2}>
