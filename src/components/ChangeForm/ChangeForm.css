@@ -1,4 +1,3 @@
-
 .ChangeProfileForm{
     color:rgb(122, 118, 118);
     width:40%;
@@ -45,11 +44,19 @@
     background-size: 74% 74%;
 }
 .changeInptCont{
-    
     display: grid;
     grid-template-columns: 80% 14%;
+    margin-bottom: 20px;
 }
 .descChang{
     
     margin-left: 10%;
+}
+.btnGuarCamb{
+    margin-left: 40px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    cursor:pointer;
 }
