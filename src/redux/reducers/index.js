@@ -70,6 +70,13 @@ const rootReducer = (state = initialState, action) => {
         allPosts: action.payload,
         loading: false,
       };
+
+    case "GET_NAME_POSTS":
+      return{
+        ...state,
+        Posts: action.payload
+      }
+
     case "CREATE_POST":
       return {
         ...state,
@@ -166,22 +173,20 @@ const rootReducer = (state = initialState, action) => {
     case "POST_REPORT_EMAIL":
       return {
         ...state,
-      };
-    //Actions Favoritos
-    case "CREATE_FAV":
-      const item = action.payload;
-      //const id = state.Fav.find(x => x.item);
-      if (state.Fav.find((e) => e === item)) {
-        return {
-          ...state,
-          Fav: state.Fav,
-        };
-      } else {
-        return {
-          ...state,
-          Fav: [...state.Fav, item],
-        };
+
       }
+      //Actions Favoritos 
+    case "CREATE_FAV":
+       const item = action.payload; 
+       if (state.Fav.find(e => e === item)) {
+         return {
+           ...state,
+             Fav: state.Fav
+           }
+       }else{
+      return {
+       ...state,
+        Fav: [...state.Fav,  item] }}
 
     case "DELETE_FAV":
       const del = action.payload;

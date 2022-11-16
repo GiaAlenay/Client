@@ -14,6 +14,18 @@ export function getPosts() {
   }
 }
 
+export function getPostsbyTitulo(titulo){
+  return async function(dispatch){
+  try{
+    var json = await axios.get(`/posts?titulo=${titulo}`);
+    return dispatch({
+      type: 'GET_NAME_POSTS',
+      payload: json.data
+    })}catch{
+      alert("no existe el posts")
+    }
+  }
+}
 
 export function createPost(payload) {
   try {
