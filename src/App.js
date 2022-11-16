@@ -33,7 +33,6 @@ function App() {
         {/* Ruta del adminisrador */}
         
 
-
         <Route path={'/home/admin'} element ={<HomeAdmin/>}/>
         <Route path={'/UserInactivo'} element= {<UserInactivo/>}/>
       </Routes>
