@@ -136,35 +136,44 @@ export const ChangeForm = (props) => {
           ></button>
         </div>
       )}
-      {change.foto_portada ? (
-        <div className="changeInptCont">
-          <TextField
+ { change.foto_portada ? (
+        <div className="changeInputCont">
+          { userLoged.premiun === true ? <TextField
             type="text"
             name="foto_portada"
-            value={input.name}
+            value={input.foto_portada}
             onChange={handleInputChange}
             sx={{ width: "82%", backgroundColor: "white", marginLeft: "10%" }}
             id="outlined-basic"
-            label="foto_portada"
+            label="foto portada"
             variant="outlined"
-          />
+          /> : <select name="foto_portada" onChange={handleInputChange}>
+            <option hidden>elige un color</option>
+            <option value={`https://th.bing.com/th/id/OIP.rVUXgLLmNZbxoGFKjGtXYgHaE7?pid=ImgDet&rs=1`}
+            >celeste</option>
+            <option value={"https://th.bing.com/th/id/OIP.zwRbpXccuVcHt3fYD4oXqgHaHa?pid=ImgDet&rs=1"}
+            >morado</option>
+            <option value={"https://th.bing.com/th/id/R.0b27b0db4253aa7afd345c4aa6034fc4?rik=qgmGQZeyvE%2f8Sg&riu=http%3a%2f%2fsabware.com%2f1109-medium_default%2fhoja-tamano-carta-eurocolors-color-rosa-51519.jpg&ehk=3VdX9TFAmL%2bg8Py7idAz8G0cwhSdgUV4LRPjKVXxDNA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"}
+            >rosa</option>
+            </select>
+          }
           <button
             type="button"
             name="foto_portada"
             value={change.foto_portada}
             onClick={handleBtnEditar}
-            className="btnFormEditListo"
+            className="btnFormEditListo" 
           ></button>
         </div>
       ) : (
         <div className="changeInptCont">
           {userLoged.foto_portada ? (
             <div className="descChang">
-              <AddPhotoAlternateIcon /> {"Foto Portada"}
+              <AddAPhotoIcon /> {"Foto Portada"}
             </div>
           ) : (
             <div className="descChang">
-              <PersonIcon /> foto portada
+              <PersonIcon /> Foto portada
             </div>
           )}
           <button
