@@ -2,6 +2,9 @@ import './Landing.css'
 import React, { useEffect } from 'react'
 import { useAuth0 } from "@auth0/auth0-react"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { display } from "@mui/system";
 
 
 export const Landing = () => {
@@ -23,6 +26,11 @@ export const Landing = () => {
             <div className='laCont'>
                 <div className='landArribaCont'>
                     <div className='logo'>SYT</div>
+                    <Link to={"/SobreNosotros"}>
+                    <div >
+                        <button className='btnCreCu'>Sobre Nosotros</button>
+                    </div>        
+                </Link>
                 </div>
                 <div className='lan1Cont'>
                     <div className='lan1Left'>
@@ -46,5 +54,6 @@ export const Landing = () => {
                 </div>
             </div>
         </div>
+        
     )
 }
