@@ -1,6 +1,4 @@
 .ContenedorReport{
-
-    background-color:red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +6,7 @@
     flex-direction: column;
     width: 540px;
     height: 550px;
-    background-color: #828f94;
+    background-color: rgba(208, 234, 255, 0.555);
     border-radius: 25px;
     font-size: 30px;
 }
@@ -18,7 +16,7 @@
     justify-content: center;
     width: 100%;
     height: 92.3vh;
-    background-color: #0e295d;
+    background-color:rgba(153, 146, 255, 0.486);
 }
 
 .labelReport{
