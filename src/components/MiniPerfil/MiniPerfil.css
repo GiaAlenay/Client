@@ -6,7 +6,7 @@
     width: 80%;
     height: 300px;
     border:0.1px solid rgba(143, 141, 141, 0.5);
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 15px 3px;
 }
 
 .miniperfilCont:hover{
