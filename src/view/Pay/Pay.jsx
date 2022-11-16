@@ -5,26 +5,31 @@ import { useEffect ,useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Nav } from "../../components/Nav/Nav";
+
+
 import {useSelector}from 'react-redux';
+
+import {Elements,PaymentElement} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 export function Pay(){
 
-    const {user, isAuthenticated,isLoading} = useAuth0();
 
-    const userLoged = useSelector(state => state.UserLoged);
+    // const {user, isAuthenticated,isLoading} = useAuth0();
+
+    // const userLoged = useSelector(state => state.UserLoged);
     
-    //  const datos =   axios('http://localhost:3001/premium/feedback')
-    const datitos= {
-        Status: "approve"
-    }
-    console.log(datitos)
-    const navigate = useNavigate();
+    // //  const datos =   axios('http://localhost:3001/premium/feedback')
+    // const datitos= {
+    //     Status: "approve"
+    // }
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if ( !isLoading && isAuthenticated  && datitos) {
-          console.log(datitos)
-        }
-      }, [isLoading,isAuthenticated]);
+    // useEffect(() => {
+    //     if ( !isLoading && isAuthenticated  && datitos) {
+    //       console.log(datitos)
+    //     }
+    //   }, [isLoading,isAuthenticated]);
 
 
     //   useEffect(() => {
@@ -33,25 +38,25 @@ export function Pay(){
     //     }
     //   }, [data,user])
 
-    if(isLoading){
-        <div>Loading...</div>
-    }
-    async function ALaHome(e){
-        e.preventDefault();
-    navigate("/home");
-    }
+    // if(isLoading){
+    //     <div>Loading...</div>
+    // }
+    //  function ALaHome(e){
+    //     e.preventDefault();
+    // navigate("/home");
+    // }
 
-    function enviarData(){
+    // function enviarData(){
 
-        const todo= {
-            msg: datitos,
-            name: user.nickname,
-            email: user.email,
-            id: userLoged.id
-        }
-        const reponst = axios.post("http://localhost:3001/send/emails/premium", todo)
+    //     const todo= {
+    //         msg: datitos,
+    //         name: user.nickname,
+    //         email: user.email,
+    //         id: userLoged.id
+    //     }
+    //     const reponst = axios.post("http://localhost:3001/send/emails/premium", todo)
 
-    }
+    // }
 
 
     
@@ -65,13 +70,20 @@ export function Pay(){
     
 
     return(
+    
     <div>
         <Nav/>
         <h1>Datos del Pago</h1>
         <p>status:</p>
         <p>id de la compra:</p>
+        <br/>
         
-        <button onClick={(e) => enviarData(e)}> Vuelve a home</button>
-
-    </div>)
+        <br/>
+        {/* <button onClick={(e) => enviarData(e)}> enviar Datos</button> */}
+    </div>
+    
+    )
+        
 }
+
+

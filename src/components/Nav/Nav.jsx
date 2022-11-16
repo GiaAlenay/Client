@@ -70,7 +70,7 @@ export const Nav =()=>{
   }
   function goPay(e){
     e.preventDefault()
-    history("/premium/pay")
+    history("/stripe")
   }
 
   const isMenuOpen = Boolean(anchorEl);
