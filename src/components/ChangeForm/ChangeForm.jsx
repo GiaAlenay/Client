@@ -54,7 +54,7 @@ export const ChangeForm = (props) => {
     //     [e.target.name]:e.target.value},users))
   };
   return (
-    <div>
+    <div >
       {change.nombre ? (
         <div className="changeInptCont">
           <TextField

@@ -1,9 +1,7 @@
 
 .perfil{
     width: 100%;
-    height: 100vh;
     background-image: linear-gradient( rgba(153, 146, 255, 0.486), rgba(210, 239, 241, 0.555),rgba(211, 239, 255, 0.795));
-    
 }
 .firstCont{
     width: 100%;
