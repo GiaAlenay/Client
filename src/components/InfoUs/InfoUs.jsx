@@ -1,12 +1,5 @@
 export const infoUs = [
-    {
-        id:"1",
-        nombre:"Jose Mendez",
-        img:"https://pps.whatsapp.net/v/t61.24694-24/64787329_2491649237524862_5943423487061262336_n.jpg?ccb=11-4&oh=01_AdR5QWYEvrCwDE4tVYHMTz41vAtqxD52Oq6uZjCHRgSwSQ&oe=637551A8",
-        cargo:"Full-Stack Developer",
-        git:"https://github.com/userJAMT",
-        link:""
-    },
+    
     {
         id:"2",
         nombre:"Luis Condori",
@@ -39,14 +32,7 @@ export const infoUs = [
         git:"https://github.com/ednacoveja",
         link:"https://www.linkedin.com/in/candelaria-ovejero-9802a9157/"
     },
-    {
-        id:"6",
-        nombre:"Gianella Gupio ",
-        img:"https://avatars.githubusercontent.com/u/98497514?v=4",
-        cargo:"Full-Stack Developer",
-        git:"https://github.com/GiaAlenay",
-        link:"https://www.linkedin.com/in/gianella-gupio-le%C3%B3n-544166230/"
-    },
+    
     {
         id:"7",
         nombre:"Danna Rengel",
