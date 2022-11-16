@@ -72,6 +72,13 @@ const rootReducer = (state = initialState, action) => {
         allPosts: action.payload,
         loading: false,
       };
+
+    case "GET_NAME_POSTS":
+      return{
+        ...state,
+        Posts: action.payload
+      }
+
     case "CREATE_POST":
       return {
         ...state,
