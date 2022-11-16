@@ -124,7 +124,7 @@ export const Home = () => {
                 value={rating}
                 label="rating"
                 onChange={handlerOrderLikes}
-                renderValue={(value) => `${value} Likes❤️`}
+                renderValue={(value) => `${value} Likes`}
               >
                 <MenuItem value={"Mas"}>Mas Likes</MenuItem>
                 <MenuItem value={"Menos"}>Menos Likes</MenuItem>

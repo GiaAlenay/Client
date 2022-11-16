@@ -5,44 +5,24 @@ export function GoPremium() {
 
   return (
     <>
-      <div
-        className={styles.mainContainer }
-      >
-        <div
-          className={styles.subcontainer}
-        >
-          <span
-            className={styles.Title}
-          >
-            ¿Quieres mejores beneficios?
-          </span>
-          <br/>
+      <div className={styles.mainContainer } >
+        <div className={styles.subcontainer} >
+          <h1 className={styles.Title} >Plan Premium</h1>
           <span
             className={ styles.SubTitle }
           >
             Hazte premium y disfrutalos
           </span>
+          <div className={styles.suspendido}>
+                <a href="/home" className={styles.button}>Regresar</a>
+            </div>
         </div>
-        <div
-          className={styles.containerCard }
-        >
-          <Card
-            plan={"$999.99 / 1 month"}
-            btnPrice={"10"}
-            month={"1"}
-            title={"Monthly"}
-          />
+        <div className={styles.containerCard }>
             <Card
-            plan={"$9999.99 / 6 month"}
-            btnPrice={"20"}
-            month={"6"}
-            title={"Monthly"}
-          />
-            <Card
-            plan={"$99999.99 / 12 month"}
+            plan={"$2"}
             btnPrice={"30"}
-            month={"12"}
-            title={"Monthly"}
+            month={"Anual"}
+            title={"Membresia"}
           />
         </div>
       </div>

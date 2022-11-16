@@ -8,6 +8,7 @@ import { getMercadoPago } from "../../redux/actions/premium";
 import styles from "./Cards.module.css";
 import { useMercadopago } from "react-sdk-mercadopago";
 import { useEffect, useState } from "react";
+import logo from "./logo.png"
 function Check({ text }) {
   return (
     <div className={styles.wordsTitleContainer}>
@@ -17,7 +18,7 @@ function Check({ text }) {
   )
 }
 
-export function Card({ plan, title }) {
+export function Card({ plan, title, month}) {
   // const handleclick = async () => {
   //   const responseMp = await getMercadoPago("test_user_66385999@testuser.com", btnPrice, month);
   //   window.location.replace(responseMp.url);
@@ -48,7 +49,41 @@ export function Card({ plan, title }) {
   }, [mercadopago,rendered]);
 
   return (
-    <div className={styles.mainContainerCard}>
+
+    <div className={styles.container}>
+      <div className={styles.card}>
+
+      
+      <div className={`${styles.left_column} ${styles.background_left_column}`}>
+        <h5>Premium</h5>
+        <h2>SYT </h2>
+        <img src={logo} alt="SYT" className={styles.logo}/>
+      </div>
+
+      <div className={styles.rigth_column}>
+        <div>
+          <h3>{title}</h3>
+          <h6>Al mejor Precio</h6>
+          <span className={styles.plan}>{plan}</span>
+          <h6>{month}</h6>
+        </div>
+
+        <h2>Disfuta de los mejores Beneficios</h2>
+        <Check text={'Filtrado de Experiencia'} />
+        <Check text={'Nuevos avatares mas facheros facheritos'} />
+        <Check text={'Nuevos avatares mas facheros facheritos'} />
+        <div className={styles.conta}> 
+        <div className="cho-container" ></div>
+        </div>
+        
+      </div>
+      
+      </div>
+
+
+
+
+       {/* <div className={styles.mainContainerCard}>
       <span className={styles.Title}>SYT {title}</span>
       <div className={styles.iconsContainer}>
         <IconContext.Provider value={{ className: `${styles.icono}`}}>
@@ -68,7 +103,10 @@ export function Card({ plan, title }) {
       >
         Adquirir plan
       </button>
-      <div className="cho-container">pagar</div>
+      <div className="cho-container"></div>
+    </div>  */}
+
     </div>
+    
   );
 }
