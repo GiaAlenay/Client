@@ -111,7 +111,7 @@ export const AddPost = () => {
     <>
       <Tooltip
         onClick={(e) => setOpen(true)}
-        sx={{ position: "fixed", bottom: 30, left: 20 }}
+        sx={{ position: "fixed", bottom: 30, left: 20 ,backgroundColor:"rgb(33, 25, 155)"}}
         title="New Post"
       >
         <Fab color="primary" aria-label="add">
@@ -242,6 +242,7 @@ export const AddPost = () => {
               variant="contained"
               endIcon={<SendIcon />}
               type="submit"
+              sx={{backgroundColor:"rgb(33, 25, 155)"}}
             >
               Publicar
             </Button>
