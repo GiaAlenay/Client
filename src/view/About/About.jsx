@@ -6,7 +6,7 @@ import { AboutUs } from "./AboutUs"
 export const About =()=>{
     return (
 
-        <Box sx={{width: "100%", padding: "0", backgroundColor:"rgb(230, 231, 231)"}}>
+        <Box sx={{width: "100%", padding: "0", backgroundColor:" rgba(153, 146, 255, 0.486)"}}>
           <NavAbout/>
             <Box
         sx={{

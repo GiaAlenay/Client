@@ -12,7 +12,7 @@ export default function AboutCard({nombre, img, cargo, git,link}) {
   const url ="https://www.google.com/?hl=es";
 
   return (
-    <Card sx={{border:"1px solid black", width:"95%", marginTop:"5%",  backgroundColor:"rgb(230, 241, 245)"}}>
+    <Card sx={{border:"1px solid black", width:"95%", marginTop:"5%",  backgroundColor:"rgba(208, 234, 255, 0.555)"}}>
        <Grid
           padding="2em"
           container
