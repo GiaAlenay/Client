@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import "./ChangeForm.css";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
@@ -54,7 +55,7 @@ export const ChangeForm = (props) => {
     //     [e.target.name]:e.target.value},users))
   };
   return (
-    <div>
+    <div >
       {change.nombre ? (
         <div className="changeInptCont">
           <TextField
@@ -130,57 +131,6 @@ export const ChangeForm = (props) => {
             type="button"
             name="apellido"
             value={change.apellido}
-            onClick={handleBtnEditar}
-            className="btnFormEdit"
-          ></button>
-        </div>
-      )}
-      { change.foto_principal ? (
-        <div className="changeInptCont">
-          { userLoged.premiun === true ? <TextField
-            type="text"
-            name="foto_principal"
-            value={input.foto_principal}
-            onChange={handleInputChange}
-            sx={{ width: "82%", backgroundColor: "white", marginLeft: "10%" }}
-            id="outlined-basic"
-            label="foto principal"
-            variant="outlined"
-          /> : <select name="foto_principal" onChange={handleInputChange}>
-            <option>elige tu avatar</option>
-            <option value={`https://previews.123rf.com/images/yupiramos/yupiramos1705/yupiramos170534554/79193874-dise%C3%B1o-gr%C3%A1fico-de-vector-de-dibujos-animados-lindo-gato-color.jpg`}
-            >gatito</option>
-            <option value={"https://img.freepik.com/vector-premium/avatar-perros-lindos-retrato-cabeza-perrito-adorable-hocico-cachorro-pura-raza-labrador-cara-cachorros-felices-lengua-fuera-ilustracion-vector-plano-hocico-mascotas-encantador-aislado-sobre-fondo-blanco_633472-124.jpg?w=360"}
-            >perrito</option>
-            <option value={"https://cdn5.dibujos.net/dibujos/pintados/201750/oveja-bebe-animales-la-granja-11226967.jpg"}
-            >obejita</option>
-            <option value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwZ2qcw_eqmoCv4E4y1sCIgyDbiOJSoNTm_5o97Dmy6eG0HHaQZR0riNTweWGwYS8xSpo&usqp=CAU"}>
-            pulpito
-            </option>
-            </select>}
-          <button
-            type="button"
-            name="foto_principal"
-            value={change.foto_principal}
-            onClick={handleBtnEditar}
-            className="btnFormEditListo" 
-          ></button>
-        </div>
-      ) : (
-        <div className="changeInptCont">
-          {userLoged.foto_principal ? (
-            <div className="descChang">
-              <AddAPhotoIcon /> {"Foto"}
-            </div>
-          ) : (
-            <div className="descChang">
-              <PersonIcon /> Foto principal
-            </div>
-          )}
-          <button
-            type="button"
-            name="foto_principal"
-            value={change.foto_principal}
             onClick={handleBtnEditar}
             className="btnFormEdit"
           ></button>
@@ -267,6 +217,58 @@ export const ChangeForm = (props) => {
         </div>
       )}
 
+      { change.foto_principal ? (
+        <div className="asadasa">
+          { userLoged.premiun === true ? <TextField
+            type="text"
+            name="foto_principal"
+            value={input.foto_principal}
+            onChange={handleInputChange}
+            sx={{ width: "82%", backgroundColor: "white", marginLeft: "10%" }}
+            id="outlined-basic"
+            label="foto principal"
+            variant="outlined"
+          /> : <select name="foto_principal" onChange={handleInputChange}>
+            <option>elige tu avatar</option>
+            <option value={`https://previews.123rf.com/images/yupiramos/yupiramos1705/yupiramos170534554/79193874-dise%C3%B1o-gr%C3%A1fico-de-vector-de-dibujos-animados-lindo-gato-color.jpg`}
+            >gatito</option>
+            <option value={"https://img.freepik.com/vector-premium/avatar-perros-lindos-retrato-cabeza-perrito-adorable-hocico-cachorro-pura-raza-labrador-cara-cachorros-felices-lengua-fuera-ilustracion-vector-plano-hocico-mascotas-encantador-aislado-sobre-fondo-blanco_633472-124.jpg?w=360"}
+            >perrito</option>
+            <option value={"https://cdn5.dibujos.net/dibujos/pintados/201750/oveja-bebe-animales-la-granja-11226967.jpg"}
+            >obejita</option>
+            <option value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwZ2qcw_eqmoCv4E4y1sCIgyDbiOJSoNTm_5o97Dmy6eG0HHaQZR0riNTweWGwYS8xSpo&usqp=CAU"}>
+            pulpito
+            </option>
+            </select>
+          }
+          <button
+            type="button"
+            name="foto_principal"
+            value={change.foto_principal}
+            onClick={handleBtnEditar}
+            className="btnFormEditListo" 
+          ></button>
+        </div>
+      ) : (
+        <div className="changeInptCont">
+          {userLoged.foto_principal ? (
+            <div className="descChang">
+              <AddAPhotoIcon /> {"Foto"}
+            </div>
+          ) : (
+            <div className="descChang">
+              <PersonIcon /> Foto principal
+            </div>
+          )}
+          <button
+            type="button"
+            name="foto_principal"
+            value={change.foto_principal}
+            onClick={handleBtnEditar}
+            className="btnFormEdit"
+          ></button>
+        </div>
+      )}
       <button onClick={handleSubmit} className="btnGuarCamb">
         Guardar Cambios
       </button>

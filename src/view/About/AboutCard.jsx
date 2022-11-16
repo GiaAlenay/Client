@@ -9,15 +9,13 @@ import { Grid, Link } from '@mui/material';
 import { GitHub, LinkedIn } from '@mui/icons-material';
 
 export default function AboutCard({nombre, img, cargo, git,link}) {
-  const url ="https://www.google.com/?hl=es";
-
   return (
-    <Card sx={{border:"1px solid black", width:"95%", marginTop:"5%",  backgroundColor:"rgba(208, 234, 255, 0.555)"}}>
+    <Card sx={{border:"1px solid black", width:"95%", marginTop:"5%" , marginLeft:"20%", backgroundColor:"rgba(208, 234, 255, 0.555)"}}>
        <Grid
-          padding="2em"
+          padding="1.5em"
           container
           spacing={2}
-           columns={10}
+           columns={5}
           direction="row"
           alignItems="center"
         >
@@ -27,7 +25,7 @@ export default function AboutCard({nombre, img, cargo, git,link}) {
         src={img}
         alt=""
         sx={{
-          marginLeft:"30%",
+          marginLeft:"35%",
           borderRadius: "100px",
           width: "100px",
           height: "100px",
@@ -43,10 +41,10 @@ export default function AboutCard({nombre, img, cargo, git,link}) {
                    display="flex"
                    gutterBottom
                    sx={{
-
                     textAlign: "center",
-                    marginTop: "1rem",
-                    marginBottom: "1rem",                          
+                    marginTop: "0.5rem",
+                    marginBottom: "0.5rem",   
+                    marginLeft:"30%"                       
                   }}>
         {nombre}
         </Typography>
@@ -57,6 +55,7 @@ export default function AboutCard({nombre, img, cargo, git,link}) {
                    display="flex"
                    gutterBottom
                    sx={{
+                    marginLeft:"30%",
                     textAlign: "center",
                     marginTop: "1rem",
                     marginBottom: "1rem",                          
