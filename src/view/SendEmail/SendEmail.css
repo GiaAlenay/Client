@@ -1,50 +1,62 @@
-.ContenedorReport{
+
+.button{
+    text-decoration: none;
+    --color: #260e4afb;
+    font-family: inherit;
+    display: inline-block; 
+    width: 15em;
+    height: 3em;
+    line-height:1em;
+    text-align: center;
+    margin: 10px auto; 
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: var(--color);
+    box-shadow: 2px 2px 5px black;
+    /*margin-left: 15em;*/ 
+}
+.button:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    /* background: rgb(96, 18, 180); */
+    background-image: linear-gradient(to right, rgb(19, 13, 102), rgb(58, 75, 167),rgb(13, 8, 77));
+    height: 180px;
+    width: 280px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+.button:hover{
+    color: #e8e8e8;
+    border-color: #30114d ;
+}
+
+.button:hover:before{
+    top: -80px;
+    left: -20px;
+}
+
+
+.denegar{
+    font-size: 0.9rem;
+    color: rgba(255, 26, 26, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid black 3px;
-    flex-direction: column;
-    width: 540px;
-    height: 550px;
-    background-color: rgba(208, 234, 255, 0.555);
-    border-radius: 25px;
-    font-size: 30px;
+    padding: 0.2rem 0;
 }
-.BodyReport{
-    display: flex;
+
+.boton1{
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 92.3vh;
-    background-color:rgba(153, 146, 255, 0.486);
-}
-
-.labelReport{
-    font-size: 2rem;
-}
-
-.inputReport{
-    height: 27px;
-    font-size: 1.4rem;
-    width: 75%;
-    border-radius: 20px;
-}
-.textReport{
-    height: 100px;
-    width: 90%;
-    border-radius: 20px;
-}
-.buttonReport{
-    display: flex;
-    height: 50px;
-    width: 25%;
-    /* justify-content: center; */
-    align-items: center;
-    font-size: 1rem;
-    border-radius: 10px;
-    background-color: white;
-}
-
-.tituloReport{
-    font-size: 2rem;
 }
