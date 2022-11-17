@@ -5,6 +5,7 @@ import { creatReport } from "../../redux/actions/email";
 import "./SendEmail.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export function SendEmail() {
   const dispatch = useDispatch();
 
@@ -45,10 +46,17 @@ export function SendEmail() {
         email: user.email,
         msg: input.msg,
         usarioreport: input.usarioreport,
-        tituloPost: input.usarioreport,
+        tituloPost: input.tituloPost,
       })
     );
-    alert("Su report se a enviado correctamente revise su gmmail");
+    Swal.fire({
+      title: "Su report se a enviado correctamente revise su gmmail",
+      color: "#382c4b",
+      icon: "success",
+      confirmButtonColor: "#382c4b",
+      confirmButtonText: "OK",
+      background: "#e8e8e8",
+  })
     setInput({
       msg: "",
       usarioreport: "",

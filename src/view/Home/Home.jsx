@@ -27,6 +27,7 @@ import { MiniPerfil } from "../../components/MiniPerfil/MiniPerfil.jsx";
 
 export const Home = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const userLoged= useSelector((state) => state.userLoged)
   const allPosts = useSelector((state) => state.Posts);
   const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
@@ -145,6 +146,7 @@ export const Home = () => {
           */}
         </div>
         <Feed allPosts={allPosts} loading={loading} />
+        {userLoged && userLoged.premiun === false ? 
         <div className="publicidadEnElHome">
           <img
             src="https://media2.giphy.com/media/HyfGeSFshMl27uoXfV/200w.gif"
@@ -161,7 +163,8 @@ export const Home = () => {
             alt="publicidad"
             style={{width: "200px",height: "135px",}}
           />
-        </div>
+        </div>: <></> }
+        
       </div>
       <AddPost />
     </div>
