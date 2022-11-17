@@ -10,6 +10,8 @@ import {
   Typography,
   Checkbox,
   Button,
+  MenuItem,
+  Menu
 } from "@mui/material";
 
 import parse from "html-react-parser";
@@ -30,6 +32,17 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
   const [contador, setContador] = useState(0);
   const [starComprobacion, setStarComprobacion] = useState(false);
 
+
+  //////////////////////////////////
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+//////////////////////////////////
   useEffect(() => {
     if (likes.includes(userLoged.id)) setLikeComprobacion(true);
   }, [likes]);
@@ -129,10 +142,37 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
               }
               action={
                 <IconButton aria-label="settings">
-                  <MoreVert />
+                  {/* <MoreVert 
+                  onClick={handleClick}
+                  /> */}
+
+              <Button
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+              >
+            <MoreVert/>
+            </Button>
+            <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
                 </IconButton>
               }
               title={userpost}
+
+              
             />
 
             <CardContent>

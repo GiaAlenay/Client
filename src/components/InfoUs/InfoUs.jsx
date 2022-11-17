@@ -42,9 +42,9 @@ export const infoUs = [
     {
         id:"6",
         nombre:"Franco Mafferra",
-        img:"https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg",
+        img:"https://media-exp1.licdn.com/dms/image/D4D03AQEjRFgZofbCKg/profile-displayphoto-shrink_200_200/0/1665803622130?e=1674086400&v=beta&t=HBAQ1tXyRYU63w83iFIj3UM6XIDPq8OdZWNjoF6t9Ng",
         cargo:"Full-Stack Developer",
         git:"https://github.com/FrancoMafferra",
-        link:""
+        link:"https://www.linkedin.com/in/franco-mafferra-82a5a1248/"
     },
 ]
