@@ -153,13 +153,13 @@ export const Home = () => {
           <img
             src="http://i.giphy.com/XudMt2s7QWqNG.gif"
             alt="publicidad"
-            style={{width: "200px",height: "135px",}}
+            style={{width: "200px",height: "136px",}}
               
           />
           <img
             src="https://mushroom.es/wp-content/uploads/buda-rappi-low.gif"
             alt="publicidad"
-            style={{width: "200px",height: "135px",}}
+            style={{width: "200px",height: "136px",}}
           />
         </div>
       </div>
