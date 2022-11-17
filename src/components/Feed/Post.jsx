@@ -1,18 +1,5 @@
-import { MoreVert, Favorite, FavoriteBorder } from "@mui/icons-material";
-import {
-  Avatar,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  IconButton,
-  Typography,
-  Checkbox,
-  Button,
-  MenuItem,
-  Menu
-} from "@mui/material";
+import { MoreVert, Favorite, FavoriteBorder, StarBorder, Grade } from "@mui/icons-material";
+import {Avatar,Card,CardActions,CardContent,CardHeader,CardMedia,IconButton,Typography,Checkbox,Button, MenuItem,Menu} from "@mui/material";
 
 import parse from "html-react-parser";
 import { deletePost, editPost, getPosts } from "../../redux/actions/posts";
@@ -24,8 +11,11 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate , Link} from "react-router-dom";
+import Swal from "sweetalert2";
 export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const userLoged = useSelector((state) => state.UserLoged);
   const [likeComprobacion, setLikeComprobacion] = useState(false);
@@ -49,14 +39,42 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
 
   function handleDeletePost(e) {
     dispatch(deletePost(e));
+    Swal.fire({
+      title: "Post eliminado correctamente",
+      color: "#382c4b",
+      icon: "success",
+      confirmButtonColor: "#382c4b",
+      confirmButtonText: "OK",
+      background: "#e8e8e8",
+  })
+
   }
   function handleDeleteFav(e){
     dispatch(deleteFav(e))
     setStarComprobacion(false)
+    Swal.fire({
+      title: "Post eliminado de Favorito correctamente",
+      color: "#382c4b",
+      icon: "success",
+      confirmButtonColor: "#382c4b",
+      confirmButtonText: "OK",
+      background: "#e8e8e8",
+  })
+  navigate("/profile");
+
   }
   function handleAddFav(e){
      dispatch(AddToFav(e))
-     setStarComprobacion(true)
+    setStarComprobacion(true)
+     Swal.fire({
+      title: "Post agregado a Favorito correctamente",
+      color: "#382c4b",
+      icon: "success",
+      confirmButtonColor: "#382c4b",
+      confirmButtonText: "OK",
+      background: "#e8e8e8",
+  })
+  navigate("/profile");
   }
 
   function handleEditLikePost(e) {
@@ -133,50 +151,63 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
     <div>
       {isAuthenticated && (
         <div>
-          <Card sx={{ xs: 8, margin: 2, marginRight: 50, width: "600px" }}>
+          <Card sx={{ xs: 8, margin: 1, marginRight: 50, width: "600px" }}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: "blue" }}>
+                <Link to ="/profile">
+                 <Avatar>
                   <img src={foto} alt="foto" height={40} />
                 </Avatar>
+                </Link>
+               
               }
               action={
                 <IconButton aria-label="settings">
                   {/* <MoreVert 
                   onClick={handleClick}
                   /> */}
+                  <Button
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                  >
+                  <MoreVert/>
+                  </Button>
+                    <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                    }}
+                    >
+                    {!isLoading && isAuthenticated && user.nickname == userpost ? (
+                    <MenuItem onClick={(e)=> handleDeletePost(id)}>Eliminar Post</MenuItem>
+                    ):(
+                    <></>
+                    )}
+                    {!isLoading && isAuthenticated ? 
+                    (
+                    <MenuItem onClick={()=>handleDeleteFav(id)}>Eliminar Favorito</MenuItem>
+                    ):(
+                      <></>
+                    )}
+              </Menu>
+              </IconButton>
 
-              <Button
-              id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-              >
-            <MoreVert/>
-            </Button>
-            <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
-                </IconButton>
               }
+              //////////////////////////////////
+           
               title={userpost}
-
               
             />
 
+
             <CardContent>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="h5" >
                 {titulo}
               </Typography>
             </CardContent>
@@ -193,14 +224,10 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
               </Typography>
             </CardContent>
 
-           
-            
-
-            <br />
-            {!isLoading && isAuthenticated && user.nickname === userpost && (
+            {/* {!isLoading && isAuthenticated && user.nickname === userpost && (
               <Button onClick={() => handleDeletePost(id)}>ELIMINAR</Button>
-            )}
-            {!isLoading && isAuthenticated && <Button  onClick={()=>handleDeleteFav(id)}>ELIMINAR Favoritos</Button>}
+            )} */}
+            {/* {!isLoading && isAuthenticated && <Button  onClick={()=>handleDeleteFav(id)}>ELIMINAR Favoritos</Button>} */}
 
             <CardActions disableSpacing>
               <IconButton
@@ -219,16 +246,14 @@ export const Post = ({ titulo, userpost, texto, media, foto, id, likes }) => {
                   }
                 />
               </IconButton>
-              <IconButton aria-label="add to favorites" onClick={() => handleAddFav(id)}>
+              <IconButton aria-label="add to favorites" 
+              onClick={() => handleAddFav(id)}>
                 <Checkbox
-                  icon={
-                    setStarComprobacion ? (
-                      <StarIcon sx={{ color: "orange" }} />
+                  icon={setStarComprobacion ? (< Grade sx={{ color: "orange" }} />
                     ) : (
-                      <StarBorderIcon />
+                     <StarBorderIcon />
                     )
                   }
-                  
                 />
             </IconButton>
             </CardActions>

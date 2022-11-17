@@ -10,6 +10,8 @@ import {
   Stack,
   Button,
   IconButton,
+  InputLabel,
+  FormControl,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import List from "@mui/material/List";
@@ -42,6 +44,14 @@ export const AddPost = () => {
     categories: [],
     premium: "",
   });
+
+  const style={
+    backgroundColor: "rgb(33, 25, 155)",
+    cursor:"pointer",
+    color:"rgb(226, 200, 143)",
+    borderradius: "8px",
+  
+  }
 
   useEffect(() => {
     dispatch(getCategories());
@@ -119,7 +129,7 @@ export const AddPost = () => {
           left: 20,
           backgroundColor: "rgb(33, 25, 155)",
         }}
-        title="New Post"
+        title="Nuevo Post"
       >
         <Fab color="primary" aria-label="add">
           <AddIcon />
@@ -132,7 +142,7 @@ export const AddPost = () => {
         aria-describedby="modal-modal-description"
       >
         <form onSubmit={(e) => handleSubmit(e)}>
-          <Box width={400} height={400} bgcolor="white" p={3} borderRadius={5}>
+          <Box width={500} height={500} bgcolor="white" p={3} borderRadius={5}>
             <Typography variant="h6" color="gray" textAlign="center">
               Create a Post
             </Typography>
@@ -151,7 +161,10 @@ export const AddPost = () => {
             />
 
             <div>
-              <Select onChange={(e) => handlerSelectCategoria(e)}>
+              <FormControl fullWidth sx={{mt:2}}>
+            <InputLabel id="demo-simple-select-label">Elige una Cateforia</InputLabel>
+              <Select onChange={(e) => handlerSelectCategoria(e)} 
+              label="Elige un Categoria">
                 <MenuItem value="" hidden key={0} disabled>
                   Elije una categoria
                 </MenuItem>
@@ -162,18 +175,22 @@ export const AddPost = () => {
                     </MenuItem>
                   ))}
               </Select>
-              <ul>
+              </FormControl>
+
+              <ul >
                 <List>
                   {input.categories.map((c, i) => (
                     <Box
                       component="span"
-                      sx={{ p: 0.5, border: "1px solid black" }}
+                      sx={{ p: 1}}
                       key={i}
                     >
                       {c}
                       <button
                         onClick={() => handlerDeleteCategoria(c)}
                         type="button"
+                        style={style}
+
                       >
                         X
                       </button>
