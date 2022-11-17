@@ -42,7 +42,7 @@ export const Landing = () => {
                             <button onClick={loginWithRedirect} className='btnCreCu' > UNETE </button>
                             {isAuthenticated && 
                             (<>
-                            <button className='btnCreCu1' onClick={(e) => ALaHome(e)}> Ahora sos parte  </button> 
+                            <button className='btnCreCu1' onClick={(e) => ALaHome(e)}>INGRESAR  </button> 
                             </>)}
                         </div>
                     </div>
