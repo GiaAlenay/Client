@@ -147,16 +147,19 @@ export const Home = () => {
         <Feed allPosts={allPosts} loading={loading} />
         <div className="publicidadEnElHome">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-rLzCRzGR_Scho_i96QmMPBQaJ2fcbsPclrRGjbFKgjLiY-9GiAhzkTmyfK2X6xlUE2g&usqp=CAU"
+            src="https://media2.giphy.com/media/HyfGeSFshMl27uoXfV/200w.gif"
             alt="publicidad"
           />
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-rLzCRzGR_Scho_i96QmMPBQaJ2fcbsPclrRGjbFKgjLiY-9GiAhzkTmyfK2X6xlUE2g&usqp=CAU"
+            src="http://i.giphy.com/XudMt2s7QWqNG.gif"
             alt="publicidad"
+            style={{width: "200px",height: "135px",}}
+              
           />
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-rLzCRzGR_Scho_i96QmMPBQaJ2fcbsPclrRGjbFKgjLiY-9GiAhzkTmyfK2X6xlUE2g&usqp=CAU"
+            src="https://mushroom.es/wp-content/uploads/buda-rappi-low.gif"
             alt="publicidad"
+            style={{width: "200px",height: "135px",}}
           />
         </div>
       </div>
